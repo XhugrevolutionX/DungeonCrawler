@@ -8,6 +8,7 @@ public class CharacterMovement : MonoBehaviour
     private Vector2 _inputMovement;
     private Animator _animator;
     private Rigidbody2D _rb;
+    private Shooting _aim;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -15,19 +16,19 @@ public class CharacterMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
+        _aim = GetComponentInChildren<Shooting>();
     }
 
     void Update()
     {
-        if (_inputMovement.x > 0)
+        if (_aim.rotZ < 90 && _aim.rotZ > -90)
         {
-            gameObject.transform.localScale = new Vector3(1, 1, 1);
+            
         }
-        else if (_inputMovement.x < 0)
+        else
         {
-            gameObject.transform.localScale = new Vector3(-1, 1, 1);
+            gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x * -1, 1, 1);
         }
-
 
         if (_rb.linearVelocity.magnitude > Mathf.Epsilon)
         {
