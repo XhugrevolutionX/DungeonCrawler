@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -12,12 +11,19 @@ public class SteeringBehaviour : MonoBehaviour
     [Header("Seek")]
     [SerializeField] private float seekFactor = 1f;
     
+    [Header("Flee")]
+    [SerializeField] private float fleeFactor = 1f;
+    
     private Rigidbody2D _rb;
     
     public Vector2 SteeringTarget { get; set; }
     public float SeekFactor    {
         get => seekFactor;
         set => seekFactor = value;
+    }
+    public float FleeFactor    {
+        get => fleeFactor;
+        set => fleeFactor = value;
     }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -33,6 +39,8 @@ public class SteeringBehaviour : MonoBehaviour
 
         if (seekFactor > 0) 
             steeringResult += seekFactor * Seek(SteeringTarget);
+        if (fleeFactor > 0) 
+            steeringResult += fleeFactor * Flee(SteeringTarget);
 
         _rb.linearVelocity = steeringResult;
 
@@ -56,5 +64,24 @@ public class SteeringBehaviour : MonoBehaviour
         Debug.DrawRay(new Vector2(transform.position.x, transform.position.y) + actualVelocity, steeringForce, Color.green);
         
         return steeringForce;
+    }
+    
+    Vector2 Flee(Vector2 targetPosition)
+    {
+        
+        Vector2 steeringForce = Vector2.zero;
+        
+        Vector2 actualVelocity = _rb.linearVelocity;
+        Vector2 desiredVelocity = ( new Vector2(transform.position.x, transform.position.y) - targetPosition).normalized * maxSpeed;
+        
+        steeringForce = (desiredVelocity - actualVelocity) * steeringDamp;
+        
+        // Debug draws
+        Debug.DrawRay(new Vector2(transform.position.x, transform.position.y), desiredVelocity, Color.magenta);
+        Debug.DrawRay(new Vector2(transform.position.x, transform.position.y), actualVelocity, Color.red);
+        Debug.DrawRay(new Vector2(transform.position.x, transform.position.y) + actualVelocity, steeringForce, Color.green);
+        
+        return steeringForce;
+
     }
 }

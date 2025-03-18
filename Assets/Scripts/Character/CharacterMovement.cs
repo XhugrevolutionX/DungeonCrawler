@@ -9,6 +9,7 @@ public class CharacterMovement : MonoBehaviour
     private Animator _animator;
     private Rigidbody2D _rb;
     private Shooting _aim;
+    private Camera _camera;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -17,6 +18,7 @@ public class CharacterMovement : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
         _aim = GetComponentInChildren<Shooting>();
+        _camera = Camera.main;
     }
 
     void Update()
@@ -45,6 +47,7 @@ public class CharacterMovement : MonoBehaviour
     void FixedUpdate()
     {
         _rb.linearVelocity = _inputMovement * movementSpeed;
+        _camera.transform.position = new Vector3(_rb.position.x, _rb.position.y, _camera.transform.position.z);
     }
 
     public void MoveCharacter(InputAction.CallbackContext context)

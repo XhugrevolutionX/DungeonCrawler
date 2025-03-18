@@ -18,7 +18,6 @@ public class Sensor : MonoBehaviour
     
     public bool hasDetected;
     public Vector2 targetPos = Vector2.zero;
-        
     
     public void OnDrawGizmos()
     {
@@ -57,15 +56,13 @@ public class Sensor : MonoBehaviour
                 
                 if (Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), goodObjectDistance, _contactFilter, hits, radius) > 0)
                 {
-                    for (int i = 0; i < hits.Count; i++)
+                    if (hits[0].collider == goodObject)
                     {
-                        if (hits[i].collider == goodObject)
-                        {
-                            _hitPosition = hits[i].point;
-                            hasDetected = true;
-                            targetPos = goodObject.bounds.center;
-                        }
+                        _hitPosition = hits[0].point;
+                        hasDetected = true;
+                        targetPos = goodObject.bounds.center;
                     }
+
                 }
             }
         }

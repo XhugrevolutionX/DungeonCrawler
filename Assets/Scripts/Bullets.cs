@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Bullets : MonoBehaviour
 {
+    [SerializeField] private int damage = 1;
     [SerializeField] private float speed;
     private GameObject _character;
     private GameObject _firingPoint;
@@ -40,7 +41,7 @@ public class Bullets : MonoBehaviour
         if (other.CompareTag("Enemies"))
         {
             Destroy(gameObject);
-            other.gameObject.GetComponent<SkeletonAnim>().isDead = true;
+            other.gameObject.GetComponent<EnemiesDamage>().Hit(damage);
         }
     }
 }
