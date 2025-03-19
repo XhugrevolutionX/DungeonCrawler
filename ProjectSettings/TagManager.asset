@@ -18,7 +18,7 @@ TagManager:
   - Water
   - UI
   - AIDetectable
-  - 
+  - Enemy
   - 
   - 
   - 
@@ -46,6 +46,21 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Map
+    uniqueID: 3320406415
+    locked: 0
+  - name: Items
+    uniqueID: 3863049491
+    locked: 0
+  - name: Characters
+    uniqueID: 506416195
+    locked: 0
+  - name: FrontWalls
+    uniqueID: 6145279
+    locked: 0
+  - name: Canvas
+    uniqueID: 2851163547
     locked: 0
   m_RenderingLayers:
   - Default

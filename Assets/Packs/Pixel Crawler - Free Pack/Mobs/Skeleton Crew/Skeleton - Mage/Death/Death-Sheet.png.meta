@@ -58,7 +58,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -121,50 +121,6 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Death-Sheet_0
-      rect:
-        serializedVersion: 2
-        x: 87
-        y: 38
-        width: 18
-        height: 19
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5eca050f460a78320800000000000000
-      internalID: 2560191268572409061
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Death-Sheet_1
-      rect:
-        serializedVersion: 2
-        x: 151
-        y: 26
-        width: 17
-        height: 17
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fb29382cd8c627ee0800000000000000
-      internalID: -1264829189228096833
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Death-Sheet_2
       rect:
         serializedVersion: 2
@@ -172,8 +128,8 @@ TextureImporter:
         y: 0
         width: 20
         height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -191,11 +147,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 86
-        y: 1
+        y: 2
         width: 20
-        height: 26
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 55
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -215,9 +171,9 @@ TextureImporter:
         x: 147
         y: 0
         width: 23
-        height: 14
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        height: 43
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -238,8 +194,8 @@ TextureImporter:
         y: 0
         width: 27
         height: 22
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -260,8 +216,8 @@ TextureImporter:
         y: 0
         width: 25
         height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -282,8 +238,8 @@ TextureImporter:
         y: 0
         width: 23
         height: 12
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -300,7 +256,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ab57381ff9a69e44da4739f7bc50d267
     internalID: 0
     vertices: []
     indices: 
@@ -309,7 +265,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Death-Sheet_0: 2560191268572409061
+      Death-Sheet_1: -1264829189228096833
+      Death-Sheet_2: -295645148974806884
+      Death-Sheet_3: -5445535467145450107
+      Death-Sheet_4: -8093336952383072624
+      Death-Sheet_5: -2312478708456275354
+      Death-Sheet_6: 1254502524373328786
+      Death-Sheet_7: 7981330405057493806
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

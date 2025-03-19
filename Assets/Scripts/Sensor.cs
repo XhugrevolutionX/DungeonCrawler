@@ -62,7 +62,6 @@ public class Sensor : MonoBehaviour
                         hasDetected = true;
                         targetPos = goodObject.bounds.center;
                     }
-
                 }
             }
         }

@@ -9,13 +9,13 @@ public class EnemiesDamage : MonoBehaviour
     
     private CapsuleCollider2D _collider;
     
-    private SkeletonAnim _skeletonAnim;
     public int Power => power;
+    
+    public bool isDead = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _skeletonAnim = GetComponent<SkeletonAnim>();
         _collider = GetComponent<CapsuleCollider2D>();
     }
 
@@ -36,7 +36,7 @@ public class EnemiesDamage : MonoBehaviour
     
     private void Death()
     {
-        _skeletonAnim.isDead = true;
+        isDead = true;
         _collider.enabled = false;
     }
 
