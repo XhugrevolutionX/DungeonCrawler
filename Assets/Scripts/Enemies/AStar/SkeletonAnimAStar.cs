@@ -1,27 +1,23 @@
 using System.Collections;
-using System.Collections.Generic;
 using Pathfinding;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
-public class SkeletonAnim : MonoBehaviour
+public class SkeletonAnimAStar : MonoBehaviour
 {
     [SerializeField] private float deathAnimDelay = 0.5f;
     
+    [SerializeField] private Animator animator;
+    [SerializeField] private SpriteRenderer sr;
+    [SerializeField] private EnemiesDamage enemyDamage;
+    
     private AIPath _path;
-    private Animator _animator;
-    private SpriteRenderer _sr;
-    private EnemiesDamage _enemyDamage;
+
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _enemyDamage = GetComponent<EnemiesDamage>();
         _path = GetComponent<AIPath>();
-        _sr = GetComponent<SpriteRenderer>();
-        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -29,25 +25,30 @@ public class SkeletonAnim : MonoBehaviour
     {
         if (_path.velocity.magnitude > Mathf.Epsilon)
         {
-            _animator.SetBool("IsRunning", true);
+            animator.SetBool("IsRunning", true);
         }
         else
         {
-            _animator.SetBool("IsRunning", false);
+            animator.SetBool("IsRunning", false);
         }
 
         if (_path.velocity.normalized.x > 0)
         {
-            _sr.flipX = false;
+            sr.flipX = false;
         }
         else if (_path.velocity.normalized.x < 0)
         {
-            _sr.flipX = true;
+            sr.flipX = true;
+        }
+        else if (_path.velocity.normalized.x == 0)
+        {
+            
         }
 
-        if (_enemyDamage.isDead)
+        if (enemyDamage.isDead)
         {
-            _animator.SetTrigger("Death");
+            _path.canMove = false;
+            animator.SetTrigger("Death");
             StartCoroutine("DeathCoroutine");
         }
     }

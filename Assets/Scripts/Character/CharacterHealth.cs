@@ -29,28 +29,30 @@ public class CharacterHealth : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemies"))
+        if (collision.collider.CompareTag("Enemies"))
         {
-            collision.gameObject.TryGetComponent(out EnemiesDamage e);
+            collision.collider.TryGetComponent(out EnemiesDamage e);
             if (e != null)
-                if (_canBeHit)
-                    Damage(e.Power);
+                Damage(e.Power);
         }
     }
 
-    private void Damage(int damage)
+    public void Damage(int damage)
     {
-        _canBeHit = false;
-        
-        if (_iFramesCoroutine != null)
-            StopCoroutine(_iFramesCoroutine);
-        _iFramesCoroutine = StartCoroutine(IFrames());
-        
-        health -= damage;
-        healthBar.UpdateHealthBar(health);
-        if (health <= 0)
+        if (_canBeHit)
         {
-            StartCoroutine(DeathDelay());
+            _canBeHit = false;
+            
+            if (_iFramesCoroutine != null)
+                StopCoroutine(_iFramesCoroutine);
+            _iFramesCoroutine = StartCoroutine(IFrames());
+            
+            health -= damage;
+            healthBar.UpdateHealthBar(health);
+            if (health <= 0)
+            {
+                StartCoroutine(DeathDelay());
+            }
         }
     }
 
