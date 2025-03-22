@@ -194,7 +194,7 @@ Transform:
   m_GameObject: {fileID: 6466566629658205774}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.271, y: -3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -213,7 +213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dec49b785181cb4eaa6c0244b6a9db1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathAnimDelay: 1
   animator: {fileID: 9126327804710297145}
   sr: {fileID: 1155080760646936843}
   enemyDamage: {fileID: 1816885587736493081}

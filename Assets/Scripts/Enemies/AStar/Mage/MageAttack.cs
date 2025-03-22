@@ -7,6 +7,7 @@ public class MageAttack : MonoBehaviour
 {
     [SerializeField] private float timeBetweenAttacks = 2;
     [SerializeField] private GameObject bullets;
+    [SerializeField] private GameObject firepoint;
     [SerializeField] private SpriteRenderer _sr;
     private bool _canShoot = true;
     private bool _playerDetected = false;
@@ -24,11 +25,11 @@ public class MageAttack : MonoBehaviour
 
         if (_sr.flipX)
         {
-            transform.localPosition = new Vector3(-0.5f, 0,0);
+            firepoint.transform.localPosition = new Vector3(-0.5f, 0,0);
         }
         else if (!_sr.flipX)
         {
-            transform.localPosition = new Vector3(0.5f, 0,0);
+            firepoint.transform.localPosition = new Vector3(0.5f, 0,0);
         }
         else
         {
@@ -39,7 +40,7 @@ public class MageAttack : MonoBehaviour
         {
             if (_canShoot)
             {
-                Instantiate(bullets, transform.position, Quaternion.identity);
+                Instantiate(bullets, firepoint.transform.position, Quaternion.identity);
                 //Shoots
                 _canShoot = false;
                 StartCoroutine("FireRate");

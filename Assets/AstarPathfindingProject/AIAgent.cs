@@ -7,6 +7,11 @@ public class AIAgent : MonoBehaviour
     [SerializeField] private Transform target;
     private float distanceToTarget;
     [SerializeField] private float stoppingDistanceThreshold;
+    public Transform Target
+    {
+        get => target;
+        set => target = value;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
@@ -16,10 +21,7 @@ public class AIAgent : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        
         aiPath.maxSpeed = moveSpeed;
-        //Move to target position
-        //aiPath.destination = target.position;
         distanceToTarget = Vector3.Distance(transform.position, target.position);
         if (distanceToTarget < stoppingDistanceThreshold)
         {

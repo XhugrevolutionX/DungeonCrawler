@@ -39,5 +39,10 @@ public class EnemiesDamage : MonoBehaviour
         isDead = true;
         _collider.enabled = false;
     }
+    
+    private void DestroySelf()
+    {
+        Destroy(transform.parent.gameObject);
+    }
 
 }

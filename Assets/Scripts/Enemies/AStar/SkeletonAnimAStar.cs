@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SkeletonAnimAStar : MonoBehaviour
 {
-    [SerializeField] private float deathAnimDelay = 0.5f;
     
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer sr;
@@ -49,14 +48,6 @@ public class SkeletonAnimAStar : MonoBehaviour
         {
             _path.canMove = false;
             animator.SetTrigger("Death");
-            StartCoroutine("DeathCoroutine");
         }
-    }
-
-
-    IEnumerator DeathCoroutine()
-    {
-        yield return new WaitForSeconds(deathAnimDelay);
-        Destroy(gameObject);
     }
 }
