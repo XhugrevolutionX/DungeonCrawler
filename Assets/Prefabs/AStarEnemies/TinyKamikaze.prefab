@@ -97,8 +97,8 @@ GameObject:
   - component: {fileID: 4506617225163809031}
   - component: {fileID: 6591577605579106155}
   - component: {fileID: 8238329980861708716}
+  - component: {fileID: 3056607625692080827}
   - component: {fileID: 557418923215797037}
-  - component: {fileID: 7511927240424718710}
   m_Layer: 7
   m_Name: TinyKamikaze
   m_TagString: Untagged
@@ -221,8 +221,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  target: {fileID: 0}
+  target: {fileID: 4358439430120979750}
   stoppingDistanceThreshold: 0.5
+--- !u!114 &3056607625692080827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788473482640674730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1330beaabfe51a4fa372e2dd86bc92b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &557418923215797037
 Rigidbody2D:
   serializedVersion: 5
@@ -250,18 +262,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7511927240424718710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6788473482640674730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 758ef51739a1f3243be50dade7a4c4c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8986154962365862256
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,7 +362,7 @@ Animator:
   m_GameObject: {fileID: 8986154962365862256}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dbfefce2963a79247945b337d982176b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8d12c8532af36ba4e85cc3c72e931350, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

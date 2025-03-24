@@ -9,19 +9,18 @@ public class SummonerMovement : MonoBehaviour
         Summon,
         Reposition,
     }
+    [SerializeField] private EnemiesDamage enemyDamage;
     private AIAgent _ai;
     private SummonerDestination _destination;
     private SummonerAttacks _attacks;
-    private EnemiesDamage _enemyDamage;
     private FSM_State _currentState = FSM_State.Empty;
 
     private void Start()
     {
         _ai = GetComponent<AIAgent>();
-        _enemyDamage = GetComponent<EnemiesDamage>();
         _destination = GetComponent<SummonerDestination>();
         _attacks = GetComponentInChildren<SummonerAttacks>();
-        SetState(FSM_State.Reposition);
+        SetState(FSM_State.Summon);
     }
 
     private void Update()
@@ -35,7 +34,7 @@ public class SummonerMovement : MonoBehaviour
         switch (state)
         {
             case FSM_State.Summon:
-                if (_attacks.hasSummoned)
+                if (_attacks.hasSummoned || enemyDamage.Damaged)
                 {
                     SetState(FSM_State.Reposition);
                 }

@@ -7,43 +7,36 @@ public class MageAttack : MonoBehaviour
 {
     [SerializeField] private float timeBetweenAttacks = 2;
     [SerializeField] private GameObject bullets;
-    [SerializeField] private GameObject firepoint;
-    [SerializeField] private SpriteRenderer _sr;
-    private bool _canShoot = true;
+    [SerializeField] private GameObject firePoint;
+    [SerializeField] private SpriteRenderer sr;
+    private bool _canShoot = false;
     private bool _playerDetected = false;
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    private Coroutine _shootCoroutine;
 
     // Update is called once per frame
     void Update()
     {
-
-        if (_sr.flipX)
+        if (sr.flipX)
         {
-            firepoint.transform.localPosition = new Vector3(-0.5f, 0,0);
+            firePoint.transform.localPosition = new Vector3(-0.5f, 0,0);
         }
-        else if (!_sr.flipX)
+        else if (!sr.flipX)
         {
-            firepoint.transform.localPosition = new Vector3(0.5f, 0,0);
-        }
-        else
-        {
-            
+            firePoint.transform.localPosition = new Vector3(0.5f, 0,0);
         }
 
         if (_playerDetected)
         {
             if (_canShoot)
             {
-                Instantiate(bullets, firepoint.transform.position, Quaternion.identity);
-                //Shoots
+                Instantiate(bullets, firePoint.transform.position, Quaternion.identity);
                 _canShoot = false;
-                StartCoroutine("FireRate");
+                if (_shootCoroutine != null)
+                {
+                    StopCoroutine(_shootCoroutine);
+                }
+                _shootCoroutine = StartCoroutine("FireRate");
             }
         }
     }
@@ -52,6 +45,11 @@ public class MageAttack : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (_shootCoroutine != null)
+            {
+                StopCoroutine(_shootCoroutine);
+            }
+            _shootCoroutine = StartCoroutine("FireRate");
             _playerDetected = true;
         }
     }
@@ -60,6 +58,11 @@ public class MageAttack : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if (_shootCoroutine != null)
+            {
+                StopCoroutine(_shootCoroutine);
+            }
+            _canShoot = false;
             _playerDetected = false;
         }
     }

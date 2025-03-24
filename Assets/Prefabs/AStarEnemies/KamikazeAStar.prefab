@@ -84,6 +84,8 @@ MonoBehaviour:
   timeBeforeExplosion: 1
   explosion: {fileID: 3838053931198139326, guid: c0525e78bf54b094ea2ea71aac46560e, type: 3}
   kamikaze: {fileID: 8074271412171299944}
+  enemiesDamage: {fileID: 9194220013082657569}
+  deathAnimator: {fileID: 6939877367081245690}
 --- !u!1 &2825693929790475513
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,7 +186,7 @@ Animator:
   m_GameObject: {fileID: 2825693929790475513}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: dbfefce2963a79247945b337d982176b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8d12c8532af36ba4e85cc3c72e931350, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -261,6 +263,7 @@ GameObject:
   - component: {fileID: 474899889879819446}
   - component: {fileID: 6220886038740671951}
   - component: {fileID: 4615244710440379711}
+  - component: {fileID: 4918997424920943795}
   - component: {fileID: 8345434355577529988}
   m_Layer: 7
   m_Name: KamikazeAStar
@@ -384,8 +387,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  target: {fileID: 0}
+  target: {fileID: 5743738003867351984}
   stoppingDistanceThreshold: 1
+--- !u!114 &4918997424920943795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8074271412171299944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1330beaabfe51a4fa372e2dd86bc92b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &8345434355577529988
 Rigidbody2D:
   serializedVersion: 5

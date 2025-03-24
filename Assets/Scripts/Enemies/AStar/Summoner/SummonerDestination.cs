@@ -1,28 +1,40 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
+using Random = UnityEngine.Random;
 
 public class SummonerDestination : MonoBehaviour
 {
-    
+    [SerializeField] private Animator animator;
     [SerializeField] private GameObject target;
-    [SerializeField] private Tilemap groundTilemap;
+    private EnemiesDamage _enemiesDamage;
+    private Tilemap _groundTilemap;
     [SerializeField] private float movementRange = 5;
     private GameObject _targetDestination;
     public bool hasReachedDestination = false;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    private void Start()
     {
-        
+        _groundTilemap = GetComponentInParent<EnemyManager>().GroundTilemap;
+        _enemiesDamage = GetComponentInChildren<EnemiesDamage>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Vector2.Distance(transform.position, _targetDestination.transform.position) < 0.2f)
+        if (_targetDestination != null)
         {
-            Destroy(_targetDestination);
-            hasReachedDestination = true;
+            if (_enemiesDamage.isDead)
+            {
+                Destroy(_targetDestination);
+            }
+            if (Vector2.Distance(transform.position, _targetDestination.transform.position) < 0.5f)
+            {
+                animator.ResetTrigger("Damaged");
+                Destroy(_targetDestination);
+                hasReachedDestination = true;
+            }
         }
     }
 
@@ -32,7 +44,7 @@ public class SummonerDestination : MonoBehaviour
         do
         { 
             position = transform.position + new Vector3(Random.Range(-movementRange, movementRange), Random.Range(-movementRange, movementRange), 0);
-        } while (!groundTilemap.HasTile(groundTilemap.WorldToCell(position)));
+        } while (!_groundTilemap.HasTile(_groundTilemap.WorldToCell(position)));
         
         _targetDestination = Instantiate(target, position, Quaternion.identity);
         return _targetDestination.transform;

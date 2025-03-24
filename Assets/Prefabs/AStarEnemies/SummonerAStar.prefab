@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1865503815845472438}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -119,7 +119,7 @@ MonoBehaviour:
   rotationSpeed: 360
   slowdownDistance: 0.6
   pickNextWaypointDist: 0.5
-  endReachedDistance: 0
+  endReachedDistance: 0.05
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
@@ -178,6 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf5696bc89a30864886bb1a86b515d40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyDamage: {fileID: 8305769594991080166}
 --- !u!114 &269132084732413978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,8 +191,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 202959b5d6c570e4c893bbde18d7df28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 789907364117806921}
   target: {fileID: 966974350749736523, guid: 3ec54f8efcac8f0418d3d7a731008e27, type: 3}
-  groundTilemap: {fileID: 0}
   movementRange: 5
   hasReachedDestination: 0
 --- !u!1 &7578148609141217311
@@ -374,5 +375,4 @@ MonoBehaviour:
   animator: {fileID: 789907364117806921}
   summons: {fileID: 6788473482640674730, guid: 45ab82616943cea43a7a5335da0935e0, type: 3}
   summonRange: 4
-  groundTilemap: {fileID: 0}
   hasSummoned: 0
