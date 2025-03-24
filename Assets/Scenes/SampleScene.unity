@@ -4074,6 +4074,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: KamikazeAStar
       objectReference: {fileID: 0}
+    - target: {fileID: 8074271412171299944, guid: 834955b10630a6048b9d8e9070eafb6d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

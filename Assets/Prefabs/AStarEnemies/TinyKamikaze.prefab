@@ -81,9 +81,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33438ef02ff39664fa9beb82a6d99bb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBeforeExplosion: 1
   explosion: {fileID: 3838053931198139326, guid: c0525e78bf54b094ea2ea71aac46560e, type: 3}
-  kamikaze: {fileID: 6788473482640674730}
+  enemiesDamage: {fileID: 8183091577575484033}
+  deathAnimator: {fileID: 6035031017665236546}
 --- !u!1 &6788473482640674730
 GameObject:
   m_ObjectHideFlags: 0
