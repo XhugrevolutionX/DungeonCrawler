@@ -8,10 +8,8 @@ public class SkeletonAnimAStar : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private EnemiesDamage enemyDamage;
-    
+
     private AIPath _path;
-
-
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
