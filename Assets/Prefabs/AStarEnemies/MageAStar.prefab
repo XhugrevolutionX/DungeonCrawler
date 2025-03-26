@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 7510750922604847701}
   - component: {fileID: 3428291032553934320}
   - component: {fileID: 749379633052324317}
-  - component: {fileID: 8937247652330263716}
   - component: {fileID: 9167898793438731835}
   - component: {fileID: 9214363626740001065}
   - component: {fileID: 8217594465269466278}
@@ -172,18 +171,6 @@ MonoBehaviour:
   moveSpeed: 2
   target: {fileID: 8731837426308134519}
   stoppingDistanceThreshold: 4
---- !u!114 &8937247652330263716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2202765438129176843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1330beaabfe51a4fa372e2dd86bc92b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &9167898793438731835
 Rigidbody2D:
   serializedVersion: 5

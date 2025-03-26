@@ -97,7 +97,6 @@ GameObject:
   - component: {fileID: 4506617225163809031}
   - component: {fileID: 6591577605579106155}
   - component: {fileID: 8238329980861708716}
-  - component: {fileID: 3056607625692080827}
   - component: {fileID: 557418923215797037}
   m_Layer: 7
   m_Name: TinyKamikaze
@@ -223,18 +222,6 @@ MonoBehaviour:
   moveSpeed: 2
   target: {fileID: 4358439430120979750}
   stoppingDistanceThreshold: 0.5
---- !u!114 &3056607625692080827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6788473482640674730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1330beaabfe51a4fa372e2dd86bc92b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &557418923215797037
 Rigidbody2D:
   serializedVersion: 5
@@ -342,7 +329,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -3145328045451892686, guid: a9434919f5f5f594291666d9fd84b1a5, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.34417218, g: 0.34233716, b: 0.46226418, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

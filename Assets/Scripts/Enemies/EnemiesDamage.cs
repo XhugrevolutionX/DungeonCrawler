@@ -47,7 +47,6 @@ public class EnemiesDamage : MonoBehaviour
     
     private void DestroySelf()
     {
-        Debug.Log("DestroySelf");
         Destroy(transform.parent.gameObject);
     }
 

@@ -18,6 +18,7 @@ public class AIAgent : MonoBehaviour
     {
         _enemiesDamage = GetComponentInChildren<EnemiesDamage>();
         _aiPath = GetComponent<AIPath>();
+        target = GetComponentInParent<EnemyManager>().Player.transform;
     }
 
     // Update is called once per frame
@@ -30,7 +31,7 @@ public class AIAgent : MonoBehaviour
             if (_distanceToTarget < stoppingDistanceThreshold)
             {
                 //Chase when the player is far
-                _aiPath.destination=transform.position;
+                _aiPath.destination = transform.position;
             
                 //Chase when player is near
                 // aiPath.destination = target.position;

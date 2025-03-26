@@ -5,7 +5,6 @@ public class EnemyBullets : MonoBehaviour
     [SerializeField] private int damage = 1;
     [SerializeField] private float speed;
     private GameObject _character;
-    private GameObject _firingPoint;
     private Vector2 _direction;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -28,7 +27,6 @@ public class EnemyBullets : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
         if (other.CompareTag("Player"))
         {
             Destroy(gameObject);

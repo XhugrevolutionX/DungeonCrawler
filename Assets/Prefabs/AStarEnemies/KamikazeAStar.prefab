@@ -81,9 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33438ef02ff39664fa9beb82a6d99bb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBeforeExplosion: 1
   explosion: {fileID: 3838053931198139326, guid: c0525e78bf54b094ea2ea71aac46560e, type: 3}
-  kamikaze: {fileID: 8074271412171299944}
   enemiesDamage: {fileID: 9194220013082657569}
   deathAnimator: {fileID: 6939877367081245690}
 --- !u!1 &2825693929790475513
@@ -166,7 +164,7 @@ SpriteRenderer:
   m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: -3145328045451892686, guid: a9434919f5f5f594291666d9fd84b1a5, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.34417218, g: 0.34233716, b: 0.46226418, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -262,9 +260,10 @@ GameObject:
   - component: {fileID: 8639373960126514911}
   - component: {fileID: 474899889879819446}
   - component: {fileID: 6220886038740671951}
-  - component: {fileID: 4615244710440379711}
-  - component: {fileID: 4918997424920943795}
   - component: {fileID: 8345434355577529988}
+  - component: {fileID: 6239277627107832029}
+  - component: {fileID: 583848930247740709}
+  - component: {fileID: 6770359657854369351}
   m_Layer: 7
   m_Name: KamikazeAStar
   m_TagString: Untagged
@@ -374,33 +373,6 @@ MonoBehaviour:
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
   constrainInsideGraph: 1
---- !u!114 &4615244710440379711
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8074271412171299944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6d752407378db44d90fa6d5cae4b79b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 2
-  target: {fileID: 5743738003867351984}
-  stoppingDistanceThreshold: 1
---- !u!114 &4918997424920943795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8074271412171299944}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1330beaabfe51a4fa372e2dd86bc92b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &8345434355577529988
 Rigidbody2D:
   serializedVersion: 5
@@ -428,3 +400,47 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &6239277627107832029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8074271412171299944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b3121d870e4e784a86678170605f869, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 5
+  angleDetection: 180
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  playerTag: Player
+  gizomsColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!114 &583848930247740709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8074271412171299944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 483d346b735557c4c964eb3e844f78a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 3
+--- !u!114 &6770359657854369351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8074271412171299944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31bde19509751624685387dccae88969, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

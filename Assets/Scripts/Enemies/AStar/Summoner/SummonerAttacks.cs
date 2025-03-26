@@ -17,7 +17,7 @@ public class SummonerAttacks : MonoBehaviour
     {
         _manager = GetComponentInParent<EnemyManager>();
         _groundTilemap = _manager.GroundTilemap;
-        _enemyDamage = GetComponent<EnemiesDamage>();
+        _enemyDamage = GetComponentInChildren<EnemiesDamage>();
     }
 
 

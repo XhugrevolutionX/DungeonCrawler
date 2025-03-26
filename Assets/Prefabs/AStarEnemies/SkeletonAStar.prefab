@@ -177,7 +177,6 @@ GameObject:
   - component: {fileID: 9066802921030793196}
   - component: {fileID: 2002585191509961999}
   - component: {fileID: 9210157885425510669}
-  - component: {fileID: 6450518005858384627}
   - component: {fileID: 5903568436968320976}
   m_Layer: 7
   m_Name: SkeletonAStar
@@ -301,19 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   target: {fileID: 3350937704661774425}
-  stoppingDistanceThreshold: 1
---- !u!114 &6450518005858384627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6466566629658205774}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1330beaabfe51a4fa372e2dd86bc92b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  stoppingDistanceThreshold: 0.5
 --- !u!50 &5903568436968320976
 Rigidbody2D:
   serializedVersion: 5
