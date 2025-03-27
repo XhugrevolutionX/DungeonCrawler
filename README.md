@@ -20,6 +20,8 @@ Kamikaze - Start to follow the player when it sees it. When near enough the play
 
 Summoner - Summon Tiny kamikaze and reposition between each summon. Will also reposition if it takes a hit 
 
-NewMage - Same as mage but with FSM and a flee mechanic when it takes damage
+NewMage - Same as mage but with FSM and a Teleport mechanic when it takes damage
 
 Friendly Summoner - A summoner that spawns additional characters for you (a bug that I had... I thought it was funny)
+
+SummonerCeption - DO NOT USE !!!!!
