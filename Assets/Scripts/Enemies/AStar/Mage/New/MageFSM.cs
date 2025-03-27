@@ -1,6 +1,7 @@
 using System;
 using Pathfinding;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class MageFSM : MonoBehaviour
 {
@@ -20,6 +21,11 @@ public class MageFSM : MonoBehaviour
     private AIPath _aiPath;
     private EnemiesDamage _enemiesDamage;
     private MageSensor _sensor;
+    
+    private Collider2D _collider;
+    private SpriteRenderer _renderer;
+    
+    private Vector3 _tpPosition;
 
     private float _timer;
  
@@ -30,6 +36,8 @@ public class MageFSM : MonoBehaviour
         _enemiesDamage = GetComponentInChildren<EnemiesDamage>();
         _sensor = GetComponent<MageSensor>();
         
+        _collider = GetComponentInChildren<Collider2D>();
+        _renderer = GetComponentInChildren<SpriteRenderer>();
         
         _aiPath.maxSpeed = moveSpeed;
         
@@ -47,13 +55,13 @@ public class MageFSM : MonoBehaviour
         switch (state)
         {
             case FSM_State.Idle:
-                if ( _enemiesDamage.Damaged)
+                if (_enemiesDamage.Damaged && !_enemiesDamage.isDead)
                     SetState(FSM_State.Flee);
                 if (_timer >= idleTime || (!_sensor.PlayerInSight && _sensor.PlayerWasInSight))
                     SetState(FSM_State.Chase);
                 break;
             case FSM_State.Chase:
-                if ( _enemiesDamage.Damaged)
+                if ( _enemiesDamage.Damaged && !_enemiesDamage.isDead)
                     SetState(FSM_State.Flee);
                 if (_sensor.PlayerInSight)
                     SetState(FSM_State.Idle);
@@ -77,6 +85,10 @@ public class MageFSM : MonoBehaviour
             case FSM_State.Chase:
                 break;
             case FSM_State.Flee:
+                _collider.enabled = false;
+                _renderer.enabled = false;
+                _tpPosition = _behaviors.RandomPosition();
+                _sensor.TargetTp = _tpPosition;
                 break; 
             case FSM_State.Empty:
             default:
@@ -94,6 +106,8 @@ public class MageFSM : MonoBehaviour
             case FSM_State.Chase:
                 break;
             case FSM_State.Flee:
+                _collider.enabled = true;
+                _renderer.enabled = true;
                 break; 
             case FSM_State.Empty:
             default:
@@ -116,7 +130,7 @@ public class MageFSM : MonoBehaviour
                 _aiPath.destination = _behaviors.Chase();
                 break;
             case FSM_State.Flee:
-                _aiPath.destination = _behaviors.Flee();
+                transform.position = _tpPosition;
                 break; 
             case FSM_State.Empty:
             default:
@@ -126,7 +140,7 @@ public class MageFSM : MonoBehaviour
     
     private void SetState(FSM_State newState)
     {
-        if (newState == FSM_State.Empty) return;
+        if (newState == FSM_State.Empty || _currentState == newState) return;
         if (_currentState != FSM_State.Empty) OnStateExit(_currentState);
         
         _currentState = newState;

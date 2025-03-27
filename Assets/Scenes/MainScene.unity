@@ -5040,6 +5040,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: NewMageAStar
       objectReference: {fileID: 0}
+    - target: {fileID: 2056189597919595488, guid: 2f9e7d8b67b40a0498abfc3ddf936a18, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3084717922025170419, guid: 2f9e7d8b67b40a0498abfc3ddf936a18, type: 3}
+      propertyPath: randomPointRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3321479645357506547, guid: 2f9e7d8b67b40a0498abfc3ddf936a18, type: 3}
+      propertyPath: timeBetweenAttacks
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4893381351634208026, guid: 2f9e7d8b67b40a0498abfc3ddf936a18, type: 3}
+      propertyPath: inSightRadius
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6699539436000065284, guid: 2f9e7d8b67b40a0498abfc3ddf936a18, type: 3}
+      propertyPath: idleTime
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

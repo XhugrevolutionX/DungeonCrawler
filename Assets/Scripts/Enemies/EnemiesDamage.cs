@@ -52,7 +52,7 @@ public class EnemiesDamage : MonoBehaviour
 
     IEnumerator DamagedCoroutine()
     {
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.005f);
         _damaged = false;
     }
 

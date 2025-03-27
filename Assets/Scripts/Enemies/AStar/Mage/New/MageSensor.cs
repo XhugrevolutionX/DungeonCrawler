@@ -6,11 +6,16 @@ using UnityEngine;
 
 public class MageSensor : MonoBehaviour
 {
-    [SerializeField] private float fleeingDistanceThreshold;
-
     private EnemiesDamage _enemiesDamage;
     private float _distanceToTarget;
-    private Transform _target;
+    private Vector3 _targetTp;
+
+    public Vector3 TargetTp
+    {
+        get => _targetTp;
+        set => _targetTp = value;
+    }
+
     private bool _fleeComplete;
     public bool FleeComplete => _fleeComplete;
     
@@ -48,7 +53,6 @@ public class MageSensor : MonoBehaviour
     private void Start()
     {
         _enemiesDamage = GetComponentInChildren<EnemiesDamage>();
-        _target = GetComponentInParent<EnemyManager>().Player.transform;
         _contactFilter.SetLayerMask(layerMask);
     }
 
@@ -64,8 +68,7 @@ public class MageSensor : MonoBehaviour
     {
         if (!_enemiesDamage.isDead)
         {
-            _distanceToTarget = Vector3.Distance(transform.position, _target.position);
-            _fleeComplete = _distanceToTarget > fleeingDistanceThreshold;
+            _fleeComplete = transform.position == _targetTp;
         }
     }
     
