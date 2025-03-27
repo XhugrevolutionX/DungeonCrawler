@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 9214363626740001065}
   - component: {fileID: 8217594465269466278}
   m_Layer: 7
-  m_Name: MageAStar
+  m_Name: OldMageAStar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

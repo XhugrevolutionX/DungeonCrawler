@@ -418,7 +418,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   playerTag: Player
-  gizomsColor: {r: 1, g: 0, b: 0, a: 1}
+  gizmosColor: {r: 1, g: 0, b: 0, a: 1}
+  drawGizmos: 1
 --- !u!114 &583848930247740709
 MonoBehaviour:
   m_ObjectHideFlags: 0

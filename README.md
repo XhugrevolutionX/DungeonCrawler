@@ -14,12 +14,12 @@ Main Scene (Movement and IA), All Enemies are under the AStarEnemies Object.
 
 Skeleton - Follows the player
 
-Mage - Stop at a distance and start shooting 
+OldMage - Stop at a distance and start shooting 
 
 Kamikaze - Start to follow the player when it sees it. When near enough the player start an explosion which takes 1.5 seconds to happen 
 
 Summoner - Summon Tiny kamikaze and reposition between each summon. Will also reposition if it takes a hit 
 
-MageTest - Same as mage but with a flee mechanic when it takes damage
+NewMage - Same as mage but with FSM and a flee mechanic when it takes damage
 
 Friendly Summoner - A summoner that spawns additional characters for you (a bug that I had... I thought it was funny)

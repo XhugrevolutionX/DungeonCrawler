@@ -6,11 +6,12 @@ using UnityEngine;
 public class KamikazeSensor : MonoBehaviour
 {
     [SerializeField] private float radius;
-    [SerializeField] private float angleDetection = 45;
+    [SerializeField] private float angleDetection = 180;
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private string playerTag;
 
-    [SerializeField] private Color gizomsColor = Color.red;
+    [SerializeField] private Color gizmosColor = Color.red;
+    [SerializeField] private bool drawGizmos; 
     
     private Vector2 _hitPosition;
     private List<Collider2D> _colliders = new List<Collider2D>();
@@ -22,11 +23,14 @@ public class KamikazeSensor : MonoBehaviour
 
     public void OnDrawGizmos()
     {
-        Gizmos.color = _playerInSight ? Color.green : gizomsColor;
-        Gizmos.DrawWireSphere(transform.position, radius);
-        Gizmos.DrawRay(transform.position, Quaternion.Euler(0, 0, angleDetection) * transform.right * radius);
-        Gizmos.DrawRay(transform.position, Quaternion.Euler(0, 0, -angleDetection) * transform.right * radius);
-        Gizmos.DrawLine(transform.position, _hitPosition);
+        if (drawGizmos)
+        {
+            Gizmos.color = _playerInSight ? Color.green : gizmosColor;
+            Gizmos.DrawWireSphere(transform.position, radius);
+            Gizmos.DrawRay(transform.position, Quaternion.Euler(0, 0, angleDetection) * transform.right * radius);
+            Gizmos.DrawRay(transform.position, Quaternion.Euler(0, 0, -angleDetection) * transform.right * radius);
+            Gizmos.DrawLine(transform.position, _hitPosition);
+        }
     }
 
     private void Start()

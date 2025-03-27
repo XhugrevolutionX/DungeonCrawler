@@ -2,7 +2,7 @@ using System;
 using Pathfinding;
 using UnityEngine;
 
-public class EnemyFSM : MonoBehaviour
+public class MageFSM : MonoBehaviour
 {
       enum FSM_State
     {
@@ -19,7 +19,7 @@ public class EnemyFSM : MonoBehaviour
     private EnemyBehaviors _behaviors;
     private AIPath _aiPath;
     private EnemiesDamage _enemiesDamage;
-    private EnemySensor _sensor;
+    private MageSensor _sensor;
 
     private float _timer;
  
@@ -28,7 +28,7 @@ public class EnemyFSM : MonoBehaviour
         _behaviors = GetComponent<EnemyBehaviors>();
         _aiPath = GetComponent<AIPath>();
         _enemiesDamage = GetComponentInChildren<EnemiesDamage>();
-        _sensor = GetComponent<EnemySensor>();
+        _sensor = GetComponent<MageSensor>();
         
         
         _aiPath.maxSpeed = moveSpeed;
@@ -49,13 +49,13 @@ public class EnemyFSM : MonoBehaviour
             case FSM_State.Idle:
                 if ( _enemiesDamage.Damaged)
                     SetState(FSM_State.Flee);
-                if (_timer >= idleTime)
+                if (_timer >= idleTime || (!_sensor.PlayerInSight && _sensor.PlayerWasInSight))
                     SetState(FSM_State.Chase);
                 break;
             case FSM_State.Chase:
                 if ( _enemiesDamage.Damaged)
                     SetState(FSM_State.Flee);
-                if (_sensor.ChaseComplete)
+                if (_sensor.PlayerInSight)
                     SetState(FSM_State.Idle);
                 break;  
             case FSM_State.Flee: 
@@ -107,7 +107,7 @@ public class EnemyFSM : MonoBehaviour
         {
             case FSM_State.Idle:
                 _aiPath.destination = transform.position;
-                if (!_sensor.ChaseComplete)
+                if (!_sensor.PlayerInSight)
                 {
                     _timer += Time.deltaTime;
                 }
