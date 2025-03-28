@@ -10,6 +10,8 @@ public class CharacterHealth : MonoBehaviour
     [SerializeField] private float iFramesDelay = 1;
     [SerializeField] private HealthBar healthBar;
     
+    private Animator _animator;
+    
     private Coroutine _iFramesCoroutine;
 
     private bool _canBeHit;
@@ -20,6 +22,7 @@ public class CharacterHealth : MonoBehaviour
     {
         healthBar.InitializeHealthBar(health);
         _canBeHit = true;
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -42,6 +45,8 @@ public class CharacterHealth : MonoBehaviour
         if (_canBeHit)
         {
             _canBeHit = false;
+            
+            _animator.SetTrigger("Damaged");
             
             if (_iFramesCoroutine != null)
                 StopCoroutine(_iFramesCoroutine);

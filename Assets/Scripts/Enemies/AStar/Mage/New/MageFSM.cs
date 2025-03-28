@@ -21,6 +21,8 @@ public class MageFSM : MonoBehaviour
     private AIPath _aiPath;
     private EnemiesDamage _enemiesDamage;
     private MageSensor _sensor;
+    private Animator _animator;
+    private Rigidbody2D _rigidbody;
     
     private Collider2D _collider;
     private SpriteRenderer _renderer;
@@ -38,6 +40,9 @@ public class MageFSM : MonoBehaviour
         
         _collider = GetComponentInChildren<Collider2D>();
         _renderer = GetComponentInChildren<SpriteRenderer>();
+        
+        _animator = GetComponentInChildren<Animator>();
+        _rigidbody = GetComponent<Rigidbody2D>();  
         
         _aiPath.maxSpeed = moveSpeed;
         
@@ -85,10 +90,8 @@ public class MageFSM : MonoBehaviour
             case FSM_State.Chase:
                 break;
             case FSM_State.Flee:
-                _collider.enabled = false;
-                _renderer.enabled = false;
-                _tpPosition = _behaviors.RandomPosition();
-                _sensor.TargetTp = _tpPosition;
+                _animator.SetTrigger("Damaged");
+                _rigidbody.bodyType = RigidbodyType2D.Static;
                 break; 
             case FSM_State.Empty:
             default:
@@ -108,6 +111,8 @@ public class MageFSM : MonoBehaviour
             case FSM_State.Flee:
                 _collider.enabled = true;
                 _renderer.enabled = true;
+                _rigidbody.bodyType = RigidbodyType2D.Dynamic;
+                _aiPath.canMove = true;
                 break; 
             case FSM_State.Empty:
             default:
@@ -130,7 +135,7 @@ public class MageFSM : MonoBehaviour
                 _aiPath.destination = _behaviors.Chase();
                 break;
             case FSM_State.Flee:
-                transform.position = _tpPosition;
+                _aiPath.canMove = false;
                 break; 
             case FSM_State.Empty:
             default:
@@ -146,5 +151,15 @@ public class MageFSM : MonoBehaviour
         _currentState = newState;
         
         OnStateEnter(_currentState);
+    }
+
+    public void Teleport()
+    {
+        _collider.enabled = false;
+        _renderer.enabled = false;
+        _tpPosition = _behaviors.RandomPosition();
+        _sensor.TargetTp = _tpPosition;
+        transform.position = _tpPosition;
+        
     }
 }

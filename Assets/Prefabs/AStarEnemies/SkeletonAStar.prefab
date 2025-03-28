@@ -300,7 +300,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   target: {fileID: 3350937704661774425}
-  stoppingDistanceThreshold: 0.5
+  stoppingDistanceThreshold: 0.2
 --- !u!50 &5903568436968320976
 Rigidbody2D:
   serializedVersion: 5
@@ -314,7 +314,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 2
   m_AngularDamping: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}

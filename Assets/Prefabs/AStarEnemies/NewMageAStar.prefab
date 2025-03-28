@@ -170,7 +170,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
+  m_LinearDamping: 2
   m_AngularDamping: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -196,6 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31bde19509751624685387dccae88969, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  randomPointRange: 10
 --- !u!114 &6699539436000065284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,7 +210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  idleTime: 2
+  idleTime: 1
 --- !u!114 &4893381351634208026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,8 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2a41b9bac4f6f9488c24d7f69e09f1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fleeingDistanceThreshold: 10
-  inSightRadius: 5
+  inSightRadius: 3
   angleDetection: 180
   layerMask:
     serializedVersion: 2
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c7b7dcc5b3b0c48b21db46cd48faec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenAttacks: 2
+  timeBetweenAttacks: 1.5
   bullets: {fileID: 500507418606578454, guid: 0e2dd255cbe8c01419fcfc84e88a3074, type: 3}
   firePoint: {fileID: 1684935749605588219}
   sr: {fileID: 8765949305814287395}
@@ -260,6 +260,7 @@ GameObject:
   - component: {fileID: 4503224512312917726}
   - component: {fileID: 8544943515961408439}
   - component: {fileID: 417436967371415068}
+  - component: {fileID: 5191008645070268}
   m_Layer: 7
   m_Name: Renderer
   m_TagString: Enemies
@@ -411,3 +412,15 @@ MonoBehaviour:
   power: 1
   health: 3
   isDead: 0
+--- !u!114 &5191008645070268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3717513536012846304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a28b1927713ba40ad3ab1c22b51baa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

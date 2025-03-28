@@ -1,9 +1,11 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullets : MonoBehaviour
 {
     [SerializeField] private int damage = 1;
     [SerializeField] private float speed;
+    [SerializeField] private float knockBackForce = 5;
     private GameObject _character;
     private GameObject _firingPoint;
     private Vector2 _direction;
@@ -27,7 +29,6 @@ public class Bullets : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         transform.Translate(_direction * (speed * Time.deltaTime));
     }
 
@@ -41,7 +42,7 @@ public class Bullets : MonoBehaviour
         if (other.CompareTag("Enemies"))
         {
             Destroy(gameObject);
-            other.gameObject.GetComponent<EnemiesDamage>().Hit(damage);
+            other.gameObject.GetComponent<EnemiesDamage>().Hit(damage, _direction * knockBackForce);
         }
     }
 }
