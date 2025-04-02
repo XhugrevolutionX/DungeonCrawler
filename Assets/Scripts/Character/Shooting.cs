@@ -19,6 +19,8 @@ public class Shooting : MonoBehaviour
     private Camera _mainCam;
     private Vector3 _mousePos;
 
+    public Vector2 rotation = new Vector2();
+    
     public float rotZ;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,11 +33,10 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 rotation = new Vector3();
         if (playerInput.currentControlScheme == "Keyboard&Mouse")
         {
             _mousePos = _mainCam.ScreenToWorldPoint(Input.mousePosition);
-            rotation = _mousePos - transform.position;
+            rotation = (_mousePos - transform.position).normalized;
         }
         else if (playerInput.currentControlScheme == "Gamepad")
         {

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5617516356934554827}
   - component: {fileID: 162908143513447490}
   - component: {fileID: 1142273553460762370}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Character
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
+  dodgeForce: 20
 --- !u!114 &199270501621275263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,6 +203,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 18bbf36b-a84a-47bb-bf80-e168a45a8c83
     m_ActionName: 'Game/Shoot[/DualShock4GamepadHID/rightTrigger,/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 66803564775063720}
+        m_TargetAssemblyTypeName: CharacterMovement, Assembly-CSharp
+        m_MethodName: DodgeInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 603b6307-5b66-4f1a-8fb8-019ce38d2b60
+    m_ActionName: 'Game/Dodge[/Mouse/rightButton,/DualShock4GamepadHID/buttonEast]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Game
@@ -435,6 +452,7 @@ MonoBehaviour:
   firingPoint: {fileID: 1195758643959730709}
   bulletPrefab: {fileID: 8429998634750776320, guid: a0ec90d42d58fc4498cf0ca31ca56994, type: 3}
   shootdelay: 0.5
+  rotation: {x: 0, y: 0, z: 0}
   rotZ: 0
 --- !u!1 &4225900640951021243
 GameObject:
