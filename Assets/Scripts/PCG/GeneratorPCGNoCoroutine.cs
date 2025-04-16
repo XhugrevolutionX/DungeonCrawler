@@ -11,7 +11,6 @@ public class GeneratorPCGNoCoroutine : MonoBehaviour
 
     [SerializeField] private Tilemap groundMap;
     [SerializeField] private Tilemap wallMap;
-    [SerializeField] private Tilemap foundationMap;
     [SerializeField] private List<TileBase> tiles;
     [SerializeField] private TileBase groundRuleTile;
     [SerializeField] private TileBase wallsRuleTile;
@@ -80,9 +79,7 @@ public class GeneratorPCGNoCoroutine : MonoBehaviour
         RemoveAloneTiles();
         
         Debug.Log("Add Walls");
-        GenerateInnerWalls();
         GenerateOuterWalls();
-        //RemoveInnerWalls();
     }
     public void RestartGeneration()
     {
@@ -93,7 +90,6 @@ public class GeneratorPCGNoCoroutine : MonoBehaviour
     {
         groundMap.ClearAllTiles();
         wallMap.ClearAllTiles();
-        foundationMap.ClearAllTiles();
     }
     private void GenerateDrunkard()
     {
@@ -253,173 +249,47 @@ public class GeneratorPCGNoCoroutine : MonoBehaviour
             }
         }
     }
-    private void GenerateInnerWalls()
-    {
-        List<Vector3Int> aliveCells = new List<Vector3Int>();
-        List<Vector3Int> deadCells = new List<Vector3Int>();
-        for (int i = 0; i < fillIteration; i++)
-        {
-            aliveCells.Clear();
-            deadCells.Clear();
-            for (int x = _barrier.xMin; x < _barrier.xMax; x++)
-            {
-                for (int y = _barrier.yMin; y < _barrier.yMax; y++)
-                {
-                    Vector3Int position = new Vector3Int(x, y);
-                
-                    bool isAlive = groundMap.HasTile(position);
-                
-                    int countAliveNeighbours = 0;
-                    foreach (Vector3Int neighbour in _mooreNeighbours)
-                    {
-                        if (IsInBounds(position + neighbour))
-                        {
-                            TileBase t = groundMap.GetTile(position + neighbour);
-                            if (t != null)
-                            {
-                                countAliveNeighbours++;
-                            }
-                        }
-                    }
-
-                    if (isAlive)
-                    {
-                        if (countAliveNeighbours < 8 && countAliveNeighbours > 3)
-                        {
-                            aliveCells.Add(position);
-                        }
-                    }
-                }
-            }
-
-            foreach (Vector3Int aliveCell in aliveCells)
-            {
-                if(!foundationMap.HasTile(aliveCell)) 
-                {
-                    //map.SetTile(aliveCell, GetRandomTile());
-                    foundationMap.SetTile(aliveCell, wallsRuleTile);
-                }
-            }
-            foreach (Vector3Int deadCell in deadCells)
-            {
-                if (foundationMap.HasTile(deadCell))
-                {
-                    foundationMap.SetTile(deadCell, null);
-                }
-            }
-        }
-    }
-    private void RemoveInnerWalls()
-    {
-        List<Vector3Int> aliveCells = new List<Vector3Int>();
-        List<Vector3Int> deadCells = new List<Vector3Int>();
-        for (int i = 0; i < fillIteration; i++)
-        {
-            aliveCells.Clear();
-            deadCells.Clear();
-            for (int x = _barrier.xMin; x < _barrier.xMax; x++)
-            {
-                for (int y = _barrier.yMin; y < _barrier.yMax; y++)
-                {
-                    Vector3Int position = new Vector3Int(x, y);
-                
-                    bool isAlive = groundMap.HasTile(position);
-                
-                    int countAliveNeighbours = 0;
-                    foreach (Vector3Int neighbour in _mooreNeighbours)
-                    {
-                        if (IsInBounds(position + neighbour))
-                        {
-                            TileBase t = groundMap.GetTile(position + neighbour);
-                            if (t != null)
-                            {
-                                countAliveNeighbours++;
-                            }
-                        }
-                    }
-
-                    if (isAlive)
-                    {
-                        if (countAliveNeighbours < 8 && countAliveNeighbours > 3)
-                        {
-                            deadCells.Add(position);
-                        }
-                    }
-                }
-            }
-
-            foreach (Vector3Int aliveCell in aliveCells)
-            {
-                if(!wallMap.HasTile(aliveCell)) 
-                {
-                    //map.SetTile(aliveCell, GetRandomTile());
-                    wallMap.SetTile(aliveCell, wallsRuleTile);
-                }
-            }
-            foreach (Vector3Int deadCell in deadCells)
-            {
-                if (wallMap.HasTile(deadCell))
-                {
-                    wallMap.SetTile(deadCell, null);
-                }
-            }
-        }
-    }
     private void GenerateOuterWalls()
     {
         List<Vector3Int> aliveCells = new List<Vector3Int>();
-        List<Vector3Int> deadCells = new List<Vector3Int>();
-        for (int i = 0; i < fillIteration; i++)
+        for (int x = _barrier.xMin; x < _barrier.xMax; x++)
         {
-            aliveCells.Clear();
-            deadCells.Clear();
-            for (int x = _barrier.xMin; x < _barrier.xMax; x++)
+            for (int y = _barrier.yMin; y < _barrier.yMax; y++)
             {
-                for (int y = _barrier.yMin; y < _barrier.yMax; y++)
+                Vector3Int position = new Vector3Int(x, y);
+            
+                bool isAlive = groundMap.HasTile(position);
+            
+                int countAliveNeighbours = 0;
+                foreach (Vector3Int neighbour in _mooreNeighbours)
                 {
-                    Vector3Int position = new Vector3Int(x, y);
-                
-                    bool isAlive = groundMap.HasTile(position);
-                
-                    int countAliveNeighbours = 0;
-                    foreach (Vector3Int neighbour in _mooreNeighbours)
+                    if (IsInBounds(position + neighbour))
                     {
-                        if (IsInBounds(position + neighbour))
+                        TileBase t = groundMap.GetTile(position + neighbour);
+                        if (t != null)
                         {
-                            TileBase t = groundMap.GetTile(position + neighbour);
-                            if (t != null)
-                            {
-                                countAliveNeighbours++;
-                            }
+                            countAliveNeighbours++;
                         }
                     }
+                }
 
-                    if (isAlive)
-                    {
-                    }
-                    else
-                    {
-                        if (countAliveNeighbours >= 1) 
-                            aliveCells.Add(position);
-                       
-                    }
+                if (isAlive)
+                {
+                }
+                else
+                {
+                    if (countAliveNeighbours >= 1) 
+                        aliveCells.Add(position);
+                   
                 }
             }
+        }
 
-            foreach (Vector3Int aliveCell in aliveCells)
+        foreach (Vector3Int aliveCell in aliveCells)
+        {
+            if(!wallMap.HasTile(aliveCell)) 
             {
-                if(!wallMap.HasTile(aliveCell)) 
-                {
-                    //map.SetTile(aliveCell, GetRandomTile());
-                    wallMap.SetTile(aliveCell, wallsRuleTile);
-                }
-            }
-            foreach (Vector3Int deadCell in deadCells)
-            {
-                if (wallMap.HasTile(deadCell))
-                {
-                    wallMap.SetTile(deadCell, null);
-                }
+                wallMap.SetTile(aliveCell, wallsRuleTile);
             }
         }
     }
