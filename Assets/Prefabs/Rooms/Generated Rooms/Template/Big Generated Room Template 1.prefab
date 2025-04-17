@@ -851,7 +851,7 @@ GameObject:
   - component: {fileID: 7649318453198611579}
   - component: {fileID: 6607419200477195363}
   m_Layer: 0
-  m_Name: Generated Room Template
+  m_Name: Big Generated Room Template 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
