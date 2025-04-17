@@ -137,8 +137,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Position: {x: 314.55554, y: 9.940655}
-  Name: Room
-  IndividualRoomTemplates: []
+  Name: StartRoom
+  IndividualRoomTemplates:
+  - {fileID: 6678836591343905921, guid: a1f215e876287ae4e94c40a3a4d6032d, type: 3}
   RoomTemplateSets: []
 --- !u!114 &-1360804643038800545
 MonoBehaviour:
@@ -217,28 +218,10 @@ MonoBehaviour:
   - {fileID: 7553644828723096814, guid: 0dbc63fffe71c2e4fab243173fcf8cde, type: 3}
   - {fileID: 7553644828723096814, guid: f2febb2ed6e04114693e3ee74ebcae65, type: 3}
   CorridorRoomTemplateSets: []
-  DefaultIndividualRoomTemplates:
-  - {fileID: 7455042627394740560, guid: 6ca159cc976e2494395e79490d15b6fc, type: 3}
-  - {fileID: 8774215973925284672, guid: dfc85957a61c985498064cd48a19fc84, type: 3}
-  - {fileID: 4027329739572745961, guid: 6c1258fffeaf168468097ff94edcb54c, type: 3}
-  - {fileID: 3544522917177997440, guid: b99575592a96b4240b55ad9faa43bbc2, type: 3}
-  - {fileID: 4222882155044904229, guid: 99613b4e45981ef4cacadaec1629f12f, type: 3}
-  - {fileID: 2188878655901645757, guid: 480283ba353c76146991afe99ddd7800, type: 3}
-  - {fileID: 5745085868389789399, guid: d4648caaed111aa419138052597f4e5b, type: 3}
-  - {fileID: 5474619791543704438, guid: cf7ad800906467746a332ec724925d56, type: 3}
-  - {fileID: 2052844360210095415, guid: a31db6ee72ad6d34ebfcfbfe4d79398a, type: 3}
-  - {fileID: 4306092901928255549, guid: 8923f278c8930a7459164dbd1a36cd96, type: 3}
-  - {fileID: 454204044845072255, guid: b67a6895247f5a14db103d943e97b1dd, type: 3}
-  - {fileID: 189353640160301267, guid: 48c82c3abcb3fa34f94baa9e5f7602f6, type: 3}
-  - {fileID: 5419645007827315943, guid: 43c3ad2ca2c621d4199a0d2f97d2b246, type: 3}
-  - {fileID: 8569438481282354608, guid: 02c11eaee740f054681700d383b2579e, type: 3}
-  - {fileID: 3094292440332780514, guid: 18f73ce48d9159043a4f99e7527203e6, type: 3}
-  - {fileID: 3846002298451087851, guid: da0c0ac0bd372124caa0d4b847fa4d30, type: 3}
-  - {fileID: 3089307265886120721, guid: a20e7c6c0c4f4c94a9f6d6db8cef191e, type: 3}
-  - {fileID: 8345032138647911515, guid: 419bf5436314ead41b599c50f665684b, type: 3}
-  - {fileID: 7978967451831941602, guid: 94f50ff6c25c85d4ba859af422ca9652, type: 3}
-  - {fileID: 3372469764937095508, guid: 500d27ea43deac7479ffc9d4bfbc2ec4, type: 3}
-  DefaultRoomTemplateSets: []
+  DefaultIndividualRoomTemplates: []
+  DefaultRoomTemplateSets:
+  - {fileID: 11400000, guid: 28c52d5cfd637a342a7a65fcfdf2dc61, type: 2}
+  - {fileID: 11400000, guid: d62fc1f34f4b3d54e86af830c70963a4, type: 2}
   Rooms:
   - {fileID: -1697925124874456606}
   - {fileID: -4395925491089456196}
@@ -253,8 +236,8 @@ MonoBehaviour:
   - {fileID: 627861596392634311}
   - {fileID: -4424979768776801033}
   EditorData:
-    PanOffset: {x: 791.9123, y: 222.40344}
-    Zoom: 0.44134587
+    PanOffset: {x: -54.548798, y: 49.935585}
+    Zoom: 0.87722623
   RoomType: ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph.Room
   ConnectionType: ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph.Connection
 --- !u!114 &261668779285620211

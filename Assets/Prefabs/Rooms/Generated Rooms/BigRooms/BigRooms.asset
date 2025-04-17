@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc0feb0fe3ca387448cff6947dd58ed6, type: 3}
+  m_Name: BigRooms
+  m_EditorClassIdentifier: 
+  RoomTemplates:
+  - {fileID: 9138096232832885725, guid: 7c82b57812a14a74d91efd6dc74aff5a, type: 3}
+  - {fileID: 4829258038566698576, guid: 571787e40085a0c4d9a97808bd0a7e7b, type: 3}
+  - {fileID: 5652869133609558977, guid: 72ffc268cef7a3a488ed975c51caa272, type: 3}
+  - {fileID: 1717334958082795323, guid: 39b0a48109fdbfd4f8a22692ce20d617, type: 3}
+  - {fileID: 5511814041027565715, guid: ee9d0b32d5ab2b242be92c69da00b30b, type: 3}
+  - {fileID: 6972902695396391488, guid: 407ab236946b1964c91d28ed5e219284, type: 3}
+  - {fileID: 6310550216577921910, guid: 68a7c522ee714194eba2673abaa0156c, type: 3}
+  - {fileID: 989920514032765625, guid: a3f1da61bfdcbce4e8c866aed4392ed9, type: 3}

@@ -13,6 +13,7 @@ namespace ProceduralLevelGenerator.Unity.Examples.Example1.Scripts
         public override void Run(GeneratedLevel level, LevelDescription levelDescription)
         { 
             HandleEnemies(level);
+            Debug.Log("PostProcessed");
         }
 
         private void HandleEnemies(GeneratedLevel level)
