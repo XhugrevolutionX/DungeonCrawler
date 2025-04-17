@@ -1,4 +1,5 @@
-﻿using ProceduralLevelGenerator.Unity.Generators.Common;
+﻿using System;
+using ProceduralLevelGenerator.Unity.Generators.Common;
 using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator;
 using ProceduralLevelGenerator.Unity.Utils;
 using UnityEditor;
@@ -9,6 +10,7 @@ namespace ProceduralLevelGenerator.Unity.Editor.LevelGenerators
     [CustomEditor(typeof(DungeonGeneratorBase), true)] 
     public class DungeonGeneratorInspector : UnityEditor.Editor 
     {
+        
         private ReorderableList customPostProcessTasksList;
 
         private static bool advancedFoldout = false;

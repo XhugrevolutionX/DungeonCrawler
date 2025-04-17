@@ -44,7 +44,7 @@ public class GeneratorPCGNoCoroutine : MonoBehaviour
         new Vector3Int(-1, 1, 0)
     };
     private BoundsInt _barrier;
-    
+
     void Start()
     {
         SetBarrier();
