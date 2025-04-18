@@ -23,7 +23,7 @@ public class SpawnProcess : DungeonGeneratorPostProcessBase
         foreach (RoomInstance room in Rooms)
             Debug.Log(room.RoomTemplateInstance.transform.position + room.RoomTemplateInstance.name);
         
-        if (Rooms[0].RoomTemplateInstance != null)
+        if (Rooms[0].RoomTemplateInstance != null && _player != null)
         {
             _player.transform.position = Rooms[0].RoomTemplateInstance.transform.GetChild(1).position;
         }

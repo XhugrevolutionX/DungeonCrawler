@@ -10,6 +10,7 @@ TagManager:
   - FiringPoint
   - PlayerBullets
   - Enemies
+  - Chest
   layers:
   - Default
   - TransparentFX

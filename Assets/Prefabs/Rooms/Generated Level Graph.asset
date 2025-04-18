@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Position: {x: 655.9348, y: 168.4202}
-  Name: Room
-  IndividualRoomTemplates: []
+  Name: Shoop
+  IndividualRoomTemplates:
+  - {fileID: 6678836591343905921, guid: 18c0811978473064c84c002f2ab0618c, type: 3}
   RoomTemplateSets: []
 --- !u!114 &-7267919769405995396
 MonoBehaviour:
@@ -58,9 +59,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Position: {x: 661.13794, y: 320.05234}
-  Name: Room
-  IndividualRoomTemplates: []
+  Position: {x: 552.79846, y: 404.73145}
+  Name: Boss
+  IndividualRoomTemplates:
+  - {fileID: 6678836591343905921, guid: aad291930147e69418fccfcd3ebc859c, type: 3}
   RoomTemplateSets: []
 --- !u!114 &-4395925491089456196
 MonoBehaviour:
@@ -183,9 +185,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Position: {x: 112.5865, y: 207.07152}
-  Name: Room
-  IndividualRoomTemplates: []
+  Position: {x: 96.73223, y: 216.1311}
+  Name: Treasure
+  IndividualRoomTemplates:
+  - {fileID: 6678836591343905921, guid: 40f08692999c7e4429e38a9e8a03c65d, type: 3}
   RoomTemplateSets: []
 --- !u!114 &11400000
 MonoBehaviour:
@@ -236,8 +239,8 @@ MonoBehaviour:
   - {fileID: 627861596392634311}
   - {fileID: -4424979768776801033}
   EditorData:
-    PanOffset: {x: 103.46193, y: 70.82618}
-    Zoom: 0.63949794
+    PanOffset: {x: 85.94422, y: 60.301983}
+    Zoom: 0.66228217
   RoomType: ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph.Room
   ConnectionType: ProceduralLevelGenerator.Unity.Generators.Common.LevelGraph.Connection
 --- !u!114 &261668779285620211
@@ -280,7 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Position: {x: 448.55566, y: 347.5542}
+  Position: {x: 425.9067, y: 309.80594}
   Name: Room
   IndividualRoomTemplates: []
   RoomTemplateSets: []
@@ -296,9 +299,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8074dc491ddc34f4e83332d9eae76980, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Position: {x: 276.8546, y: 318.56573}
-  Name: Room
-  IndividualRoomTemplates: []
+  Position: {x: 276.8546, y: 317.05582}
+  Name: Treasure
+  IndividualRoomTemplates:
+  - {fileID: 6678836591343905921, guid: 40f08692999c7e4429e38a9e8a03c65d, type: 3}
   RoomTemplateSets: []
 --- !u!114 &3230399811060971202
 MonoBehaviour:
