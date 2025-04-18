@@ -8,7 +8,7 @@ using UnityEngine;
 public class DoorProcess : DungeonGeneratorPostProcessBase
 {
     
-    [SerializeField] private List<GameObject> doors = new List<GameObject>();
+    private List<GameObject> doors = new List<GameObject>();
     public override void Run(GeneratedLevel level, LevelDescription levelDescription)
     {
         
@@ -27,10 +27,7 @@ public class DoorProcess : DungeonGeneratorPostProcessBase
                }
             }
         }
-
-        foreach (var door in doors)
-        {
-            //door.Open();
-        }
+        
+        level.RootGameObject.GetComponent<DoorManager>().SetDoors(doors);
     }
 }

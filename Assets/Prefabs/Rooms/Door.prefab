@@ -148,3 +148,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   switchState: 0
+  boxCollider: {fileID: 6498746002828101886}
+  spriteRenderer: {fileID: 2038020292822406556}

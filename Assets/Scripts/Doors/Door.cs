@@ -3,19 +3,15 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField] private bool switchState = false;
+    [SerializeField] public bool switchState = false;
+    [SerializeField] private BoxCollider2D boxCollider;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     private bool _state = false;
-    
-    private BoxCollider2D _boxCollider;
-    private SpriteRenderer _spriteRenderer;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _boxCollider = GetComponent<BoxCollider2D>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-
-        if (_boxCollider.enabled)
+        if (boxCollider.enabled)
         {
             _state = true;
             Close();
@@ -46,15 +42,15 @@ public class Door : MonoBehaviour
 
     public void Open()
     {
-        _boxCollider.enabled = false;
-        _spriteRenderer.enabled = false;
+        boxCollider.enabled = false;
+        spriteRenderer.enabled = false;
         tag = "Untagged";
         _state = false;
     }
     public void Close()
     {
-        _boxCollider.enabled = true;
-        _spriteRenderer.enabled = true;
+        boxCollider.enabled = true;
+        spriteRenderer.enabled = true;
         tag = "Walls";
         _state = true;
     }
