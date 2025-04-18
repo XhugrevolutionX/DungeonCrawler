@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 
-[CreateAssetMenu(menuName = "Dungeon generator/Examples/ApplyingTags", fileName = "Tags")]
+[CreateAssetMenu(menuName = "PostProcess/ApplyingTags", fileName = "Tags")]
 public class PostProcessing : DungeonGeneratorPostProcessBase
 {
     [Serializable]

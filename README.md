@@ -1,6 +1,11 @@
 # DungeonCrawler
 
+# Scenes
 Main Scene (Movement and IA), All Enemies are under the AStarEnemies Object.
+
+PCG Test (Procedural Generation)
+
+RoomGenerator (Used for generating room)
 
 # Controls
                     Mouse & KeyBoard        Controller
@@ -25,3 +30,14 @@ NewMage - Same as mage but with FSM and a Teleport mechanic when it takes damage
 Friendly Summoner - A summoner that spawns additional characters for you (a bug that I had... I thought it was funny)
 
 SummonerCeption - DO NOT USE !!!!!
+
+# Procedural Generation
+
+Drunkard, DunkardNoCoroutine and BSP are test
+
+Use Edgar to Generate a map in the Dungeon GameObject
+Multiple Room Types are used to generate the dungeon following the Graph (StartRoom, TreasureRoom, Shop, Boss, Normal Rooms and Corridors)
+
+Post Process to apply tags and place the Character in the Starting room
+
+Doors are still a work in progress

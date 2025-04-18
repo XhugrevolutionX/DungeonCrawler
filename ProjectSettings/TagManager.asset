@@ -11,6 +11,7 @@ TagManager:
   - PlayerBullets
   - Enemies
   - Chest
+  - Door
   layers:
   - Default
   - TransparentFX

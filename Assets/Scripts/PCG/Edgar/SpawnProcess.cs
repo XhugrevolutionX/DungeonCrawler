@@ -1,15 +1,12 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using ProceduralLevelGenerator.Unity.Generators.Common;
 using ProceduralLevelGenerator.Unity.Generators.Common.Rooms;
 using ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTasks;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Tilemaps;
 
 
-[CreateAssetMenu(menuName = "Dungeon generator/Examples/PlacingCharacter", fileName = "Tags")]
+
+[CreateAssetMenu(menuName = "PostProcess/PlacingCharacter", fileName = "Tags")]
 public class SpawnProcess : DungeonGeneratorPostProcessBase
 {
     private GameObject _player;
