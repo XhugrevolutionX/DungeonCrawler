@@ -6,13 +6,14 @@ using UnityEngine.InputSystem;
 public class CharacterMovement : MonoBehaviour
 {
     [SerializeField] private float movementSpeed = 5f;
-    private Vector2 _inputMovement;
+   
 
     [SerializeField] private float dodgeForce = 20f;
     [SerializeField] private float dodgeDelay = 2f;
     [SerializeField] private Animator dashAnimator;
-    private bool _inputDodge;
     private bool _canDodge = true;
+    
+    private CharacterInput _characterInput;
 
     [SerializeField] private LayerMask enemyLayer;
 
@@ -30,6 +31,7 @@ public class CharacterMovement : MonoBehaviour
         _animator = GetComponent<Animator>();
         _aim = GetComponentInChildren<Shooting>();
         _col = GetComponent<CapsuleCollider2D>();
+        _characterInput = GetComponent<CharacterInput>();
         _camera = Camera.main;
     }
 
@@ -57,35 +59,16 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!_inputDodge)
+        if (!_characterInput.inputDodge)
         {
-            _rb.linearVelocity = _inputMovement * movementSpeed;
+            _rb.linearVelocity = _characterInput.inputMovement * movementSpeed;
         }
-
-        _camera.transform.position = new Vector3(_rb.position.x, _rb.position.y, _camera.transform.position.z);
-    }
-
-
-    public void ResetInputDodge()
-    {
-        _inputDodge = false;
-        _col.excludeLayers -= enemyLayer;
-        StartCoroutine("DodgeDelay");
-    }
-
-    public void MoveCharacter(InputAction.CallbackContext context)
-    {
-        _inputMovement = context.ReadValue<Vector2>();
-    }
-
-    public void DodgeInput(InputAction.CallbackContext context)
-    {
-        if (context.started)
+        else
         {
             if (_canDodge)
             {
                 _col.excludeLayers = enemyLayer;
-                _inputDodge = true;
+                _characterInput.inputDodge = true;
                 _animator.SetTrigger("Dodge");
                 dashAnimator.SetTrigger("Dodge");
                 _rb.linearVelocity = Vector2.zero;
@@ -94,6 +77,14 @@ public class CharacterMovement : MonoBehaviour
             }
         }
 
+        _camera.transform.position = new Vector3(_rb.position.x, _rb.position.y, _camera.transform.position.z);
+    }
+
+    public void ResetInputDodge()
+    {
+        _characterInput.inputDodge = false;
+        _col.excludeLayers -= enemyLayer;
+        StartCoroutine("DodgeDelay");
     }
 
     private IEnumerator DodgeDelay()

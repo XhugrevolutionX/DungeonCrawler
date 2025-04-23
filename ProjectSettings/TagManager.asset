@@ -12,6 +12,7 @@ TagManager:
   - Enemies
   - Chest
   - Door
+  - Props
   layers:
   - Default
   - TransparentFX

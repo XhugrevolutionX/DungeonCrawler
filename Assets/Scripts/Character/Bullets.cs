@@ -34,7 +34,7 @@ public class Bullets : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Walls"))
+        if (other.CompareTag("Walls") || other.CompareTag("Props"))
         {
             Destroy(gameObject);
         }
