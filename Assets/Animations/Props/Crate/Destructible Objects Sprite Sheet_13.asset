@@ -9,14 +9,14 @@ Sprite:
   m_Name: Destructible Objects Sprite Sheet_13
   m_Rect:
     serializedVersion: 2
-    x: 0
-    y: 512
-    width: 64
-    height: 64
-  m_Offset: {x: 0, y: 0}
+    x: 26
+    y: 530
+    width: 17
+    height: 21
+  m_Offset: {x: 0, y: -10.5}
   m_Border: {x: 0, y: 0, z: 0, w: 0}
   m_PixelsToUnits: 16
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0}
   m_Extrude: 1
   m_IsPolygon: 0
   m_AtlasName: 
@@ -33,18 +33,18 @@ Sprite:
     m_SubMeshes:
     - serializedVersion: 2
       firstByte: 0
-      indexCount: 9
+      indexCount: 6
       topology: 0
       baseVertex: 0
       firstVertex: 0
-      vertexCount: 5
+      vertexCount: 4
       localAABB:
         m_Center: {x: 0, y: 0, z: 0}
         m_Extent: {x: 0, y: 0, z: 0}
-    m_IndexBuffer: 040003000100000001000300020001000000
+    m_IndexBuffer: 000001000200020001000300
     m_VertexData:
       serializedVersion: 3
-      m_VertexCount: 5
+      m_VertexCount: 4
       m_Channels:
       - stream: 0
         offset: 0
@@ -102,19 +102,19 @@ Sprite:
         offset: 0
         format: 0
         dimension: 0
-      m_DataSize: 104
-      _typelessdata: 0000503f0000103f000000000000403f000080bf000000000000503f000050bf00000000000000bf0000103f00000000000000bf000080bf0000000000000000dbb6cd3d5555383f9224c93d0000303fdbb6cd3d0000313fb76d5b3d5555383fb76d5b3d0000303f
+      m_DataSize: 80
+      _typelessdata: 000008bf0000a83f000000000000083f0000a83f00000000000008bf00000000000000000000083f00000000000000000000000000000000000000000000000000000000000000000000000000000000
     m_Bindpose: []
     textureRect:
       serializedVersion: 2
-      x: 24.07612
-      y: 528.0761
-      width: 20.847757
-      height: 24.847757
-    textureRectOffset: {x: 24.07612, y: 16.07611}
+      x: 26
+      y: 530
+      width: 17
+      height: 21
+    textureRectOffset: {x: 0, y: 0}
     atlasRectOffset: {x: -1, y: -1}
     settingsRaw: 64
-    uvTransform: {x: 16, y: 32, z: 16, w: 544}
+    uvTransform: {x: 16, y: 34.5, z: 16, w: 530}
     downscaleMultiplier: 1
   m_AtlasRD:
     serializedVersion: 3
@@ -124,18 +124,18 @@ Sprite:
     m_SubMeshes:
     - serializedVersion: 2
       firstByte: 0
-      indexCount: 9
+      indexCount: 6
       topology: 0
       baseVertex: 0
       firstVertex: 0
-      vertexCount: 5
+      vertexCount: 4
       localAABB:
         m_Center: {x: 0, y: 0, z: 0}
         m_Extent: {x: 0, y: 0, z: 0}
-    m_IndexBuffer: 040003000100000001000300020001000000
+    m_IndexBuffer: 000001000200020001000300
     m_VertexData:
       serializedVersion: 3
-      m_VertexCount: 5
+      m_VertexCount: 4
       m_Channels:
       - stream: 0
         offset: 0
@@ -193,26 +193,25 @@ Sprite:
         offset: 0
         format: 0
         dimension: 0
-      m_DataSize: 104
-      _typelessdata: 0000503f0000103f000000000000403f000080bf000000000000503f000050bf00000000000000bf0000103f00000000000000bf000080bf0000000000000000dbb6cd3d5555383f9224c93d0000303fdbb6cd3d0000313fb76d5b3d5555383fb76d5b3d0000303f
+      m_DataSize: 80
+      _typelessdata: 000008bf0000a83f000000000000083f0000a83f00000000000008bf00000000000000000000083f00000000000000000000000000000000000000000000000000000000000000000000000000000000
     m_Bindpose: []
     textureRect:
       serializedVersion: 2
-      x: 24.07612
-      y: 528.0761
-      width: 20.847757
-      height: 24.847757
-    textureRectOffset: {x: 24.07612, y: 16.07611}
+      x: 26
+      y: 530
+      width: 17
+      height: 21
+    textureRectOffset: {x: 0, y: 0}
     atlasRectOffset: {x: -1, y: -1}
     settingsRaw: 64
-    uvTransform: {x: 16, y: 32, z: 16, w: 544}
+    uvTransform: {x: 16, y: 34.5, z: 16, w: 530}
     downscaleMultiplier: 1
   m_PhysicsShape:
-  - - {x: -0.5, y: 0.5625}
-    - {x: -0.5, y: -1}
-    - {x: 0.75, y: -1}
-    - {x: 0.8125, y: -0.8125}
-    - {x: 0.8125, y: 0.5625}
+  - - {x: -0.53125, y: 1.3125}
+    - {x: -0.53125, y: 0}
+    - {x: 0.53125, y: 0}
+    - {x: 0.53125, y: 1.3125}
   m_Bones: []
   m_ScriptableObjects: []
   m_SpriteID: c4f3a9274f7170310800000000000000

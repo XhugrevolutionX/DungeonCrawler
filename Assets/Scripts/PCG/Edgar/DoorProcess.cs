@@ -11,7 +11,6 @@ public class DoorProcess : DungeonGeneratorPostProcessBase
     private List<GameObject> doors = new List<GameObject>();
     public override void Run(GeneratedLevel level, LevelDescription levelDescription)
     {
-        
         doors.Clear();
         
         foreach (var room in level.GetRoomInstances())

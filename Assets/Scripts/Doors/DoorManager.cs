@@ -44,6 +44,19 @@ public class DoorManager : MonoBehaviour
     public void SetDoors(List<GameObject> _doors)
     {
         doors = _doors;
-        OpenDoors();
+        //OpenDoors();
+    }
+
+    public bool HasDoor(Vector2 pos)
+    {
+        foreach (var door in doors)
+        {
+            if (door.GetComponent<BoxCollider2D>().bounds.Contains(pos))
+            {
+                Debug.Log(door.name);
+                return true;
+            }
+        }
+        return false;
     }
 }

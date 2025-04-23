@@ -14,5 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   props:
   - {fileID: 3953862147409389109, guid: 61222b2af9d347d48b3c44b26b2db779, type: 3}
-  - {fileID: 1255177858270428488, guid: 8eed8552db4548340831bc233e59a39e, type: 3}
-  - {fileID: 8714014455493578102, guid: f488c227870ee86449a0a52ff3f99261, type: 3}
+  - {fileID: 8100029027255882937, guid: 8eed8552db4548340831bc233e59a39e, type: 3}
+  - {fileID: 6300161103399466587, guid: f488c227870ee86449a0a52ff3f99261, type: 3}
+  doorsLayer:
+    serializedVersion: 2
+    m_Bits: 256
