@@ -1705,6 +1705,7 @@ GameObject:
   - component: {fileID: 7542683899839630713}
   - component: {fileID: 6698738770629588468}
   - component: {fileID: 3267522095222097631}
+  - component: {fileID: -6498559397321641986}
   m_Layer: 0
   m_Name: Generated Room 8
   m_TagString: Untagged
@@ -1765,6 +1766,19 @@ MonoBehaviour:
   - From: {x: 7, y: -16, z: 0}
     To: {x: 9, y: -16, z: 0}
   SelectedMode: 1
+--- !u!114 &-6498559397321641986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5745085868389789399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bf1e87dbf8fb6c4d9cddf637d7dd4ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorManager: {fileID: 0}
 --- !u!1 &7858686483610852052
 GameObject:
   m_ObjectHideFlags: 0

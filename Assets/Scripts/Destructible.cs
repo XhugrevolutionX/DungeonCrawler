@@ -22,13 +22,18 @@ public class Destructible : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    public void DestroyAnimation()
+    {
+        _animator.SetTrigger("Destroy");
+    }
     
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") || other.CompareTag("Enemies") || other.CompareTag("PlayerBullets"))
         {
-            _animator.SetTrigger("Destroy");
+            DestroyAnimation();
         }
     }
 }

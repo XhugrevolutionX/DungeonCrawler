@@ -374,6 +374,7 @@ GameObject:
   - component: {fileID: 5975944481945722629}
   - component: {fileID: 4910796808175823545}
   - component: {fileID: 1672327628294898762}
+  - component: {fileID: 2168268515039760333}
   m_Layer: 0
   m_Name: Generated Room 5
   m_TagString: Untagged
@@ -434,6 +435,19 @@ MonoBehaviour:
   - From: {x: -10, y: -2, z: 0}
     To: {x: -10, y: -4, z: 0}
   SelectedMode: 1
+--- !u!114 &2168268515039760333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4222882155044904229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bf1e87dbf8fb6c4d9cddf637d7dd4ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorManager: {fileID: 0}
 --- !u!1 &5237589530050753233
 GameObject:
   m_ObjectHideFlags: 0

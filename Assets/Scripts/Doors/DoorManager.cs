@@ -6,6 +6,8 @@ public class DoorManager : MonoBehaviour
     
     [SerializeField] private List<GameObject> doors = new List<GameObject>();
     [SerializeField] private bool switchDoorsState = false;
+
+    public List<GameObject> Doors => doors;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -51,7 +53,7 @@ public class DoorManager : MonoBehaviour
     {
         foreach (var door in doors)
         {
-            if (door.GetComponent<BoxCollider2D>().bounds.Contains(pos))
+            if (door.GetComponent<Collider2D>().bounds.Contains(pos))
             {
                 Debug.Log(door.name);
                 return true;

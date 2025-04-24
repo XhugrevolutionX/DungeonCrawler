@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 9025456171680556485}
   - component: {fileID: 1956275069629266970}
   - component: {fileID: 6623555736374738988}
+  - component: {fileID: -812493763678854792}
   m_Layer: 0
   m_Name: Generated Room 30
   m_TagString: Untagged
@@ -194,6 +195,19 @@ MonoBehaviour:
   - From: {x: 8, y: 14, z: 0}
     To: {x: 10, y: 14, z: 0}
   SelectedMode: 1
+--- !u!114 &-812493763678854792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3094292440332780514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bf1e87dbf8fb6c4d9cddf637d7dd4ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorManager: {fileID: 0}
 --- !u!1 &3404765709077269409
 GameObject:
   m_ObjectHideFlags: 0

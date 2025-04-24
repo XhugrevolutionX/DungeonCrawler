@@ -39,6 +39,18 @@ public class Door : MonoBehaviour
             switchState = false;
         }
     }
+    void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Props"))
+        {
+            Destructible prop = other.gameObject.GetComponent<Destructible>();
+
+            if (_state)
+            {
+                prop.DestroyAnimation();
+            }
+        }
+    }
 
     public void Open()
     {
