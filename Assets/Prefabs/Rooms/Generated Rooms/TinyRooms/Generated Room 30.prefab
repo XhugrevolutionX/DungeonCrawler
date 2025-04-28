@@ -192,8 +192,8 @@ MonoBehaviour:
     To: {x: 4, y: -3, z: 0}
   - From: {x: -1, y: 1, z: 0}
     To: {x: -1, y: -1, z: 0}
-  - From: {x: 8, y: 14, z: 0}
-    To: {x: 10, y: 14, z: 0}
+  - From: {x: 19, y: 15, z: 0}
+    To: {x: 21, y: 15, z: 0}
   SelectedMode: 1
 --- !u!114 &-812493763678854792
 MonoBehaviour:
@@ -207,7 +207,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bf1e87dbf8fb6c4d9cddf637d7dd4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorManager: {fileID: 0}
 --- !u!1 &3404765709077269409
 GameObject:
   m_ObjectHideFlags: 0

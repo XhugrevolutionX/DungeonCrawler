@@ -5711,8 +5711,8 @@ MonoBehaviour:
     To: {x: -21, y: -11, z: 0}
   - From: {x: -14, y: -16, z: 0}
     To: {x: -12, y: -16, z: 0}
-  - From: {x: -12, y: -2, z: 0}
-    To: {x: -10, y: -2, z: 0}
+  - From: {x: 1, y: 4, z: 0}
+    To: {x: 3, y: 4, z: 0}
   SelectedMode: 1
 --- !u!114 &6422796362844196742
 MonoBehaviour:
@@ -5726,4 +5726,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bf1e87dbf8fb6c4d9cddf637d7dd4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorManager: {fileID: 0}

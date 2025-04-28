@@ -63,14 +63,14 @@ MonoBehaviour:
   DistanceFromCorners: 3
   DoorLength: 2
   DoorsList:
-  - From: {x: -2, y: 13, z: 0}
-    To: {x: -2, y: 11, z: 0}
   - From: {x: 5, y: -1, z: 0}
     To: {x: 7, y: -1, z: 0}
   - From: {x: 13, y: 7, z: 0}
     To: {x: 13, y: 5, z: 0}
   - From: {x: 3, y: 16, z: 0}
     To: {x: 5, y: 16, z: 0}
+  - From: {x: -3, y: 1, z: 0}
+    To: {x: -3, y: 3, z: 0}
   SelectedMode: 1
 --- !u!114 &6264046408405226784
 MonoBehaviour:
@@ -84,7 +84,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bf1e87dbf8fb6c4d9cddf637d7dd4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorManager: {fileID: 0}
 --- !u!1 &3174523646691777022
 GameObject:
   m_ObjectHideFlags: 0

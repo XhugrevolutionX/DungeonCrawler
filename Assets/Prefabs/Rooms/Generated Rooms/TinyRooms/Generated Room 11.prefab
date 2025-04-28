@@ -406,7 +406,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 6
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -506,7 +506,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 5
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -526,7 +526,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -626,7 +626,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -2047,19 +2047,19 @@ Tilemap:
   - m_RefCount: 200
     m_Data: {fileID: 11400000, guid: cc79dddde46d1d94b86bfeb6c51b04c8, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 144
+  - m_RefCount: 140
     m_Data: {fileID: -633668034, guid: e33fbadb6b5b55e4fb76daed43dd4d7b, type: 3}
-  - m_RefCount: 18
+  - m_RefCount: 19
     m_Data: {fileID: -1519015118, guid: e33fbadb6b5b55e4fb76daed43dd4d7b, type: 3}
-  - m_RefCount: 4
+  - m_RefCount: 5
     m_Data: {fileID: 158648002, guid: e33fbadb6b5b55e4fb76daed43dd4d7b, type: 3}
   - m_RefCount: 6
     m_Data: {fileID: -226471963, guid: e33fbadb6b5b55e4fb76daed43dd4d7b, type: 3}
   - m_RefCount: 3
     m_Data: {fileID: 668924672, guid: e33fbadb6b5b55e4fb76daed43dd4d7b, type: 3}
-  - m_RefCount: 10
+  - m_RefCount: 11
     m_Data: {fileID: 886002982, guid: e33fbadb6b5b55e4fb76daed43dd4d7b, type: 3}
-  - m_RefCount: 2
+  - m_RefCount: 3
     m_Data: {fileID: -385252693, guid: e33fbadb6b5b55e4fb76daed43dd4d7b, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: -1863650142, guid: e33fbadb6b5b55e4fb76daed43dd4d7b, type: 3}
@@ -2230,10 +2230,10 @@ MonoBehaviour:
     To: {x: -1, y: -20, z: 0}
   - From: {x: 3, y: -11, z: 0}
     To: {x: 3, y: -13, z: 0}
-  - From: {x: -8, y: 0, z: 0}
-    To: {x: -8, y: -2, z: 0}
   - From: {x: -6, y: 6, z: 0}
     To: {x: -4, y: 6, z: 0}
+  - From: {x: -9, y: -16, z: 0}
+    To: {x: -9, y: -14, z: 0}
   SelectedMode: 1
 --- !u!114 &507754506291817024
 MonoBehaviour:
@@ -2247,7 +2247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bf1e87dbf8fb6c4d9cddf637d7dd4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorManager: {fileID: 0}
 --- !u!1 &2674162985127573670
 GameObject:
   m_ObjectHideFlags: 0

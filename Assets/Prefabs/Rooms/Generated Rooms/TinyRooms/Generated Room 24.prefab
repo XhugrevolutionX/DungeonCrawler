@@ -4051,10 +4051,10 @@ MonoBehaviour:
     To: {x: 15, y: -1, z: 0}
   - From: {x: 8, y: -7, z: 0}
     To: {x: 10, y: -7, z: 0}
-  - From: {x: -3, y: -1, z: 0}
-    To: {x: -3, y: -3, z: 0}
-  - From: {x: 8, y: 7, z: 0}
-    To: {x: 10, y: 7, z: 0}
+  - From: {x: -4, y: 5, z: 0}
+    To: {x: -4, y: 3, z: 0}
+  - From: {x: 1, y: 10, z: 0}
+    To: {x: -1, y: 10, z: 0}
   SelectedMode: 1
 --- !u!114 &-8127153481018962069
 MonoBehaviour:
@@ -4068,4 +4068,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bf1e87dbf8fb6c4d9cddf637d7dd4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorManager: {fileID: 0}

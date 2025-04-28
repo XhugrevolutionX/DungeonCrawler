@@ -1764,7 +1764,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 4
+      m_TileSpriteIndex: 8
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -3263,7 +3263,7 @@ Tilemap:
     m_Data: {fileID: 886002982, guid: e33fbadb6b5b55e4fb76daed43dd4d7b, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: -385252693, guid: e33fbadb6b5b55e4fb76daed43dd4d7b, type: 3}
-  - m_RefCount: 5
+  - m_RefCount: 4
     m_Data: {fileID: -1863650142, guid: e33fbadb6b5b55e4fb76daed43dd4d7b, type: 3}
   - m_RefCount: 4
     m_Data: {fileID: -226471963, guid: e33fbadb6b5b55e4fb76daed43dd4d7b, type: 3}
@@ -3271,7 +3271,7 @@ Tilemap:
     m_Data: {fileID: 668924672, guid: e33fbadb6b5b55e4fb76daed43dd4d7b, type: 3}
   - m_RefCount: 5
     m_Data: {fileID: 1968524263, guid: e33fbadb6b5b55e4fb76daed43dd4d7b, type: 3}
-  - m_RefCount: 5
+  - m_RefCount: 6
     m_Data: {fileID: 158648002, guid: e33fbadb6b5b55e4fb76daed43dd4d7b, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 175
@@ -3436,12 +3436,12 @@ MonoBehaviour:
   DoorsList:
   - From: {x: -6, y: 13, z: 0}
     To: {x: -4, y: 13, z: 0}
-  - From: {x: -10, y: 9, z: 0}
-    To: {x: -10, y: 7, z: 0}
   - From: {x: 3, y: 3, z: 0}
     To: {x: 3, y: 1, z: 0}
   - From: {x: -4, y: -5, z: 0}
     To: {x: -2, y: -5, z: 0}
+  - From: {x: -11, y: 1, z: 0}
+    To: {x: -11, y: -1, z: 0}
   SelectedMode: 1
 --- !u!114 &-1235017508725231478
 MonoBehaviour:
@@ -3455,7 +3455,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bf1e87dbf8fb6c4d9cddf637d7dd4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  doorManager: {fileID: 0}
 --- !u!1 &7593610066948220272
 GameObject:
   m_ObjectHideFlags: 0
