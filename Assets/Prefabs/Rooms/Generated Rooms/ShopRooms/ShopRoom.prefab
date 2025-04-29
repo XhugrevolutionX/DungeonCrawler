@@ -4693,7 +4693,7 @@ GameObject:
   - component: {fileID: 6607419200477195363}
   - component: {fileID: 7347853503331854975}
   m_Layer: 0
-  m_Name: Shoop Room
+  m_Name: ShopRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

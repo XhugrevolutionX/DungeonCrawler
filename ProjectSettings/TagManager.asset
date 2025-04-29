@@ -13,6 +13,7 @@ TagManager:
   - Chest
   - Door
   - Props
+  - Pathfinder
   layers:
   - Default
   - TransparentFX
