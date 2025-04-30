@@ -6,7 +6,6 @@
 
 
 - Fix the problem where two rooms colliders overlap
-- Closed the room when the player enters
 
 
 - Add multiple enemy groups in each room (Disable)

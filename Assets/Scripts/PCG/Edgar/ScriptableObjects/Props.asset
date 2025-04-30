@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 165a2b2354997b44498f203e36f48b8a, type: 3}
+  m_Name: Props
+  m_EditorClassIdentifier: 
+  props:
+  - {fileID: 3953862147409389109, guid: 61222b2af9d347d48b3c44b26b2db779, type: 3}
+  - {fileID: 8100029027255882937, guid: 8eed8552db4548340831bc233e59a39e, type: 3}
+  - {fileID: 6300161103399466587, guid: f488c227870ee86449a0a52ff3f99261, type: 3}
+  doorsLayer:
+    serializedVersion: 2
+    m_Bits: 256
