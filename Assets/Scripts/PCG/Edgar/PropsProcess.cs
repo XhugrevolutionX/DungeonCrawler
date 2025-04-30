@@ -33,12 +33,9 @@ public class PropsProcess : DungeonGeneratorPostProcessBase
         _groundTilemap = level.GetSharedTilemaps()[0];
         _wallsTilemap = level.GetSharedTilemaps()[1];
 
-        _parent = level.RootGameObject.transform.parent.Find("Props");
-
-        for (int i = _parent.childCount - 1; i >= 0; i--)
-        {
-            DestroyImmediate(_parent.GetChild(i).gameObject);
-        }
+        _parent = new GameObject("Props").transform;
+        _parent.parent = level.RootGameObject.transform;
+        
 
         for (int i = _groundTilemap.origin.x; i < _groundTilemap.origin.x + _groundTilemap.size.x; i++)
         {

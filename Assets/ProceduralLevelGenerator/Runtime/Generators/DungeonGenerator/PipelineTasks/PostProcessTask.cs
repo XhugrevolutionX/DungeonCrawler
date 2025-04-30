@@ -70,7 +70,7 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator.PipelineTas
                     PostProcessUtils.CopyTilesToSharedTilemaps(level);
                 });
             }
-
+            
             if (config.CenterGrid)
             {
                 callbacks.RegisterCallback(PostProcessPriorities.CenterGrid, (level, description) =>

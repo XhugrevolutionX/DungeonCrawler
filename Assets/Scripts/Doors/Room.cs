@@ -13,6 +13,8 @@ public class Room : MonoBehaviour
     private List<Door> _doors = new List<Door>();
     
     private BoxCollider2D _col;
+
+    private Bounds _roomBounds;
     
     private bool _passed = false;
 
@@ -23,11 +25,11 @@ public class Room : MonoBehaviour
         
         _walls = GetComponentInChildren<Grid>().transform.Find("Walls").GetComponent<Tilemap>();
 
-        Bounds roomBounds = new Bounds(_walls.cellBounds.center + transform.position, _walls.cellBounds.size);
-
+        _roomBounds = new Bounds(new Vector3(_walls.cellBounds.center.x + transform.position.x, _walls.cellBounds.center.y + transform.position.y, 0), _walls.cellBounds.size);
+        
         foreach (var door in _doorManager.Doors)
         {
-            if (roomBounds.Contains(door.transform.position))
+            if (_roomBounds.Contains(door.transform.position))
             {
                 _doors.Add(door.GetComponent<Door>());
             }
@@ -41,7 +43,7 @@ public class Room : MonoBehaviour
         {
             _col = transform.AddComponent<BoxCollider2D>();
             _col.offset = _walls.cellBounds.center;
-            _col.size = roomBounds.size - new Vector3(3, 3);
+            _col.size = _roomBounds.size - new Vector3(3, 3);
             _col.isTrigger = true;
         }
     }
@@ -63,9 +65,12 @@ public class Room : MonoBehaviour
     }
 
 
-    void OnDrawGizmos()
-    {
-        //Gizmos.DrawWireCube(_walls.cellBounds.center + transform.position, _walls.cellBounds.size);
-    }
+    // void OnDrawGizmos()
+    // {
+    //     Gizmos.DrawWireCube(_roomBounds.center, _roomBounds.size);
+    //     
+    //     foreach (var door in _doorManager.Doors)
+    //         Gizmos.DrawWireCube(door.transform.position, new Vector3(0.5f, 0.5f, 0));
+    // }
     
 }
