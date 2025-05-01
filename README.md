@@ -36,8 +36,9 @@ SummonerCeption - DO NOT USE !!!!!
 Drunkard, DunkardNoCoroutine and BSP are test
 
 Use Edgar to Generate a map in the Dungeon GameObject
+
 Multiple Room Types are used to generate the dungeon following the Graph (StartRoom, TreasureRoom, Shop, Boss, Normal Rooms and Corridors)
 
 Post Process to apply tags, place the Character in the Starting room and Get a list of all doors
 
-Doors appear open when generating a map, they can be closed from the GameObject itself or from the Dungeon GameObject while the game runs
+Doors appear open when generating a map, they can be closed from the GameObject itsefl or from the Dungeon GameObject while the game runs

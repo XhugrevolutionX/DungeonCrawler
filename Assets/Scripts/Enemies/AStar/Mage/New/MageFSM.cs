@@ -160,6 +160,5 @@ public class MageFSM : MonoBehaviour
         _tpPosition = _behaviors.RandomPosition();
         _sensor.TargetTp = _tpPosition;
         transform.position = _tpPosition;
-        
     }
 }

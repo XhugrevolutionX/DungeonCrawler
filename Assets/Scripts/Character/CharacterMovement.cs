@@ -1,7 +1,5 @@
 using System.Collections;
-using UnityEditor.Timeline;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class CharacterMovement : MonoBehaviour
 {
