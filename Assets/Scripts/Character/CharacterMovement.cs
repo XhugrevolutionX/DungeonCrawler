@@ -20,6 +20,7 @@ public class CharacterMovement : MonoBehaviour
     private CapsuleCollider2D _col;
     private Shooting _aim;
     private Camera _camera;
+    private bool _isDodging = false;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -57,30 +58,39 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!_characterInput.inputDodge)
+        if (!_characterInput.inputDodge && !_isDodging)
         {
             _rb.linearVelocity = _characterInput.inputMovement * movementSpeed;
         }
         else
         {
-            if (_canDodge)
-            {
-                _col.excludeLayers = enemyLayer;
-                _characterInput.inputDodge = true;
-                _animator.SetTrigger("Dodge");
-                dashAnimator.SetTrigger("Dodge");
-                _rb.linearVelocity = Vector2.zero;
-                _rb.AddForce((_aim.rotation).normalized * dodgeForce, ForceMode2D.Impulse);
-                _canDodge = false;
-            }
+            _isDodging = true;
         }
-
+        
+        if (_isDodging && _canDodge)
+        {
+            Dodge();
+        }
+        
         _camera.transform.position = new Vector3(_rb.position.x, _rb.position.y, _camera.transform.position.z);
+    }
+
+    private void Dodge()
+    {
+        _col.excludeLayers = enemyLayer;
+        _characterInput.inputDodge = true;
+        _animator.SetTrigger("Dodge");
+        dashAnimator.SetTrigger("Dodge");
+        _rb.linearVelocity = Vector2.zero;
+        _rb.AddForce((_aim.rotation).normalized * dodgeForce, ForceMode2D.Impulse);
+        _canDodge = false;
+        _isDodging = false;
     }
 
     public void ResetInputDodge()
     {
         _characterInput.inputDodge = false;
+        _isDodging = false;
         _col.excludeLayers -= enemyLayer;
         StartCoroutine("DodgeDelay");
     }
@@ -88,6 +98,7 @@ public class CharacterMovement : MonoBehaviour
     private IEnumerator DodgeDelay()
     {
         yield return new WaitForSeconds(dodgeDelay);
+        _isDodging = false;
         _canDodge = true;
     }
 }
