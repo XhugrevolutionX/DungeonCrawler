@@ -19,7 +19,14 @@ public class EnemyBehaviors : MonoBehaviour
     
     public Vector3 Chase()
     {
-        return _target.position;
+        if (_target != null)
+        {
+            return _target.position;
+        }
+        else
+        {
+            return transform.position;
+        }
     }
 
     public Vector3 Flee()
