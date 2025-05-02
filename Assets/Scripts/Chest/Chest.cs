@@ -1,9 +1,10 @@
-using System;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
+using Random = System.Random;
 
 public class Chest : MonoBehaviour
 {
+    [SerializeField] private GameObject[] weapons;
+    [SerializeField] private Transform spawnPoint;
     
     private Animator _animator;
     private Canvas _canvas;
@@ -66,7 +67,11 @@ public class Chest : MonoBehaviour
     {
         _open = true;
         _animator.SetTrigger("opened");
-        //Summon a Weapon or Item
         _characterInventory.keys -= 1;
+    }
+
+    public void InstantiateItem()
+    {
+        Instantiate(weapons[UnityEngine.Random.Range(0, weapons.Length - 1)], spawnPoint.position, Quaternion.identity);
     }
 }

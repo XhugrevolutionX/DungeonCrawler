@@ -18,7 +18,7 @@ public class CharacterMovement : MonoBehaviour
     private Animator _animator;
     private Rigidbody2D _rb;
     private CapsuleCollider2D _col;
-    private Shooting _aim;
+    private Aiming _aim;
     private Camera _camera;
     private bool _isDodging = false;
 
@@ -28,7 +28,7 @@ public class CharacterMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator>();
-        _aim = GetComponentInChildren<Shooting>();
+        _aim = GetComponentInChildren<Aiming>();
         _col = GetComponent<CapsuleCollider2D>();
         _characterInput = GetComponent<CharacterInput>();
         _camera = Camera.main;
