@@ -43,10 +43,10 @@ namespace ProceduralLevelGenerator.Unity.Generators.DungeonGenerator
 
         public int RandomGeneratorSeed;
 
-        public bool GenerateOnStart = true;
+        public bool GenerateOnStart = false;
 
         public bool ThrowExceptionsImmediately = false;
-
+        
         public void Start()
         {
             if (GenerateOnStart)

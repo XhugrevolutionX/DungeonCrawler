@@ -40,10 +40,10 @@ public class EnemiesDamage : MonoBehaviour
             _timer += Time.deltaTime;
             if (_timer > _timerLimit)
             {
+                _rigidbody.linearVelocity = Vector2.zero;
                 _aiPath.canMove = true;
                 _timer = 0;
                 _timerIsRunning = false;
-                _rigidbody.linearVelocity = Vector2.zero;
             }
         }
     }

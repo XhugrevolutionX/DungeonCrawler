@@ -10,13 +10,7 @@ namespace Pathfinding {
 	/// <summary>Handles update checking for the A* Pathfinding Project</summary>
 	[InitializeOnLoad]
 	public static class AstarUpdateChecker {
-#if UNITY_2018_1_OR_NEWER
-		/// <summary>Used for downloading new version information</summary>
-		static UnityWebRequest updateCheckDownload;
-#else
-		/// <summary>Used for downloading new version information</summary>
-		static WWW updateCheckDownload;
-#endif
+
 
 		static System.DateTime _lastUpdateCheck;
 		static bool _lastUpdateCheckRead;
@@ -108,7 +102,6 @@ namespace Pathfinding {
 
 		static AstarUpdateChecker() {
 			// Add a callback so that we can parse the message when it has been downloaded
-			EditorApplication.update += UpdateCheckLoop;
 			EditorBase.getDocumentationURL = () => GetURL("documentation");
 		}
 
@@ -132,61 +125,19 @@ namespace Pathfinding {
 		}
 
 		/// <summary>Initiate a check for updates now, regardless of when the last check was done</summary>
-		public static void CheckForUpdatesNow () {
-			lastUpdateCheck = System.DateTime.UtcNow.AddDays(-5);
-
-			// Remove the callback if it already exists
-			EditorApplication.update -= UpdateCheckLoop;
-
-			// Add a callback so that we can parse the message when it has been downloaded
-			EditorApplication.update += UpdateCheckLoop;
-		}
 
 		/// <summary>
 		/// Checking for updates...
 		/// Should be called from EditorApplication.update
 		/// </summary>
-		static void UpdateCheckLoop () {
-			// Go on until the update check has been completed
-			if (!CheckForUpdates()) {
-				EditorApplication.update -= UpdateCheckLoop;
-			}
-		}
+		
 
 		/// <summary>
 		/// Checks for updates if there was some time since last check.
 		/// It must be called repeatedly to ensure that the result is processed.
 		/// Returns: True if an update check is progressing (WWW request)
 		/// </summary>
-		static bool CheckForUpdates () {
-			if (updateCheckDownload != null && updateCheckDownload.isDone) {
-				if (!string.IsNullOrEmpty(updateCheckDownload.error)) {
-					Debug.LogWarning("There was an error checking for updates to the A* Pathfinding Project\n" +
-						"The error might disappear if you switch build target from Webplayer to Standalone because of the webplayer security emulation\nError: " +
-						updateCheckDownload.error);
-					updateCheckDownload = null;
-					return false;
-				}
-#if UNITY_2018_1_OR_NEWER
-				UpdateCheckCompleted(updateCheckDownload.downloadHandler.text);
-				updateCheckDownload.Dispose();
-#else
-				UpdateCheckCompleted(updateCheckDownload.text);
-#endif
-				updateCheckDownload = null;
-			}
-
-			// Check if it is time to check for updates
-			// Check for updates a bit earlier if we are in play mode or have the AstarPath object in the scene
-			// as then the collected statistics will be a bit more accurate
-			var offsetMinutes = (Application.isPlaying && Time.time > 60) || AstarPath.active != null ? -20 : 20;
-			var minutesUntilUpdate = lastUpdateCheck.AddDays(updateCheckRate).AddMinutes(offsetMinutes).Subtract(System.DateTime.UtcNow).TotalMinutes;
-			if (minutesUntilUpdate < 0) {
-				DownloadVersionInfo();
-			}
-
-			return updateCheckDownload != null || minutesUntilUpdate < 10;
-		}
+		
 
 		static void DownloadVersionInfo () {
 			var script = AstarPath.active != null ? AstarPath.active : GameObject.FindObjectOfType(typeof(AstarPath)) as AstarPath;
@@ -219,13 +170,7 @@ namespace Pathfinding {
 						   "&unityversion="+Application.unityVersion +
 						   "&branch="+AstarPath.Branch;
 
-#if UNITY_2018_1_OR_NEWER
-			updateCheckDownload = UnityWebRequest.Get(query);
-			updateCheckDownload.SendWebRequest();
-#else
-			updateCheckDownload = new WWW(query);
-#endif
-			lastUpdateCheck = System.DateTime.UtcNow;
+
 		}
 
 		/// <summary>Handles the data from the update page</summary>

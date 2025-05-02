@@ -10,6 +10,11 @@ public class CharacterHealth : MonoBehaviour
     [SerializeField] private float iFramesDelay = 1;
     [SerializeField] private HealthBar healthBar;
     
+    [SerializeField] private bool heal;
+    [SerializeField] private bool damage;
+    
+    private int _maxHealth = 10;
+    
     private Animator _animator;
     
     private Coroutine _iFramesCoroutine;
@@ -28,6 +33,18 @@ public class CharacterHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (heal)
+        {
+            Heal(1);
+            heal = false;
+        }
+
+        if (damage)
+        {
+            Damage(1);
+            damage = false;
+        }
+        
     }
 
     void OnCollisionStay2D(Collision2D collision)
@@ -59,6 +76,19 @@ public class CharacterHealth : MonoBehaviour
                 StartCoroutine(DeathDelay());
             }
         }
+    }
+
+    public void Heal(int heal)
+    {
+        if (health + heal <= _maxHealth)
+        {
+            health += heal;
+        }
+        else
+        {
+            health = _maxHealth;
+        }
+        healthBar.UpdateHealthBar(health);
     }
 
     private void Death()

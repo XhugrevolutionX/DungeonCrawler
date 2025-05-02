@@ -90,6 +90,7 @@ public class MageFSM : MonoBehaviour
             case FSM_State.Chase:
                 break;
             case FSM_State.Flee:
+                _collider.enabled = false;
                 _animator.SetTrigger("Damaged");
                 _rigidbody.bodyType = RigidbodyType2D.Static;
                 break; 
@@ -155,7 +156,6 @@ public class MageFSM : MonoBehaviour
 
     public void Teleport()
     {
-        _collider.enabled = false;
         _renderer.enabled = false;
         _tpPosition = _behaviors.RandomPosition();
         _sensor.TargetTp = _tpPosition;
