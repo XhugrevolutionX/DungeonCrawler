@@ -2363,7 +2363,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4649275120583871889}
-  - {fileID: 1164795124567410086}
+  - {fileID: 2799625520173255016}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7649318453198611579
@@ -2415,6 +2415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bf1e87dbf8fb6c4d9cddf637d7dd4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rewardSpawnPoint: {fileID: 0}
 --- !u!1 &7391420615648703151
 GameObject:
   m_ObjectHideFlags: 0
@@ -3279,7 +3280,7 @@ CompositeCollider2D:
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 7391420615648703151}
---- !u!1001 &7642424608987704204
+--- !u!1001 &6701130697476892482
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -3336,8 +3337,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 979a7e2df8cd66b428fa9c03b083dd27, type: 3}
---- !u!4 &1164795124567410086 stripped
+--- !u!4 &2799625520173255016 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8801571125665001002, guid: 979a7e2df8cd66b428fa9c03b083dd27, type: 3}
-  m_PrefabInstance: {fileID: 7642424608987704204}
+  m_PrefabInstance: {fileID: 6701130697476892482}
   m_PrefabAsset: {fileID: 0}

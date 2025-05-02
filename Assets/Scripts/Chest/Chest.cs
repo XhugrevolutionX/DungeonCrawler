@@ -72,6 +72,6 @@ public class Chest : MonoBehaviour
 
     public void InstantiateItem()
     {
-        Instantiate(weapons[UnityEngine.Random.Range(0, weapons.Length - 1)], spawnPoint.position, Quaternion.identity);
+        Instantiate(weapons[UnityEngine.Random.Range(0, weapons.Length)], spawnPoint.position, Quaternion.identity);
     }
 }
