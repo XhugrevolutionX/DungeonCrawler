@@ -118,9 +118,13 @@ public class Room : MonoBehaviour
             int rnd = UnityEngine.Random.Range(0, 100);
             if (rnd <= 49)
             {
-                rnd = UnityEngine.Random.Range(0, _rewards.FoodsPrefabs.Length-1);
-                Instantiate(_rewards.FoodsPrefabs[rnd], rewardSpawnPoint.position, Quaternion.identity);
-            }    
+                rnd = UnityEngine.Random.Range(0, _rewards.Foods.Length-1);
+                Instantiate(_rewards.Foods[rnd], rewardSpawnPoint.position, Quaternion.identity);
+            }
+            else if (rnd <= 69)
+            {
+                Instantiate(_rewards.Key, rewardSpawnPoint.position, Quaternion.identity);
+            }
         }
     }
 
