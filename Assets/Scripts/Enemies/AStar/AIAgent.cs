@@ -24,7 +24,7 @@ public class AIAgent : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        if (!_enemiesDamage.isDead)
+        if (!_enemiesDamage.isDead && transform != null)
         {
             _aiPath.maxSpeed = moveSpeed;
             _distanceToTarget = Vector3.Distance(transform.position, target.position);

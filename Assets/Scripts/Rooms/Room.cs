@@ -1,10 +1,15 @@
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class Room : MonoBehaviour
 {
+    [SerializeField] private Transform rewardSpawnPoint;
+    
+    private Rewards _rewards;
+    
     private DoorManager _doorManager;
 
     private Tilemap _walls;
@@ -31,7 +36,7 @@ public class Room : MonoBehaviour
 
         _roomBounds = new Bounds(new Vector3(_walls.cellBounds.center.x + transform.position.x, _walls.cellBounds.center.y + transform.position.y, 0), _walls.cellBounds.size);
         
-        
+        _rewards = GetComponentInParent<Rewards>();
         
         foreach (var door in _doorManager.Doors)
         {
@@ -71,17 +76,11 @@ public class Room : MonoBehaviour
         }
         else
         {
-            if (_enemies.childCount <= 0)
+            if (!_passed)
             {
-                if (!_passed)
+                if (_enemies.childCount <= 0)
                 {
-                    _doors.ForEach(door => door.Open());
-                    _passed = true;
-
-                    if (gameObject.name.Contains("BossRoom"))
-                    {
-                        _exit.OpenExit();
-                    }
+                    RoomEnd();
                 }
             }
         }
@@ -93,19 +92,44 @@ public class Room : MonoBehaviour
         {
             if (!_passed)
             {
-                _doors.ForEach(door => door.Close());   
-                _enemies.gameObject.SetActive(true);
+                RoomStart();
             }
         }
     }
 
 
-    // void OnDrawGizmos()
-    // {
-    //     Gizmos.DrawWireCube(_roomBounds.center, _roomBounds.size);
-    //     
-    //     foreach (var door in _doorManager.Doors)
-    //         Gizmos.DrawWireCube(door.transform.position, new Vector3(0.5f, 0.5f, 0));
-    // }
+    private void RoomStart()
+    {
+        _doors.ForEach(door => door.Close());   
+        _enemies.gameObject.SetActive(true);
+    }
+
+    private void RoomEnd()
+    {
+        _doors.ForEach(door => door.Open());
+        _passed = true;
+
+        if (gameObject.name.Contains("BossRoom"))
+        {
+            _exit.OpenExit();
+        }
+        else
+        {
+            int rnd = UnityEngine.Random.Range(0, 100);
+            if (rnd <= 49)
+            {
+                rnd = UnityEngine.Random.Range(0, _rewards.FoodsPrefabs.Length-1);
+                Instantiate(_rewards.FoodsPrefabs[rnd], rewardSpawnPoint.position, Quaternion.identity);
+            }    
+        }
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(_roomBounds.center, _roomBounds.size);
+        
+        // foreach (var door in _doorManager.Doors)
+        //     Gizmos.DrawWireCube(door.transform.position, new Vector3(0.5f, 0.5f, 0));
+    }
     
 }

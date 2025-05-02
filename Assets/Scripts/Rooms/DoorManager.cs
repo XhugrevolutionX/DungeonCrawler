@@ -46,7 +46,6 @@ public class DoorManager : MonoBehaviour
     public void SetDoors(List<GameObject> _doors)
     {
         doors = _doors;
-        //OpenDoors();
     }
 
     public bool HasDoor(Vector2 pos)
