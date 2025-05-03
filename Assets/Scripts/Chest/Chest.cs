@@ -3,7 +3,7 @@ using Random = System.Random;
 
 public class Chest : MonoBehaviour
 {
-    [SerializeField] private GameObject[] weapons;
+    private ObjectsRef _objectsRef;
     [SerializeField] private Transform spawnPoint;
     
     private Animator _animator;
@@ -19,6 +19,7 @@ public class Chest : MonoBehaviour
         _animator = GetComponent<Animator>();
         _canvas = GetComponentInChildren<Canvas>();
         _canvas.enabled = false;
+        _objectsRef = FindFirstObjectByType<ObjectsRef>();
     }
 
     // Update is called once per frame
@@ -72,6 +73,6 @@ public class Chest : MonoBehaviour
 
     public void InstantiateItem()
     {
-        Instantiate(weapons[UnityEngine.Random.Range(0, weapons.Length)], spawnPoint.position, Quaternion.identity);
+        Instantiate(_objectsRef.Weapons[UnityEngine.Random.Range(0, _objectsRef.Weapons.Length)], spawnPoint.position, Quaternion.identity);
     }
 }

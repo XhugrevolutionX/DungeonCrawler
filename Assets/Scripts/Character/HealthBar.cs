@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HealthBar : MonoBehaviour
 {
+    private int _maxHealth;
     private int _tempHealth;
     private Animator[] _animators;
 
@@ -16,6 +17,7 @@ public class HealthBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
     }
 
     public void UpdateHealthBar(int health)
@@ -79,11 +81,6 @@ public class HealthBar : MonoBehaviour
             default:
                 break; 
         }
-        _tempHealth = health;
-    }
-
-    public void InitializeHealthBar(int health)
-    {
         _tempHealth = health;
     }
 }

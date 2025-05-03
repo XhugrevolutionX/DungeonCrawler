@@ -1,38 +1,42 @@
 using System.Collections;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class CharacterHealth : MonoBehaviour
 {
-    [SerializeField] private int health = 10;
+    [SerializeField] private CharacterHealthObject characterHealthObject;
+    
     [SerializeField] private float deathDelay = 2;
     [SerializeField] private float iFramesDelay = 1;
-    [SerializeField] private HealthBar healthBar;
+    [SerializeField] private NewHealthBar healthBar;
     
     [SerializeField] private bool heal;
     [SerializeField] private bool damage;
     
-    private int _maxHealth = 10;
+    [SerializeField] private int health;
+    [SerializeField] private int maxHealth;
     
     private Animator _animator;
     
     private Coroutine _iFramesCoroutine;
 
     private bool _canBeHit;
-    public int Health => health;
+    
+   
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        healthBar.InitializeHealthBar(health);
         _canBeHit = true;
         _animator = GetComponent<Animator>();
+        
+        health = characterHealthObject.Health;
+        maxHealth = characterHealthObject.MaxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //For Editor Tests
         if (heal)
         {
             Heal(1);
@@ -44,7 +48,6 @@ public class CharacterHealth : MonoBehaviour
             Damage(1);
             damage = false;
         }
-        
     }
 
     void OnCollisionStay2D(Collision2D collision)
@@ -70,7 +73,7 @@ public class CharacterHealth : MonoBehaviour
             _iFramesCoroutine = StartCoroutine(IFrames());
             
             health -= damage;
-            healthBar.UpdateHealthBar(health);
+            healthBar.UpdateHealthBar(health, maxHealth);
             if (health <= 0)
             {
                 StartCoroutine(DeathDelay());
@@ -80,15 +83,15 @@ public class CharacterHealth : MonoBehaviour
 
     public void Heal(int heal)
     {
-        if (health + heal <= _maxHealth)
+        if (health + heal <= maxHealth)
         {
             health += heal;
         }
         else
         {
-            health = _maxHealth;
+            health = maxHealth;
         }
-        healthBar.UpdateHealthBar(health);
+        healthBar.UpdateHealthBar(health, maxHealth);
     }
 
     private void Death()
@@ -105,6 +108,12 @@ public class CharacterHealth : MonoBehaviour
     {
         yield return new WaitForSeconds(iFramesDelay);
         _canBeHit = true;
+    }
+
+    public void SaveHealthData()
+    {
+        characterHealthObject.Health = health;
+        characterHealthObject.MaxHealth = maxHealth;
     }
     
     

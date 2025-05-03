@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Exit : MonoBehaviour
 {
@@ -35,9 +37,13 @@ public class Exit : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // relaunch dungeon generation for the next level
+        if (other.CompareTag("Player"))
+        {
+            other.GetComponent<CharacterHealth>().SaveHealthData();
+            other.GetComponent<Inventory>().SaveInventoryData();
+            
+            SceneManager.LoadScene("GameScene");
+        }
+        
     }
-    
-    
-    
 }

@@ -9,6 +9,7 @@ public class WeaponSpecs : MonoBehaviour
     [SerializeField] private float shootDelay = 0.5f;
     private CharacterInput _characterInput;
     private bool _delayAfterSwitch = false;
+    public int id = 0;
 
     private bool _canShoot;
 

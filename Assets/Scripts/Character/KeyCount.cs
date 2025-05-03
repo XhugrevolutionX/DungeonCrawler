@@ -6,12 +6,13 @@ public class KeyCount : MonoBehaviour
 {
     private TextMeshProUGUI _text;
     private Inventory _playerInventory;
+    private InventoryObject _playerInventoryObject;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _text = GetComponentInChildren<TextMeshProUGUI>();
-        _playerInventory = FindObjectOfType<Inventory>();
+        _playerInventory = FindFirstObjectByType<Inventory>();
     }
 
     // Update is called once per frame

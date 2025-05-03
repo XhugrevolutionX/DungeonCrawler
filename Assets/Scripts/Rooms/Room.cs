@@ -8,7 +8,7 @@ public class Room : MonoBehaviour
 {
     [SerializeField] private Transform rewardSpawnPoint;
     
-    private Rewards _rewards;
+    private ObjectsRef _objectsRef;
     
     private DoorManager _doorManager;
 
@@ -36,7 +36,7 @@ public class Room : MonoBehaviour
 
         _roomBounds = new Bounds(new Vector3(_walls.cellBounds.center.x + transform.position.x, _walls.cellBounds.center.y + transform.position.y, 0), _walls.cellBounds.size);
         
-        _rewards = GetComponentInParent<Rewards>();
+        _objectsRef = GetComponentInParent<ObjectsRef>();
         
         foreach (var door in _doorManager.Doors)
         {
@@ -118,12 +118,12 @@ public class Room : MonoBehaviour
             int rnd = UnityEngine.Random.Range(0, 100);
             if (rnd <= 49)
             {
-                rnd = UnityEngine.Random.Range(0, _rewards.Foods.Length-1);
-                Instantiate(_rewards.Foods[rnd], rewardSpawnPoint.position, Quaternion.identity);
+                rnd = UnityEngine.Random.Range(0, _objectsRef.Foods.Length-1);
+                Instantiate(_objectsRef.Foods[rnd], rewardSpawnPoint.position, Quaternion.identity);
             }
             else if (rnd <= 69)
             {
-                Instantiate(_rewards.Key, rewardSpawnPoint.position, Quaternion.identity);
+                Instantiate(_objectsRef.Key, rewardSpawnPoint.position, Quaternion.identity);
             }
         }
     }

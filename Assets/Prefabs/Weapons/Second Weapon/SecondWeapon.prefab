@@ -375,3 +375,4 @@ MonoBehaviour:
   firingPoint: {fileID: 611164851209347538}
   bulletPrefab: {fileID: 8429998634750776320, guid: 595e4503c1d192049a498ff070d24990, type: 3}
   shootDelay: 0.8
+  id: 1
