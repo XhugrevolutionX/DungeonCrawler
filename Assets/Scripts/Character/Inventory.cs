@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] private InventoryObject inventoryObject;
+    [SerializeField] private InventoryObject baseInventoryObject;
+    [SerializeField] private InventoryObject characterInventoryObject;
     [SerializeField] private CharacterInput characterInput;
     
     private ObjectsRef _objectsRef;
@@ -51,7 +52,7 @@ public class Inventory : MonoBehaviour
     {
         _rotationPoint = GetComponentInChildren<Aiming>();
         
-        foreach (var wp in inventoryObject.Weapons)
+        foreach (var wp in characterInventoryObject.Weapons)
         {
             GameObject _wp = Instantiate(wp, _rotationPoint.transform);
             
@@ -59,7 +60,7 @@ public class Inventory : MonoBehaviour
         }
 
         _totalWeapons = _weapons.Count;
-        _activeWeapon = inventoryObject.ActiveWeapon;
+        _activeWeapon = characterInventoryObject.ActiveWeapon;
 
         for (int i = 0; i < _totalWeapons; i++)
         {
@@ -73,7 +74,7 @@ public class Inventory : MonoBehaviour
             }
         }
         
-        _keys = inventoryObject.Keys; 
+        _keys = characterInventoryObject.Keys; 
     }
 
     private void SwitchWeapons()
@@ -106,13 +107,20 @@ public class Inventory : MonoBehaviour
     
     public void SaveInventoryData()
     {
-        inventoryObject.Weapons.Clear(); 
+        characterInventoryObject.Weapons.Clear(); 
         foreach (var wp in _weapons)
         {
-            inventoryObject.Weapons.Add(_objectsRef.Weapons[wp.id]);
+            characterInventoryObject.Weapons.Add(_objectsRef.Weapons[wp.id]);
         }
         
-        inventoryObject.Keys = keys;
-        inventoryObject.ActiveWeapon = _activeWeapon;
+        characterInventoryObject.Keys = keys;
+        characterInventoryObject.ActiveWeapon = _activeWeapon;
+    }
+    
+    public void ResetInventoryData()
+    {
+        characterInventoryObject.Weapons = baseInventoryObject.Weapons;
+        characterInventoryObject.ActiveWeapon = baseInventoryObject.ActiveWeapon;
+        characterInventoryObject.Keys = baseInventoryObject.Keys;
     }
 }

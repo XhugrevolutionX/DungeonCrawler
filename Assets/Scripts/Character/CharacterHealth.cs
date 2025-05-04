@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class CharacterHealth : MonoBehaviour
 {
-    [SerializeField] private CharacterHealthObject characterHealthObject;
+    [SerializeField] private HealthObject baseHealthObject;
+    [SerializeField] private HealthObject characterHealthObject;
     
     [SerializeField] private float deathDelay = 2;
     [SerializeField] private float iFramesDelay = 1;
@@ -115,6 +116,10 @@ public class CharacterHealth : MonoBehaviour
         characterHealthObject.Health = health;
         characterHealthObject.MaxHealth = maxHealth;
     }
-    
-    
+
+    public void ResetHealthData()
+    {
+        characterHealthObject.Health = baseHealthObject.Health;
+        characterHealthObject.MaxHealth = baseHealthObject.MaxHealth;
+    }
 }

@@ -7,7 +7,7 @@ public class NewHealthBar : MonoBehaviour
     
     private SpriteRenderer[] _spriteRenderers;
 
-    [SerializeField] private CharacterHealthObject characterHealthObject;
+    [SerializeField] private HealthObject characterHealthObject;
     
     [SerializeField] private Sprite fullHeart;
     [SerializeField] private Sprite halfHeart;

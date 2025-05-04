@@ -33,7 +33,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102385949418372804}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 18.495003, y: -19.004997, z: -0.005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -352,13 +352,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ae52f5ee50ef764cbd0475edfe56626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterHealthObject: {fileID: 0}
+  baseHealthObject: {fileID: 11400000, guid: db1a46cbd9dd7c04abfe80b5270d2622, type: 2}
+  characterHealthObject: {fileID: 11400000, guid: 354f8111abee6134eb72461f48a0d7bd, type: 2}
   deathDelay: 0
   iFramesDelay: 1
   healthBar: {fileID: 0}
   heal: 0
   damage: 0
-  health: 10
+  health: 0
+  maxHealth: 0
 --- !u!114 &1976364169593803496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,7 +373,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f13870ee688f1b44ab1f7adde725976, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryObject: {fileID: 0}
+  baseInventoryObject: {fileID: 11400000, guid: 9ce949422e70c614c8c793c39340f9ae, type: 2}
+  characterInventoryObject: {fileID: 11400000, guid: f201e741b30ed7843bfd50146958f015, type: 2}
   characterInput: {fileID: 1571621099549409068}
 --- !u!1 &6900970543843922470
 GameObject:

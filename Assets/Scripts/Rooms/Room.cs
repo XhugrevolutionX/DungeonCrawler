@@ -24,7 +24,9 @@ public class Room : MonoBehaviour
 
     private Transform _enemies;
 
-    private Exit _exit;
+    private LevelExit _exit;
+    
+    private End _end;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -62,7 +64,8 @@ public class Room : MonoBehaviour
 
         if (gameObject.name.Contains("BossRoom"))
         {
-            _exit = transform.Find("Exit").gameObject.GetComponent<Exit>();
+            _exit = transform.Find("Exit").gameObject.GetComponent<LevelExit>();
+            _end = transform.Find("End").gameObject.GetComponent<End>();
         }
         
     }
@@ -112,6 +115,7 @@ public class Room : MonoBehaviour
         if (gameObject.name.Contains("BossRoom"))
         {
             _exit.OpenExit();
+            _end.OpenExit();
         }
         else
         {
