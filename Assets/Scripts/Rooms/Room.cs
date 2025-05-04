@@ -120,13 +120,26 @@ public class Room : MonoBehaviour
         }
         else
         {
+            //50% chance for a coin 20% chance for a key 03% chance for food
             int rnd = UnityEngine.Random.Range(0, 100);
-            if (rnd <= 49)
+            if (rnd < 50)
             {
-                rnd = UnityEngine.Random.Range(0, _objectsRef.Coins.Length-1);
-                Instantiate(_objectsRef.Coins[rnd], rewardSpawnPoint.position, Quaternion.identity);
+                //50% for a penny 35% for a dime 15% for a nickel
+                rnd = UnityEngine.Random.Range(0, 100);
+                if (rnd < 50)
+                {
+                    Instantiate(_objectsRef.Coins[0], transform.position, Quaternion.identity);
+                }
+                else if (rnd < 85)
+                {
+                    Instantiate(_objectsRef.Coins[1], transform.position, Quaternion.identity);
+                }
+                else
+                {
+                    Instantiate(_objectsRef.Coins[2], transform.position, Quaternion.identity);
+                }
             }
-            else if (rnd <= 69)
+            else if (rnd < 70)
             {
                 Instantiate(_objectsRef.Key, rewardSpawnPoint.position, Quaternion.identity);
             }

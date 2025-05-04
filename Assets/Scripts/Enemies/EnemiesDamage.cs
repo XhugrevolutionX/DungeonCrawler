@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Pathfinding;
 using Unity.VisualScripting;
@@ -8,7 +9,10 @@ public class EnemiesDamage : MonoBehaviour
     
     [SerializeField] private int power = 1;
     [SerializeField] private int health = 3;
+    
     [SerializeField] private int id;
+    
+    
     private Animator _animator;
     private AIPath _aiPath;
     private Rigidbody2D _rigidbody;
@@ -26,12 +30,15 @@ public class EnemiesDamage : MonoBehaviour
     
     private Coroutine _damageCoroutine;
     
+    private ObjectsRef _objectsRef;
+    
     void Start()
     {
         _collider = GetComponent<CapsuleCollider2D>();
         _animator = GetComponent<Animator>();
         _aiPath = GetComponentInParent<AIPath>();
         _rigidbody = GetComponentInParent<Rigidbody2D>();
+        _objectsRef = GetComponentInParent<ObjectsRef>();
     }
 
     void Update()
@@ -86,6 +93,29 @@ public class EnemiesDamage : MonoBehaviour
     
     private void DestroySelf()
     {
+        if (id != 2)
+        {
+            //50% chance to spawn a coins 
+            int rnd = UnityEngine.Random.Range(0, 100);
+            if (rnd < 50)
+            {
+                //50% for a penny 35% for a dime 15% for a nickel
+                rnd = UnityEngine.Random.Range(0, 100);
+                if (rnd < 50)
+                {
+                    Instantiate(_objectsRef.Coins[0], transform.position, Quaternion.identity);
+                }
+                else if (rnd < 85)
+                {
+                    Instantiate(_objectsRef.Coins[1], transform.position, Quaternion.identity);
+                }
+                else
+                {
+                    Instantiate(_objectsRef.Coins[2], transform.position, Quaternion.identity);
+                }
+                
+            }
+        }
         Destroy(transform.parent.gameObject);
     }
 
