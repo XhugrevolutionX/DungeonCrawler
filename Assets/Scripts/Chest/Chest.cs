@@ -33,9 +33,12 @@ public class Chest : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            _canvas.enabled = true;
-            _characterInput = other.gameObject.GetComponent<CharacterInput>();
-            _characterInventory = other.gameObject.GetComponent<Inventory>();
+            if (!_open)
+            {
+                _canvas.enabled = true;
+                _characterInput = other.gameObject.GetComponent<CharacterInput>();
+                _characterInventory = other.gameObject.GetComponent<Inventory>();
+            }
         }
     }
 
@@ -52,7 +55,6 @@ public class Chest : MonoBehaviour
                         OpenChest();
                     }
                 }
-                _canvas.enabled = false;
             }
         }
     }
@@ -61,10 +63,7 @@ public class Chest : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (!_open)
-            {
-                _canvas.enabled = false;
-            }
+            _canvas.enabled = false;
         }
     }
 
@@ -73,16 +72,17 @@ public class Chest : MonoBehaviour
         _open = true;
         _animator.SetTrigger("opened");
         _characterInventory.keys -= 1;
+        _canvas.enabled = false;
     }
 
-    public void InstantiateItem()
+    private void InstantiateWeapon()
     {
-       
+        
         List<int> playerWeaponsIds = _characterInventory.GetWeaponsIds();
 
         if (playerWeaponsIds.Count >= _objectsRef.Weapons.Length)
         {
-            
+            InstantiateObject();
         }
         else
         {
@@ -94,6 +94,28 @@ public class Chest : MonoBehaviour
             } while (playerWeaponsIds.Contains(rnd));
             
             Instantiate(_objectsRef.Weapons[rnd].GetComponent<WeaponSpecs>().Object, spawnPoint.position, Quaternion.identity);
+        }
+    }
+
+    private void InstantiateObject()
+    {
+        int rnd = UnityEngine.Random.Range(0, _objectsRef.Items.Length);
+            
+        Instantiate(_objectsRef.Items[rnd], spawnPoint.position, Quaternion.identity);
+    }
+    
+
+    public void InstantiateChestReward()
+    {
+        int rnd = UnityEngine.Random.Range(0, 100);
+
+        if (rnd < 50)
+        {
+            InstantiateWeapon();
+        }
+        else
+        {
+            InstantiateObject();
         }
     }
 }

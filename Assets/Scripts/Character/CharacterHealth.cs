@@ -17,6 +17,8 @@ public class CharacterHealth : MonoBehaviour
     [SerializeField] private int health;
     [SerializeField] private int maxHealth;
 
+    private int _maxHealthLimit = 20;
+    
     private Game _game;
     
     private Animator _animator;
@@ -95,6 +97,19 @@ public class CharacterHealth : MonoBehaviour
         else
         {
             health = maxHealth;
+        }
+        healthBar.UpdateHealthBar(health, maxHealth);
+    }
+    
+    public void AddMaxHealth(int hearth)
+    {
+        if (maxHealth + (hearth * 2) <= _maxHealthLimit)
+        {
+            maxHealth += (hearth * 2) ;
+        }
+        else
+        {
+            maxHealth = _maxHealthLimit;
         }
         healthBar.UpdateHealthBar(health, maxHealth);
     }
