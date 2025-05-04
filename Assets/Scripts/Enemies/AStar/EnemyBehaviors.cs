@@ -13,8 +13,8 @@ public class EnemyBehaviors : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
-        _target = GetComponentInParent<ObjectsRef>().Player.transform;
-        _groundTilemap = GetComponentInParent<ObjectsRef>().GroundTilemap;
+        _target = GetComponentInParent<Game>().Player.transform;
+        _groundTilemap = GetComponentInParent<Game>().GroundTilemap;
     }
     
     public Vector3 Chase()

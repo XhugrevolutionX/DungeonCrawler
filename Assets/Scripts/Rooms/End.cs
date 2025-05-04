@@ -5,7 +5,8 @@ public class End : MonoBehaviour
 {
     [SerializeField] private Sprite open;
     [SerializeField] private Sprite closed;
-    
+
+    private Game _game;
     private SpriteRenderer _spriteRenderer;
     private Collider2D _collider;
     
@@ -14,6 +15,7 @@ public class End : MonoBehaviour
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _collider = GetComponent<Collider2D>();
+        _game = GetComponentInParent<Game>();
     }
 
     // Update is called once per frame
@@ -38,11 +40,7 @@ public class End : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<CharacterHealth>().ResetHealthData();
-            other.GetComponent<Inventory>().ResetInventoryData();
-            
-            SceneManager.LoadScene("HubScene");
+            _game.EndRun(true);
         }
-        
     }
 }

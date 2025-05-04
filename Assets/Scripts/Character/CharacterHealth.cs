@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CharacterHealth : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class CharacterHealth : MonoBehaviour
     
     [SerializeField] private int health;
     [SerializeField] private int maxHealth;
+
+    private Game _game;
     
     private Animator _animator;
     
@@ -29,6 +32,7 @@ public class CharacterHealth : MonoBehaviour
     {
         _canBeHit = true;
         _animator = GetComponent<Animator>();
+        _game = GetComponentInParent<Game>();
         
         health = characterHealthObject.Health;
         maxHealth = characterHealthObject.MaxHealth;
@@ -97,7 +101,7 @@ public class CharacterHealth : MonoBehaviour
 
     private void Death()
     {
-        Destroy(gameObject);
+        _game.EndRun(false);
     }
 
     IEnumerator DeathDelay()

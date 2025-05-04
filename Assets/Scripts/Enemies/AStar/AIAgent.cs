@@ -18,7 +18,7 @@ public class AIAgent : MonoBehaviour
     {
         _enemiesDamage = GetComponentInChildren<EnemiesDamage>();
         _aiPath = GetComponent<AIPath>();
-        target = GetComponentInParent<ObjectsRef>().Player.transform;
+        target = GetComponentInParent<Game>().Player.transform;
     }
 
     // Update is called once per frame

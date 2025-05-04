@@ -7,6 +7,7 @@ public class LevelExit : MonoBehaviour
     [SerializeField] private Sprite open;
     [SerializeField] private Sprite closed;
     
+    private Game _game;
     private SpriteRenderer _spriteRenderer;
     private Collider2D _collider;
     
@@ -15,6 +16,7 @@ public class LevelExit : MonoBehaviour
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _collider = GetComponent<Collider2D>();
+        _game = GetComponentInParent<Game>();
     }
 
     // Update is called once per frame
@@ -39,11 +41,7 @@ public class LevelExit : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            other.GetComponent<CharacterHealth>().SaveHealthData();
-            other.GetComponent<Inventory>().SaveInventoryData();
-            
-            SceneManager.LoadScene("GameScene");
+            _game.NextLevel();
         }
-        
     }
 }

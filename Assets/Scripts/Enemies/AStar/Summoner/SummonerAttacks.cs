@@ -8,15 +8,15 @@ public class SummonerAttacks : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject summons;
     [SerializeField] private float summonRange = 4;
-    private ObjectsRef _manager;
+    private Game _game;
     private Tilemap _groundTilemap;
     private EnemiesDamage _enemyDamage;
     public bool hasSummoned = false;
 
     private void Start()
     {
-        _manager = GetComponentInParent<ObjectsRef>();
-        _groundTilemap = _manager.GroundTilemap;
+        _game = GetComponentInParent<Game>();
+        _groundTilemap = _game.GroundTilemap;
         _enemyDamage = GetComponentInChildren<EnemiesDamage>();
     }
 
@@ -41,7 +41,7 @@ public class SummonerAttacks : MonoBehaviour
             position = transform.position + new Vector3(Random.Range(-summonRange, summonRange), Random.Range(-summonRange, summonRange), 0);
         } while (!_groundTilemap.HasTile(_groundTilemap.WorldToCell(position)));
         
-        Instantiate(summons, position, Quaternion.identity, _manager.transform);
+        Instantiate(summons, position, Quaternion.identity, transform.parent);
         hasSummoned = true;
     }
 }

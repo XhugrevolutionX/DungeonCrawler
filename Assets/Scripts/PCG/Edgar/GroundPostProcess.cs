@@ -7,6 +7,6 @@ public class GroundPostProcess : DungeonGeneratorPostProcessBase
 {
     public override void Run(GeneratedLevel level, LevelDescription levelDescription)
     {
-        level.RootGameObject.GetComponentInChildren<ObjectsRef>().GroundTilemap = level.GetSharedTilemaps()[0];
+        level.RootGameObject.GetComponentInParent<Game>().GroundTilemap = level.GetSharedTilemaps()[0];
     }
 }
