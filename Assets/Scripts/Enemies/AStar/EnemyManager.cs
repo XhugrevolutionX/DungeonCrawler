@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class EnemyManager : MonoBehaviour
+public class EnemManager : MonoBehaviour
 {
     
     private GameObject _player;

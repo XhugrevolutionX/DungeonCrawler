@@ -13,8 +13,8 @@ public class EnemyBehaviors : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
-        _target = GetComponentInParent<EnemyManager>().Player.transform;
-        _groundTilemap = GetComponentInParent<EnemyManager>().GroundTilemap;
+        _target = GetComponentInParent<ObjectsRef>().Player.transform;
+        _groundTilemap = GetComponentInParent<ObjectsRef>().GroundTilemap;
     }
     
     public Vector3 Chase()
@@ -41,6 +41,16 @@ public class EnemyBehaviors : MonoBehaviour
         { 
             position = transform.position + new Vector3(Random.Range(-randomPointRange, randomPointRange), Random.Range(-randomPointRange, randomPointRange), 0);
         } while (!_groundTilemap.HasTile(_groundTilemap.WorldToCell(position)));
+        
+        return position;
+    }
+    public Vector3 RandomPositionInBounds(Bounds bounds)
+    {
+        Vector3 position;
+        do
+        { 
+            position = transform.position + new Vector3(Random.Range(-randomPointRange, randomPointRange), Random.Range(-randomPointRange, randomPointRange), 0);
+        } while (!_groundTilemap.HasTile(_groundTilemap.WorldToCell(position)) || !bounds.Contains(position));
         
         return position;
     }

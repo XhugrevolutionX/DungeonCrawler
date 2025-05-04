@@ -11,7 +11,13 @@ public class InventoryObject : ScriptableObject
     private int _activeWeapon;
     
     [SerializeField] private int keys;
-    //private int _money;
+    [SerializeField] private int money;
+
+    public int Money
+    {
+        get => money;
+        set => money = value;
+    }
 
     public List<GameObject> Weapons
     {

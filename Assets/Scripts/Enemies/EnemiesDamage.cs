@@ -8,6 +8,7 @@ public class EnemiesDamage : MonoBehaviour
     
     [SerializeField] private int power = 1;
     [SerializeField] private int health = 3;
+    [SerializeField] private int id;
     private Animator _animator;
     private AIPath _aiPath;
     private Rigidbody2D _rigidbody;
@@ -69,8 +70,11 @@ public class EnemiesDamage : MonoBehaviour
         else
         {
             _animator.SetTrigger("Damaged");
-            _timerIsRunning = true;
-            _rigidbody.AddForce(knockBack, ForceMode2D.Impulse);
+            if (id != 1)
+            {
+                _timerIsRunning = true;
+                _rigidbody.AddForce(knockBack, ForceMode2D.Impulse);
+            }
         }
     }
     

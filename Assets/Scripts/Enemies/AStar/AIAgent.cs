@@ -18,13 +18,13 @@ public class AIAgent : MonoBehaviour
     {
         _enemiesDamage = GetComponentInChildren<EnemiesDamage>();
         _aiPath = GetComponent<AIPath>();
-        target = GetComponentInParent<EnemyManager>().Player.transform;
+        target = GetComponentInParent<ObjectsRef>().Player.transform;
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if (!_enemiesDamage.isDead && transform != null)
+        if (!_enemiesDamage.isDead && target != null)
         {
             _aiPath.maxSpeed = moveSpeed;
             _distanceToTarget = Vector3.Distance(transform.position, target.position);

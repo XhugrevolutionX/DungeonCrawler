@@ -28,6 +28,7 @@ public class MageFSM : MonoBehaviour
     private SpriteRenderer _renderer;
     
     private Vector3 _tpPosition;
+    private Room _room;
 
     private float _timer;
  
@@ -43,6 +44,8 @@ public class MageFSM : MonoBehaviour
         
         _animator = GetComponentInChildren<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();  
+        
+        _room = GetComponentInParent<Room>();
         
         _aiPath.maxSpeed = moveSpeed;
         
@@ -157,7 +160,7 @@ public class MageFSM : MonoBehaviour
     public void Teleport()
     {
         _renderer.enabled = false;
-        _tpPosition = _behaviors.RandomPosition();
+        _tpPosition = _behaviors.RandomPositionInBounds(_room.roomBounds);
         _sensor.TargetTp = _tpPosition;
         transform.position = _tpPosition;
     }

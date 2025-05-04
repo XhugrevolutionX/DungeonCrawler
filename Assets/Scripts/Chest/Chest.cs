@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
 
@@ -60,7 +61,10 @@ public class Chest : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            _canvas.enabled = false;
+            if (!_open)
+            {
+                _canvas.enabled = false;
+            }
         }
     }
 
@@ -73,6 +77,23 @@ public class Chest : MonoBehaviour
 
     public void InstantiateItem()
     {
-        Instantiate(_objectsRef.Weapons[UnityEngine.Random.Range(0, _objectsRef.Weapons.Length)], spawnPoint.position, Quaternion.identity);
+       
+        List<int> playerWeaponsIds = _characterInventory.GetWeaponsIds();
+
+        if (playerWeaponsIds.Count >= _objectsRef.Weapons.Length)
+        {
+            
+        }
+        else
+        {
+            int rnd;
+            do
+            {
+                rnd = UnityEngine.Random.Range(0, _objectsRef.Weapons.Length);
+                
+            } while (playerWeaponsIds.Contains(rnd));
+            
+            Instantiate(_objectsRef.Weapons[rnd].GetComponent<WeaponSpecs>().Object, spawnPoint.position, Quaternion.identity);
+        }
     }
 }

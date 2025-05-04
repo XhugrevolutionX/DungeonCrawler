@@ -15,3 +15,4 @@ MonoBehaviour:
   weapons:
   - {fileID: 8637309650470729269, guid: 7628a512fd45347489aacedc922e81a7, type: 3}
   keys: 0
+  money: 0

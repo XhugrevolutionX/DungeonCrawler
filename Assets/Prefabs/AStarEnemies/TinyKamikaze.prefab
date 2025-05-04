@@ -412,4 +412,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   power: 1
   health: 1
+  id: 2
   isDead: 0

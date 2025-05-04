@@ -8,14 +8,14 @@ public class SummonerAttacks : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject summons;
     [SerializeField] private float summonRange = 4;
-    private EnemyManager _manager;
+    private ObjectsRef _manager;
     private Tilemap _groundTilemap;
     private EnemiesDamage _enemyDamage;
     public bool hasSummoned = false;
 
     private void Start()
     {
-        _manager = GetComponentInParent<EnemyManager>();
+        _manager = GetComponentInParent<ObjectsRef>();
         _groundTilemap = _manager.GroundTilemap;
         _enemyDamage = GetComponentInChildren<EnemiesDamage>();
     }

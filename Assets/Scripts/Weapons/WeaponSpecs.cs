@@ -6,6 +6,7 @@ public class WeaponSpecs : MonoBehaviour
 {
     [SerializeField] private Transform firingPoint;
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject objectPrefab;
     [SerializeField] private float shootDelay = 0.5f;
     private CharacterInput _characterInput;
     private bool _delayAfterSwitch = false;
@@ -14,7 +15,10 @@ public class WeaponSpecs : MonoBehaviour
     private bool _canShoot;
 
     private Coroutine _shootCoroutine;
-    
+
+
+    public GameObject Object => objectPrefab;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

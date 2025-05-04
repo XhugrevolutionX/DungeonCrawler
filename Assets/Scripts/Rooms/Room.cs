@@ -19,7 +19,9 @@ public class Room : MonoBehaviour
     private BoxCollider2D _col;
 
     private Bounds _roomBounds;
-    
+
+    public Bounds roomBounds => _roomBounds;
+
     private bool _passed = false;
 
     private Transform _enemies;
@@ -67,7 +69,6 @@ public class Room : MonoBehaviour
             _exit = transform.Find("Exit").gameObject.GetComponent<LevelExit>();
             _end = transform.Find("End").gameObject.GetComponent<End>();
         }
-        
     }
 
     // Update is called once per frame
@@ -122,15 +123,22 @@ public class Room : MonoBehaviour
             int rnd = UnityEngine.Random.Range(0, 100);
             if (rnd <= 49)
             {
-                rnd = UnityEngine.Random.Range(0, _objectsRef.Foods.Length-1);
-                Instantiate(_objectsRef.Foods[rnd], rewardSpawnPoint.position, Quaternion.identity);
+                rnd = UnityEngine.Random.Range(0, _objectsRef.Coins.Length-1);
+                Instantiate(_objectsRef.Coins[rnd], rewardSpawnPoint.position, Quaternion.identity);
             }
             else if (rnd <= 69)
             {
                 Instantiate(_objectsRef.Key, rewardSpawnPoint.position, Quaternion.identity);
             }
+            else
+            {
+                rnd = UnityEngine.Random.Range(0, _objectsRef.Foods.Length-1);
+                Instantiate(_objectsRef.Foods[rnd], rewardSpawnPoint.position, Quaternion.identity);
+            }
         }
     }
+
+   
 
     void OnDrawGizmos()
     {

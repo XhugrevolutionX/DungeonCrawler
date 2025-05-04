@@ -10,13 +10,19 @@ public class Inventory : MonoBehaviour
     
     private ObjectsRef _objectsRef;
     
-    // private Items[] _items;
+    //private Items[] _items;
     private List<WeaponSpecs> _weapons = new List<WeaponSpecs>();
     
     private Aiming _rotationPoint;
     
     private int _keys;
-    // private int _money;
+    private int _money;
+
+    public int money
+    {
+        get => _money;
+        set => _money = value;
+    }
 
     public int keys
     {
@@ -75,6 +81,7 @@ public class Inventory : MonoBehaviour
         }
         
         _keys = characterInventoryObject.Keys; 
+        _money = characterInventoryObject.Money;
     }
 
     private void SwitchWeapons()
@@ -103,6 +110,23 @@ public class Inventory : MonoBehaviour
         _weapons.Add(wp.GetComponent<WeaponSpecs>());
         _totalWeapons++;
     }
+
+    public void AddCoins(int amount)
+    {
+        _money += amount;
+    }
+    
+    public List<int> GetWeaponsIds()
+    {
+        List<int> ids = new List<int>();
+
+        foreach (var wp in _weapons)
+        {
+            ids.Add(wp.id);
+        }
+
+        return ids;
+    }
     
     
     public void SaveInventoryData()
@@ -115,6 +139,7 @@ public class Inventory : MonoBehaviour
         
         characterInventoryObject.Keys = keys;
         characterInventoryObject.ActiveWeapon = _activeWeapon;
+        characterInventoryObject.Money = _money;
     }
     
     public void ResetInventoryData()
@@ -122,5 +147,6 @@ public class Inventory : MonoBehaviour
         characterInventoryObject.Weapons = baseInventoryObject.Weapons;
         characterInventoryObject.ActiveWeapon = baseInventoryObject.ActiveWeapon;
         characterInventoryObject.Keys = baseInventoryObject.Keys;
+        characterInventoryObject.Money = baseInventoryObject.Money;
     }
 }

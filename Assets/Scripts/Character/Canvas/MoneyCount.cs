@@ -1,12 +1,10 @@
-using ProceduralLevelGenerator.Unity.Examples.Common;
 using TMPro;
 using UnityEngine;
 
-public class KeyCount : MonoBehaviour
+public class MoneyCount : MonoBehaviour
 {
     private TextMeshProUGUI _text;
     private Inventory _playerInventory;
-    private InventoryObject _playerInventoryObject;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -18,6 +16,6 @@ public class KeyCount : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _text.text = "X" + _playerInventory.keys;
+        _text.text = "X" + _playerInventory.money;
     }
 }

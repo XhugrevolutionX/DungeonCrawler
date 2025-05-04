@@ -16,7 +16,7 @@ public class SummonerDestination : MonoBehaviour
 
     private void Start()
     {
-        _groundTilemap = GetComponentInParent<EnemyManager>().GroundTilemap;
+        _groundTilemap = GetComponentInParent<ObjectsRef>().GroundTilemap;
         _enemiesDamage = GetComponentInChildren<EnemiesDamage>();
     }
 
