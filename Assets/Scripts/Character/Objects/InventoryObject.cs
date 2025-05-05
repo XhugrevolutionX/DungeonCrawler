@@ -6,7 +6,7 @@ public class InventoryObject : ScriptableObject
 {
     
     
-    // private Items[] _items;
+    [SerializeField] private List<GameObject> items = new List<GameObject>();
     [SerializeField] private List<GameObject> weapons = new List<GameObject>();
     private int _activeWeapon;
     
@@ -23,6 +23,12 @@ public class InventoryObject : ScriptableObject
     {
         get => weapons;
         set => weapons = value;
+    }
+
+    public List<GameObject> Items
+    {
+        get => items;
+        set => items = value;
     }
 
     public int ActiveWeapon

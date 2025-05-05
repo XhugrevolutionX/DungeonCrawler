@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    [SerializeField] public int id;
     [SerializeField] private int healthUp;
-
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -15,11 +15,13 @@ public class Item : MonoBehaviour
         }
     }
 
-    private void ApplyItem(GameObject player)
+    public void ApplyItem(GameObject player)
     {
         if (healthUp != 0)
         {
             player.GetComponent<CharacterHealth>().AddMaxHealth(healthUp);
         }
+        
+        player.GetComponent<Inventory>().AddItems(this);
     }
 }

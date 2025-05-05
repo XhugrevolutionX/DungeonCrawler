@@ -170,4 +170,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 626aea8debf76a3449a741c8277ce6c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemRefs: {fileID: 9043545951064616200, guid: 9729a90afc8f4ea4588d2d324f3edbd8, type: 3}
   healthUp: 1
