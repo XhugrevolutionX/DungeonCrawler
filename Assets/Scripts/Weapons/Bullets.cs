@@ -10,7 +10,13 @@ public class Bullets : MonoBehaviour
     private GameObject _firingPoint;
     private Vector2 _direction;
     private Rigidbody2D _playerRb;
-    
+
+    public int Damage
+    {
+        get => damage;
+        set => damage = value;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

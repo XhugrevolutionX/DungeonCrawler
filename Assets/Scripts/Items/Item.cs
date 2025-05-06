@@ -4,8 +4,11 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     [SerializeField] public int id;
-    [SerializeField] private int healthUp;
     [SerializeField] private int price;
+    
+    [SerializeField] private int healthUp = 0;
+    [SerializeField] private int damageUp = 0;
+    [SerializeField] private float speedUp = 0f;
 
     public int Price => price;
 
@@ -22,7 +25,17 @@ public class Item : MonoBehaviour
     {
         if (healthUp != 0)
         {
-            player.GetComponent<CharacterHealth>().AddMaxHealth(healthUp);
+            player.GetComponent<CharacterStats>().AddMaxHealth(healthUp);
+        }
+        
+        if (damageUp != 0)
+        {
+            player.GetComponent<CharacterStats>().AddDamage(damageUp);
+        }  
+        
+        if (speedUp != 0)
+        {
+            player.GetComponent<CharacterStats>().AddSpeed(speedUp);
         }
         
         player.GetComponent<Inventory>().AddItems(this);

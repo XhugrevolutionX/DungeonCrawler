@@ -11,13 +11,14 @@ GameObject:
   - component: {fileID: 2069485230577563590}
   - component: {fileID: 2949792204894428966}
   - component: {fileID: 7735678771070467185}
-  - component: {fileID: 627538673077686982}
   - component: {fileID: 1571621099549409068}
+  - component: {fileID: 8507556391623771015}
+  - component: {fileID: 8485682268043737307}
+  - component: {fileID: 1976364169593803496}
+  - component: {fileID: 627538673077686982}
   - component: {fileID: 1407387589480329371}
   - component: {fileID: 4452467965342801740}
   - component: {fileID: 7716908871648166442}
-  - component: {fileID: 8485682268043737307}
-  - component: {fileID: 1976364169593803496}
   m_Layer: 6
   m_Name: Character
   m_TagString: Player
@@ -120,25 +121,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &627538673077686982
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1102385949418372804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5067ffa81fff60f4f925e8df33b76722, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 5
-  dodgeForce: 10
-  dodgeDelay: 2
-  dashAnimator: {fileID: 8378234360836544425}
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!114 &1571621099549409068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +133,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a18b41f2f2a442845a205517b51a1fc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8507556391623771015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102385949418372804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b946b7fd8a8ed4a96b3f9664324d56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  damage: 0
+  health: 10
+  maxHealth: 20
+--- !u!114 &8485682268043737307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102385949418372804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ae52f5ee50ef764cbd0475edfe56626, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseHealthObject: {fileID: 11400000, guid: db1a46cbd9dd7c04abfe80b5270d2622, type: 2}
+  characterHealthObject: {fileID: 11400000, guid: 354f8111abee6134eb72461f48a0d7bd, type: 2}
+  deathDelay: 0
+  iFramesDelay: 1
+  healthBar: {fileID: 0}
+  heal: 0
+  damage: 0
+--- !u!114 &1976364169593803496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102385949418372804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f13870ee688f1b44ab1f7adde725976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseInventoryObject: {fileID: 11400000, guid: 9ce949422e70c614c8c793c39340f9ae, type: 2}
+  characterInventoryObject: {fileID: 11400000, guid: f201e741b30ed7843bfd50146958f015, type: 2}
+  characterInput: {fileID: 1571621099549409068}
+--- !u!114 &627538673077686982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102385949418372804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5067ffa81fff60f4f925e8df33b76722, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dodgeForce: 10
+  dodgeDelay: 2
+  dashAnimator: {fileID: 8378234360836544425}
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &1407387589480329371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,42 +391,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.027838588, y: 0.6041667}
   m_Size: {x: 0.7223439, y: 1.2083334}
   m_Direction: 0
---- !u!114 &8485682268043737307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1102385949418372804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ae52f5ee50ef764cbd0475edfe56626, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseHealthObject: {fileID: 11400000, guid: db1a46cbd9dd7c04abfe80b5270d2622, type: 2}
-  characterHealthObject: {fileID: 11400000, guid: 354f8111abee6134eb72461f48a0d7bd, type: 2}
-  deathDelay: 0
-  iFramesDelay: 1
-  healthBar: {fileID: 0}
-  heal: 0
-  damage: 0
-  health: 0
-  maxHealth: 0
---- !u!114 &1976364169593803496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1102385949418372804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f13870ee688f1b44ab1f7adde725976, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  baseInventoryObject: {fileID: 11400000, guid: 9ce949422e70c614c8c793c39340f9ae, type: 2}
-  characterInventoryObject: {fileID: 11400000, guid: f201e741b30ed7843bfd50146958f015, type: 2}
-  characterInput: {fileID: 1571621099549409068}
 --- !u!1 &2363643369017027027
 GameObject:
   m_ObjectHideFlags: 0

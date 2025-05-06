@@ -9,6 +9,7 @@ public class WeaponSpecs : MonoBehaviour
     [SerializeField] private GameObject objectPrefab;
     [SerializeField] private float shootDelay = 0.5f;
     private CharacterInput _characterInput;
+    private CharacterStats _characterStats;
     private bool _delayAfterSwitch = false;
     public int id = 0;
 
@@ -26,6 +27,7 @@ public class WeaponSpecs : MonoBehaviour
     {
         _canShoot = true;
         _characterInput = GetComponentInParent<CharacterInput>();
+        _characterStats = GetComponentInParent<CharacterStats>();
     }
 
     void OnEnable()
@@ -49,7 +51,9 @@ public class WeaponSpecs : MonoBehaviour
     {
         if (_characterInput.inputShoot && _canShoot)
         {
-            Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
+            GameObject bullet = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
+            bullet.GetComponent<Bullets>().Damage += _characterStats.damage;
+            
             _canShoot = false;
 
             if (_shootCoroutine != null)

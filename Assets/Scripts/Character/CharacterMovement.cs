@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class CharacterMovement : MonoBehaviour
 {
-    [SerializeField] private float movementSpeed = 5f;
    
 
     [SerializeField] private float dodgeForce = 20f;
@@ -12,7 +11,7 @@ public class CharacterMovement : MonoBehaviour
     private bool _canDodge = true;
     
     private CharacterInput _characterInput;
-
+    private CharacterStats _characterStats;
     [SerializeField] private LayerMask enemyLayer;
 
     private Animator _animator;
@@ -31,6 +30,7 @@ public class CharacterMovement : MonoBehaviour
         _aim = GetComponentInChildren<Aiming>();
         _col = GetComponent<CapsuleCollider2D>();
         _characterInput = GetComponent<CharacterInput>();
+        _characterStats = GetComponent<CharacterStats>();
         _camera = Camera.main;
     }
 
@@ -60,7 +60,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if (!_characterInput.inputDodge && !_isDodging)
         {
-            _rb.linearVelocity = _characterInput.inputMovement * movementSpeed;
+            _rb.linearVelocity = _characterInput.inputMovement * _characterStats.speed;
         }
         else
         {

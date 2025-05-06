@@ -14,10 +14,7 @@ public class CharacterHealth : MonoBehaviour
     [SerializeField] private bool heal;
     [SerializeField] private bool damage;
     
-    [SerializeField] private int health;
-    [SerializeField] private int maxHealth;
-
-    private int _maxHealthLimit = 20;
+    private CharacterStats _characterStats;
     
     private Game _game;
     
@@ -35,9 +32,10 @@ public class CharacterHealth : MonoBehaviour
         _canBeHit = true;
         _animator = GetComponent<Animator>();
         _game = GetComponentInParent<Game>();
+        _characterStats = GetComponent<CharacterStats>();
         
-        health = characterHealthObject.Health;
-        maxHealth = characterHealthObject.MaxHealth;
+        _characterStats.health = characterHealthObject.Health;
+        _characterStats.maxHealth = characterHealthObject.MaxHealth;
     }
 
     // Update is called once per frame
@@ -79,9 +77,9 @@ public class CharacterHealth : MonoBehaviour
                 StopCoroutine(_iFramesCoroutine);
             _iFramesCoroutine = StartCoroutine(IFrames());
             
-            health -= damage;
-            healthBar.UpdateHealthBar(health, maxHealth);
-            if (health <= 0)
+            _characterStats.health -= damage;
+            healthBar.UpdateHealthBar(_characterStats.health, _characterStats.maxHealth);
+            if (_characterStats.health <= 0)
             {
                 StartCoroutine(DeathDelay());
             }
@@ -90,28 +88,15 @@ public class CharacterHealth : MonoBehaviour
 
     public void Heal(int heal)
     {
-        if (health + heal <= maxHealth)
+        if (_characterStats.health + heal <= _characterStats.maxHealth)
         {
-            health += heal;
+            _characterStats.health += heal;
         }
         else
         {
-            health = maxHealth;
+            _characterStats.health = _characterStats.maxHealth;
         }
-        healthBar.UpdateHealthBar(health, maxHealth);
-    }
-    
-    public void AddMaxHealth(int hearth)
-    {
-        if (maxHealth + (hearth * 2) <= _maxHealthLimit)
-        {
-            maxHealth += (hearth * 2) ;
-        }
-        else
-        {
-            maxHealth = _maxHealthLimit;
-        }
-        healthBar.UpdateHealthBar(health, maxHealth);
+        healthBar.UpdateHealthBar(_characterStats.health, _characterStats.maxHealth);
     }
 
     private void Death()
@@ -132,8 +117,8 @@ public class CharacterHealth : MonoBehaviour
 
     public void SaveHealthData()
     {
-        characterHealthObject.Health = health;
-        characterHealthObject.MaxHealth = maxHealth;
+        characterHealthObject.Health = _characterStats.health;
+        characterHealthObject.MaxHealth = _characterStats.maxHealth;
     }
 
     public void ResetHealthData()
