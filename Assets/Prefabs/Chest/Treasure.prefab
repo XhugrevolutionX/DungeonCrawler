@@ -59,7 +59,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1443803749
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &1836309735298898111
@@ -478,7 +478,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b60619b23cbedd54ab39986de593263e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 602028931000991509, guid: 8673c5824af478b4d99cdb8e36a0cfbe, type: 3}
-  - {fileID: 602028931000991509, guid: 47777a45e54b1b042a2d21622bbe7dde, type: 3}
   spawnPoint: {fileID: 2158772993901022131}

@@ -12,14 +12,16 @@ public class WeaponSpecs : MonoBehaviour
     private bool _delayAfterSwitch = false;
     public int id = 0;
 
+    [SerializeField] private int price;
+    public int Price => price;
+    
+    
     private bool _canShoot;
 
     private Coroutine _shootCoroutine;
-
-
     public GameObject Object => objectPrefab;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+   
     void Start()
     {
         _canShoot = true;

@@ -77,7 +77,6 @@ public class Chest : MonoBehaviour
 
     private void InstantiateWeapon()
     {
-        
         List<int> playerWeaponsIds = _characterInventory.GetWeaponsIds();
 
         if (playerWeaponsIds.Count >= _objectsRef.Weapons.Length)
@@ -93,7 +92,7 @@ public class Chest : MonoBehaviour
                 
             } while (playerWeaponsIds.Contains(rnd));
             
-            Instantiate(_objectsRef.Weapons[rnd].GetComponent<WeaponSpecs>().Object, spawnPoint.position, Quaternion.identity);
+            Instantiate(_objectsRef.Weapons[rnd], spawnPoint.position, Quaternion.identity);
         }
     }
 

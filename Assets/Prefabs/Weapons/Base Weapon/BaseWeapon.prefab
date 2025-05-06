@@ -377,3 +377,4 @@ MonoBehaviour:
   objectPrefab: {fileID: 602028931000991509, guid: 8673c5824af478b4d99cdb8e36a0cfbe, type: 3}
   shootDelay: 0.5
   id: 0
+  price: 30

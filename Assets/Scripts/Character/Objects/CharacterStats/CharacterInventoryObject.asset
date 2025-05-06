@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba8436c41fff38145bf5ae9133ee2b6a, type: 3}
   m_Name: CharacterInventoryObject
   m_EditorClassIdentifier: 
+  items: []
   weapons:
   - {fileID: 8637309650470729269, guid: 7628a512fd45347489aacedc922e81a7, type: 3}
   keys: 0

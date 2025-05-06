@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 8637309650470729269, guid: 7628a512fd45347489aacedc922e81a7, type: 3}
+  price: 45
 --- !u!70 &8359338595423309203
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

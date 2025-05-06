@@ -120,7 +120,7 @@ public class Room : MonoBehaviour
         }
         else
         {
-            //50% chance for a coin 20% chance for a key 03% chance for food
+            //50% chance for a coin 20% chance for a key 30% chance for food
             int rnd = UnityEngine.Random.Range(0, 100);
             if (rnd < 50)
             {

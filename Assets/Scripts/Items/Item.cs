@@ -5,6 +5,9 @@ public class Item : MonoBehaviour
 {
     [SerializeField] public int id;
     [SerializeField] private int healthUp;
+    [SerializeField] private int price;
+
+    public int Price => price;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
