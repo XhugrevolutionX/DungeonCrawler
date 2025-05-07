@@ -43,6 +43,8 @@ public class ShopStall : MonoBehaviour
         
         _characterInput = FindFirstObjectByType<CharacterInput>();
         _characterInventory = FindFirstObjectByType<Inventory>();
+        
+        spriteRenderer.enabled = false;
     }
     
     public void Restock()
@@ -61,7 +63,7 @@ public class ShopStall : MonoBehaviour
         if (_object != null)
         {
             spriteRenderer.sprite = _object.transform.Find("Renderer").GetComponent<SpriteRenderer>().sprite;
-        
+            spriteRenderer.enabled = true;
             _manager.ShopItems.Add(_object);
         }
     }

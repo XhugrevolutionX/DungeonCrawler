@@ -63,6 +63,9 @@ TagManager:
   - name: FrontWalls
     uniqueID: 6145279
     locked: 0
+  - name: ObjectCanvas
+    uniqueID: 2778485057
+    locked: 0
   - name: Canvas
     uniqueID: 2851163547
     locked: 0

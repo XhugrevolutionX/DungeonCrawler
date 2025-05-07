@@ -11,6 +11,7 @@ public class Game : MonoBehaviour
     [SerializeField] private Canvas endCanvas;
     [SerializeField] private Canvas playerCanvas;
     [SerializeField] private GameObject player;
+    [SerializeField] private AudioSource music;
     private Tilemap _groundTilemap;
     
     private TextMeshProUGUI _endText;

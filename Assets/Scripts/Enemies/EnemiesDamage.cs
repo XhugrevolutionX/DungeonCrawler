@@ -95,17 +95,17 @@ public class EnemiesDamage : MonoBehaviour
     {
         if (id != 2)
         {
-            //50% chance to spawn a coins 
+            //40% chance to spawn a coins 
             int rnd = UnityEngine.Random.Range(0, 100);
-            if (rnd < 50)
+            if (rnd < 40)
             {
-                //50% for a penny 35% for a dime 15% for a nickel
+                //60% for a penny 30% for a dime 10% for a nickel
                 rnd = UnityEngine.Random.Range(0, 100);
-                if (rnd < 50)
+                if (rnd < 60)
                 {
                     Instantiate(_objectsRef.Coins[0], transform.position, Quaternion.identity);
                 }
-                else if (rnd < 85)
+                else if (rnd < 90)
                 {
                     Instantiate(_objectsRef.Coins[1], transform.position, Quaternion.identity);
                 }
