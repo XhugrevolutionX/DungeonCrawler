@@ -20,7 +20,7 @@ public class WeaponSpecs : MonoBehaviour
     private bool _canShoot;
 
     private Coroutine _shootCoroutine;
-    public GameObject Object => objectPrefab;
+    public GameObject ObjectPrefab => objectPrefab;
 
    
     void Start()

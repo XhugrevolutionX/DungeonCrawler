@@ -27,6 +27,54 @@ public class ShopItemsManager : MonoBehaviour
             stall.Restock();
         }
     }
+    
+    public List<int> GetShopWeaponsIds()
+    {
+        List<int> ids = new List<int>();
+
+        foreach (ShopStall stall in GetComponentsInChildren<ShopStall>())
+        {
+            switch (stall.ObjectType)
+            {
+                case 0:
+                    if (stall.Object != null)
+                    {
+                        ids.Add(stall.ObjectId);
+                    }
+                    break;
+                case 1:
+                    break;
+                default:
+                    break;
+            }
+        }
+        
+        return ids;
+    }
+    
+    public List<int> GetShopItemsIds()
+    {
+        List<int> ids = new List<int>();
+
+        foreach (ShopStall stall in GetComponentsInChildren<ShopStall>())
+        {
+            switch (stall.ObjectType)
+            {
+                case 0:
+                    break;
+                case 1:
+                    if (stall.Object != null)
+                    {
+                        ids.Add(stall.ObjectId);
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+        
+        return ids;
+    }
 
     // Update is called once per frame
     void Update()

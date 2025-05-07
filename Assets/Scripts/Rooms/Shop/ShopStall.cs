@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.TextCore.Text;
@@ -8,7 +9,7 @@ public class ShopStall : MonoBehaviour
     [SerializeField] private TextMeshProUGUI priceTag;
     [SerializeField] private Transform objectParent;
     [SerializeField] private SpriteRenderer spriteRenderer;
-
+    
     private ShopItemsManager _manager;
     
     private ObjectsRef _objectsRef;
@@ -16,7 +17,7 @@ public class ShopStall : MonoBehaviour
     private CharacterInput _characterInput;
     private Inventory _characterInventory;
     
-    private GameObject _object;
+    private GameObject _object = null;
     
     private int _objectId;
     private int _objectType;
@@ -24,6 +25,11 @@ public class ShopStall : MonoBehaviour
     private int _price;
     
     private bool _bought = false;
+
+    public int ObjectType => _objectType;
+    public int ObjectId => _objectId;
+
+    public GameObject Object => _object;
 
     private void Start()
     {
@@ -34,17 +40,28 @@ public class ShopStall : MonoBehaviour
     {
         _objectsRef = GetComponentInParent<ObjectsRef>();
         _manager = GetComponentInParent<ShopItemsManager>();
+        
+        _characterInput = FindFirstObjectByType<CharacterInput>();
+        _characterInventory = FindFirstObjectByType<Inventory>();
     }
     
     public void Restock()
     {
         int rnd = Random.Range(0, 100);
 
-        if (rnd < 50)
+        List<int> playerWeaponsIds = _characterInventory.GetWeaponsIds();
+        List<int> playerItemsIds = _characterInventory.GetItemsIds();
+        List<int> shopWeaponsIds = _manager.GetShopWeaponsIds();
+        List<int> shopItemsIds = _manager.GetShopItemsIds();
+        
+        if (rnd < 50 && playerWeaponsIds.Count + shopWeaponsIds.Count < _objectsRef.Weapons.Length)
         {
-                
             //Weapons
-            rnd = Random.Range(0, _objectsRef.Weapons.Length);
+            do
+            {
+                rnd = Random.Range(0, _objectsRef.Weapons.Length);
+                
+            } while (playerWeaponsIds.Contains(rnd) || shopWeaponsIds.Contains(rnd));
         
             _object = _objectsRef.Weapons[rnd];
             _objectId = rnd;
@@ -52,10 +69,14 @@ public class ShopStall : MonoBehaviour
             _price = _object.GetComponent<WeaponSpecs>().Price;
             _objectType = 0;
         }
-        else
+        else if (playerItemsIds.Count + shopItemsIds.Count < _objectsRef.Items.Length)
         {
             //Items
-            rnd = Random.Range(0, _objectsRef.Items.Length);
+            do
+            {
+                rnd = Random.Range(0, _objectsRef.Items.Length);
+                
+            } while (shopItemsIds.Contains(rnd) || playerItemsIds.Contains(rnd));
         
             _object = _objectsRef.Items[rnd];
             _objectId = rnd;
@@ -63,19 +84,16 @@ public class ShopStall : MonoBehaviour
             _price = _object.GetComponent<Item>().Price;
             _objectType = 1;
         }
-        
-        spriteRenderer.sprite = _object.transform.Find("Renderer").GetComponent<SpriteRenderer>().sprite;
-            
-        switch (_objectType)
+        else
         {
-            case 0:
-                _manager.ShopItems.Add(_object);
-                break;
-            case 1:
-                _manager.ShopItems.Add(_object);
-                break;
-            default:
-                break;
+            Debug.Log("All Items and Weapons have already been spawned");
+        }
+
+        if (_object != null)
+        {
+            spriteRenderer.sprite = _object.transform.Find("Renderer").GetComponent<SpriteRenderer>().sprite;
+        
+            _manager.ShopItems.Add(_object);
         }
     }
     
@@ -100,20 +118,6 @@ public class ShopStall : MonoBehaviour
         _bought = true;
         spriteRenderer.enabled = false;
         priceTag.enabled = false;
-    }
-    
-    
-    
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            if (!_bought)
-            {
-                _characterInput = other.gameObject.GetComponent<CharacterInput>();
-                _characterInventory = other.gameObject.GetComponent<Inventory>();
-            }
-        }
     }
     
     private void OnTriggerStay2D(Collider2D other)

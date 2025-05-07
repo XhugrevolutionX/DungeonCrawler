@@ -105,6 +105,18 @@ public class Inventory : MonoBehaviour
 
         return ids;
     }
+    
+    public List<int> GetItemsIds()
+    {
+        List<int> ids = new List<int>();
+
+        foreach (var it in _items)
+        {
+            ids.Add(it.id);
+        }
+
+        return ids;
+    }
 
     public void LoadInventoryData()
     {

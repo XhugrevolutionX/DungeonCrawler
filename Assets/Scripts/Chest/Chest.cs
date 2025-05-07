@@ -12,6 +12,7 @@ public class Chest : MonoBehaviour
     
     private CharacterInput _characterInput;
     private Inventory _characterInventory;
+    private ShopItemsManager _shopItems;
 
     private bool _open = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -21,6 +22,7 @@ public class Chest : MonoBehaviour
         _canvas = GetComponentInChildren<Canvas>();
         _canvas.enabled = false;
         _objectsRef = FindFirstObjectByType<ObjectsRef>();
+        _shopItems = FindFirstObjectByType<ShopItemsManager>();
     }
 
     // Update is called once per frame
@@ -78,10 +80,21 @@ public class Chest : MonoBehaviour
     private void InstantiateWeapon()
     {
         List<int> playerWeaponsIds = _characterInventory.GetWeaponsIds();
+        List<int> shopWeaponsIds = _shopItems.GetShopWeaponsIds();
+        
+        List<int> playerItemsIds = _characterInventory.GetItemsIds();
+        List<int> shopItemsIds = _shopItems.GetShopItemsIds();
 
-        if (playerWeaponsIds.Count >= _objectsRef.Weapons.Length)
+        if (playerWeaponsIds.Count + shopWeaponsIds.Count >= _objectsRef.Weapons.Length)
         {
-            InstantiateObject();
+            if (playerItemsIds.Count + shopItemsIds.Count >= _objectsRef.Weapons.Length)
+            {
+                Debug.Log("All Items and Weapons have already been spawned");
+            }
+            else
+            {
+                InstantiateObject();
+            }
         }
         else
         {
@@ -90,17 +103,43 @@ public class Chest : MonoBehaviour
             {
                 rnd = UnityEngine.Random.Range(0, _objectsRef.Weapons.Length);
                 
-            } while (playerWeaponsIds.Contains(rnd));
+            } while (playerWeaponsIds.Contains(rnd) || shopWeaponsIds.Contains(rnd));
             
-            Instantiate(_objectsRef.Weapons[rnd], spawnPoint.position, Quaternion.identity);
+            Instantiate(_objectsRef.Weapons[rnd].GetComponent<WeaponSpecs>().ObjectPrefab, spawnPoint.position, Quaternion.identity);
         }
     }
 
     private void InstantiateObject()
     {
         int rnd = UnityEngine.Random.Range(0, _objectsRef.Items.Length);
+        
+        List<int> playerItemsIds = _characterInventory.GetItemsIds();
+        List<int> shopItemsIds = _shopItems.GetShopItemsIds();
+        
+        List<int> playerWeaponsIds = _characterInventory.GetWeaponsIds();
+        List<int> shopWeaponsIds = _shopItems.GetShopWeaponsIds();
+
+        if (playerItemsIds.Count + shopItemsIds.Count >= _objectsRef.Weapons.Length)
+        {
+            if (playerWeaponsIds.Count + shopWeaponsIds.Count >= _objectsRef.Weapons.Length)
+            {
+                Debug.Log("All Items and Weapons have already been spawned");
+            }
+            else
+            {
+                InstantiateWeapon();
+            }
+        }
+        else
+        {
+            do
+            {
+                rnd = UnityEngine.Random.Range(0, _objectsRef.Weapons.Length);
+                
+            } while (playerItemsIds.Contains(rnd) || shopItemsIds.Contains(rnd));
             
-        Instantiate(_objectsRef.Items[rnd], spawnPoint.position, Quaternion.identity);
+            Instantiate(_objectsRef.Items[rnd], spawnPoint.position, Quaternion.identity);
+        }
     }
     
 
