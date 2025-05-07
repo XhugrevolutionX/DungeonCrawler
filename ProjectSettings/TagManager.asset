@@ -60,6 +60,9 @@ TagManager:
   - name: Characters
     uniqueID: 506416195
     locked: 0
+  - name: Stations
+    uniqueID: 3031450459
+    locked: 0
   - name: FrontWalls
     uniqueID: 6145279
     locked: 0

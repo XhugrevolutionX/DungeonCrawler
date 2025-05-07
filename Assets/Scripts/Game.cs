@@ -12,6 +12,10 @@ public class Game : MonoBehaviour
     [SerializeField] private Canvas playerCanvas;
     [SerializeField] private GameObject player;
     [SerializeField] private AudioSource music;
+    [SerializeField] private AudioClip backgroundMusic;
+    [SerializeField] private AudioClip endSound;
+    
+    
     private Tilemap _groundTilemap;
     
     private TextMeshProUGUI _endText;
@@ -27,6 +31,7 @@ public class Game : MonoBehaviour
     {
         _endText = endCanvas.transform.GetChild(0).Find("EndText").GetComponent<TextMeshProUGUI>();
         endCanvas.gameObject.SetActive(false);
+        music.clip = backgroundMusic;
     }
     
     void Update()
@@ -60,6 +65,9 @@ public class Game : MonoBehaviour
         player.GetComponent<Collider2D>().enabled = false;
         playerCanvas.gameObject.SetActive(false);
 
+        music.Stop();
+        
+        
         if (victory)
         {
             _endText.text = "Victory";
@@ -71,6 +79,8 @@ public class Game : MonoBehaviour
         
         
         endCanvas.gameObject.SetActive(true);
+        music.clip = endSound;
+        music.Play();
     }
 
     public void WarpToHub()
