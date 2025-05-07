@@ -47,46 +47,15 @@ public class ShopStall : MonoBehaviour
     
     public void Restock()
     {
-        int rnd = Random.Range(0, 100);
+        int rnd = UnityEngine.Random.Range(0, 100);
 
-        List<int> playerWeaponsIds = _characterInventory.GetWeaponsIds();
-        List<int> playerItemsIds = _characterInventory.GetItemsIds();
-        List<int> shopWeaponsIds = _manager.GetShopWeaponsIds();
-        List<int> shopItemsIds = _manager.GetShopItemsIds();
-        
-        if (rnd < 50 && playerWeaponsIds.Count + shopWeaponsIds.Count < _objectsRef.Weapons.Length)
+        if (rnd < 50)
         {
-            //Weapons
-            do
-            {
-                rnd = Random.Range(0, _objectsRef.Weapons.Length);
-                
-            } while (playerWeaponsIds.Contains(rnd) || shopWeaponsIds.Contains(rnd));
-        
-            _object = _objectsRef.Weapons[rnd];
-            _objectId = rnd;
-            priceTag.text = _object.GetComponent<WeaponSpecs>().Price + " $";
-            _price = _object.GetComponent<WeaponSpecs>().Price;
-            _objectType = 0;
-        }
-        else if (playerItemsIds.Count + shopItemsIds.Count < _objectsRef.Items.Length)
-        {
-            //Items
-            do
-            {
-                rnd = Random.Range(0, _objectsRef.Items.Length);
-                
-            } while (shopItemsIds.Contains(rnd) || playerItemsIds.Contains(rnd));
-        
-            _object = _objectsRef.Items[rnd];
-            _objectId = rnd;
-            priceTag.text = _object.GetComponent<Item>().Price + " $";
-            _price = _object.GetComponent<Item>().Price;
-            _objectType = 1;
+            RestockWeapon();
         }
         else
         {
-            Debug.Log("All Items and Weapons have already been spawned");
+            RestockItem();
         }
 
         if (_object != null)
@@ -94,6 +63,80 @@ public class ShopStall : MonoBehaviour
             spriteRenderer.sprite = _object.transform.Find("Renderer").GetComponent<SpriteRenderer>().sprite;
         
             _manager.ShopItems.Add(_object);
+        }
+    }
+    
+    
+    private void RestockWeapon()
+    {
+        List<int> playerWeaponsIds = _characterInventory.GetWeaponsIds();
+        List<int> shopWeaponsIds = _manager.GetShopWeaponsIds();
+        
+        List<int> playerItemsIds = _characterInventory.GetItemsIds();
+        List<int> shopItemsIds = _manager.GetShopItemsIds();
+
+        if (playerWeaponsIds.Count + shopWeaponsIds.Count >= _objectsRef.Weapons.Length)
+        {
+            if (playerItemsIds.Count + shopItemsIds.Count >= _objectsRef.Items.Length)
+            {
+                Debug.Log("All Items and Weapons have already been spawned");
+            }
+            else
+            {
+                RestockItem();
+            }
+        }
+        else
+        {
+            int rnd;
+            do
+            {
+                rnd = Random.Range(0, _objectsRef.Weapons.Length);
+                
+            } while (playerWeaponsIds.Contains(rnd) || shopWeaponsIds.Contains(rnd));
+            
+            _object = _objectsRef.Weapons[rnd];
+            _objectId = rnd;
+            priceTag.text = _object.GetComponent<WeaponSpecs>().Price + " $";
+            _price = _object.GetComponent<WeaponSpecs>().Price;
+            _objectType = 0;
+        }
+    }
+    private void RestockItem()
+    {
+        
+        List<int> playerItemsIds = _characterInventory.GetItemsIds();
+        List<int> shopItemsIds = _manager.GetShopItemsIds();
+        
+        List<int> playerWeaponsIds = _characterInventory.GetWeaponsIds();
+        List<int> shopWeaponsIds = _manager.GetShopWeaponsIds();
+
+        if (playerItemsIds.Count + shopItemsIds.Count >= _objectsRef.Items.Length)
+        {
+            if (playerWeaponsIds.Count + shopWeaponsIds.Count >= _objectsRef.Weapons.Length)
+            {
+                Debug.Log("All Items and Weapons have already been spawned");
+            }
+            else
+            {
+                RestockWeapon();
+            }
+        }
+        else
+        {
+            int rnd;
+
+            do
+            {
+                rnd = Random.Range(0, _objectsRef.Items.Length);
+                
+            } while (playerItemsIds.Contains(rnd) || shopItemsIds.Contains(rnd));
+            
+            _object = _objectsRef.Items[rnd];
+            _objectId = rnd;
+            priceTag.text = _object.GetComponent<Item>().Price + " $";
+            _price = _object.GetComponent<Item>().Price;
+            _objectType = 1;
         }
     }
     

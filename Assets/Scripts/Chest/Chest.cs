@@ -111,7 +111,6 @@ public class Chest : MonoBehaviour
 
     private void InstantiateObject()
     {
-        int rnd = UnityEngine.Random.Range(0, _objectsRef.Items.Length);
         
         List<int> playerItemsIds = _characterInventory.GetItemsIds();
         List<int> shopItemsIds = _shopItems.GetShopItemsIds();
@@ -132,9 +131,11 @@ public class Chest : MonoBehaviour
         }
         else
         {
+            int rnd;
+
             do
             {
-                rnd = UnityEngine.Random.Range(0, _objectsRef.Weapons.Length);
+                rnd = UnityEngine.Random.Range(0, _objectsRef.Items.Length);
                 
             } while (playerItemsIds.Contains(rnd) || shopItemsIds.Contains(rnd));
             
