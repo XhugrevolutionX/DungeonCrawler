@@ -8,10 +8,13 @@ public class WeaponSpecs : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private GameObject objectPrefab;
     [SerializeField] private float shootDelay = 0.5f;
+    private GameObject _character;
     private CharacterInput _characterInput;
     private CharacterStats _characterStats;
     private bool _delayAfterSwitch = false;
     public int id = 0;
+    
+    private Aiming _aiming;
 
     [SerializeField] private int price;
     public int Price => price;
@@ -26,8 +29,11 @@ public class WeaponSpecs : MonoBehaviour
     void Start()
     {
         _canShoot = true;
+        _character = GameObject.FindGameObjectWithTag("Player");
         _characterInput = GetComponentInParent<CharacterInput>();
         _characterStats = GetComponentInParent<CharacterStats>();
+        _aiming = GetComponentInParent<Aiming>();
+            
     }
 
     void OnEnable()
@@ -53,6 +59,17 @@ public class WeaponSpecs : MonoBehaviour
         {
             GameObject bullet = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
             bullet.GetComponent<Bullets>().Damage += _characterStats.damage;
+
+            Quaternion direction;
+            if (_character.transform.localScale.x > 0)
+            {
+                direction = Quaternion.Euler(0, 0, _aiming.rotZ);
+            }
+            else
+            {
+                direction = Quaternion.Euler(0, 0, _aiming.rotZ - 180);
+            }
+            bullet.GetComponentInChildren<SpriteRenderer>().transform.rotation = direction;
             
             _canShoot = false;
 
