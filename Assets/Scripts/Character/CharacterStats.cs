@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
-
+    [SerializeField] private StatsObject baseStatsObject;
+    [SerializeField] private StatsObject characterStatsObject;
+    
     [SerializeField] public float speed = 5;
     [SerializeField] public int damage = 0;
     [SerializeField] public int health = 10;
@@ -35,6 +37,44 @@ public class CharacterStats : MonoBehaviour
     public void AddSpeed(float speedBoost)
     {
         speed += speedBoost;
+    }
+    
+    
+    
+    public void LoadStatsData()
+    {
+        health = characterStatsObject.Health;
+        maxHealth = characterStatsObject.MaxHealth;
+        
+        damage = characterStatsObject.Damage;
+        
+        speed = characterStatsObject.Speed;
+        
+        poison = characterStatsObject.Poison;
+    }
+
+    public void SaveStatsData()
+    {
+        characterStatsObject.Health = health;
+        characterStatsObject.MaxHealth = maxHealth;
+        
+        characterStatsObject.Damage = damage;
+        
+        characterStatsObject.Speed = speed;
+        
+        characterStatsObject.Poison = poison;
+    }
+
+    public void ResetStatsData()
+    {
+        characterStatsObject.Health = baseStatsObject.Health;
+        characterStatsObject.MaxHealth = baseStatsObject.MaxHealth;
+        
+        characterStatsObject.Damage = baseStatsObject.Damage;
+        
+        characterStatsObject.Speed = baseStatsObject.Speed;
+        
+        characterStatsObject.Poison = baseStatsObject.Poison;
     }
     
 }

@@ -7,7 +7,7 @@ public class NewHealthBar : MonoBehaviour
     
     private SpriteRenderer[] _spriteRenderers;
 
-    [SerializeField] private HealthObject characterHealthObject;
+    [SerializeField] private StatsObject characteStatsObject;
     
     [SerializeField] private Sprite fullHeart;
     [SerializeField] private Sprite halfHeart;
@@ -18,7 +18,7 @@ public class NewHealthBar : MonoBehaviour
     {
         _spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
         
-        UpdateHealthBar(characterHealthObject.Health, characterHealthObject.MaxHealth);
+        UpdateHealthBar(characteStatsObject.Health, characteStatsObject.MaxHealth);
     }
 
     // Update is called once per frame

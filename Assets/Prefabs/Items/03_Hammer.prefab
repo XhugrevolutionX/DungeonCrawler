@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 3
-  price: 75
+  price: 30
   healthUp: 0
   damageUp: 10
   speedUp: 0

@@ -91,13 +91,13 @@ public class Game : MonoBehaviour
 
     private void SavePlayerData()
     {
-        player.GetComponent<CharacterHealth>().SaveHealthData();
+        player.GetComponent<CharacterStats>().SaveStatsData();
         player.GetComponent<Inventory>().SaveInventoryData();
     }
 
     private void ResetPlayerData()
     {
-        player.GetComponent<CharacterHealth>().ResetHealthData();
+        player.GetComponent<CharacterStats>().ResetStatsData();
         player.GetComponent<Inventory>().ResetInventoryData();
     }
 }

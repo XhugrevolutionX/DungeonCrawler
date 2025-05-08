@@ -4,9 +4,6 @@ using UnityEngine.InputSystem;
 
 public class CharacterHealth : MonoBehaviour
 {
-    [SerializeField] private HealthObject baseHealthObject;
-    [SerializeField] private HealthObject characterHealthObject;
-    
     [SerializeField] private float deathDelay = 2;
     [SerializeField] private float iFramesDelay = 1;
     [SerializeField] private NewHealthBar healthBar;
@@ -33,9 +30,8 @@ public class CharacterHealth : MonoBehaviour
         _animator = GetComponent<Animator>();
         _game = GetComponentInParent<Game>();
         _characterStats = GetComponent<CharacterStats>();
-        
-        _characterStats.health = characterHealthObject.Health;
-        _characterStats.maxHealth = characterHealthObject.MaxHealth;
+
+        _characterStats.LoadStatsData();
     }
 
     // Update is called once per frame
@@ -113,17 +109,5 @@ public class CharacterHealth : MonoBehaviour
     {
         yield return new WaitForSeconds(iFramesDelay);
         _canBeHit = true;
-    }
-
-    public void SaveHealthData()
-    {
-        characterHealthObject.Health = _characterStats.health;
-        characterHealthObject.MaxHealth = _characterStats.maxHealth;
-    }
-
-    public void ResetHealthData()
-    {
-        characterHealthObject.Health = baseHealthObject.Health;
-        characterHealthObject.MaxHealth = baseHealthObject.MaxHealth;
     }
 }
