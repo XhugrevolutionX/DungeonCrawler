@@ -21,7 +21,7 @@ public class Chest : MonoBehaviour
         _animator = GetComponent<Animator>();
         _canvas = GetComponentInChildren<Canvas>();
         _canvas.enabled = false;
-        _objectsRef = FindFirstObjectByType<ObjectsRef>();
+        _objectsRef = GetComponentInParent<ObjectsRef>();
         _shopItems = FindFirstObjectByType<ShopItemsManager>();
     }
 
@@ -87,7 +87,7 @@ public class Chest : MonoBehaviour
 
         if (playerWeaponsIds.Count + shopWeaponsIds.Count >= _objectsRef.Weapons.Length)
         {
-            if (playerItemsIds.Count + shopItemsIds.Count >= _objectsRef.Weapons.Length)
+            if (playerItemsIds.Count + shopItemsIds.Count >= _objectsRef.Items.Length)
             {
                 Debug.Log("All Items and Weapons have already been spawned");
             }
@@ -118,7 +118,7 @@ public class Chest : MonoBehaviour
         List<int> playerWeaponsIds = _characterInventory.GetWeaponsIds();
         List<int> shopWeaponsIds = _shopItems.GetShopWeaponsIds();
 
-        if (playerItemsIds.Count + shopItemsIds.Count >= _objectsRef.Weapons.Length)
+        if (playerItemsIds.Count + shopItemsIds.Count >= _objectsRef.Items.Length)
         {
             if (playerWeaponsIds.Count + shopWeaponsIds.Count >= _objectsRef.Weapons.Length)
             {

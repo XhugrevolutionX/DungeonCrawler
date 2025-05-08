@@ -5953,6 +5953,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShopStall
       objectReference: {fileID: 0}
+    - target: {fileID: 1565159325219215397, guid: 3133fb5cf68953a47be105f9f2f4e631, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6694421294771437629, guid: 3133fb5cf68953a47be105f9f2f4e631, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.75

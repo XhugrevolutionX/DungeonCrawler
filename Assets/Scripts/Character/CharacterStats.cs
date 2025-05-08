@@ -7,10 +7,12 @@ public class CharacterStats : MonoBehaviour
     [SerializeField] public int damage = 0;
     [SerializeField] public int health = 10;
     [SerializeField] public int maxHealth = 20;
-    
     [SerializeField] private NewHealthBar healthBar;
     
     private int _maxHealthLimit = 20;
+    
+    public bool poison = false;
+
     
     
     public void AddMaxHealth(int hearth)

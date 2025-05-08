@@ -299,6 +299,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2133427676}
+    - target: {fileID: 6623790507881932477, guid: 1e366ae36dab31f46ba1ff2723e17cac, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6678836591343905921, guid: 1e366ae36dab31f46ba1ff2723e17cac, type: 3}
       propertyPath: m_Name
       value: Hub

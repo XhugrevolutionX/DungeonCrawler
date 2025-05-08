@@ -14,6 +14,7 @@ public class WeaponSpecs : MonoBehaviour
     private bool _delayAfterSwitch = false;
     public int id = 0;
     
+    private ObjectsRef _objectsRef;
     private Aiming _aiming;
 
     [SerializeField] private int price;
@@ -33,7 +34,7 @@ public class WeaponSpecs : MonoBehaviour
         _characterInput = GetComponentInParent<CharacterInput>();
         _characterStats = GetComponentInParent<CharacterStats>();
         _aiming = GetComponentInParent<Aiming>();
-            
+        _objectsRef = GetComponentInParent<ObjectsRef>();
     }
 
     void OnEnable()
@@ -57,7 +58,7 @@ public class WeaponSpecs : MonoBehaviour
     {
         if (_characterInput.inputShoot && _canShoot)
         {
-            GameObject bullet = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
+            GameObject bullet = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity, _objectsRef.transform);
             bullet.GetComponent<Bullets>().Damage += _characterStats.damage;
 
             Quaternion direction;

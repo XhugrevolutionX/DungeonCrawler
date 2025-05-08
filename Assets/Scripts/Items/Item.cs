@@ -10,6 +10,8 @@ public class Item : MonoBehaviour
     [SerializeField] private int damageUp = 0;
     [SerializeField] private float speedUp = 0f;
 
+    [SerializeField] private bool hasPoison = false;
+    
     public int Price => price;
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -38,6 +40,9 @@ public class Item : MonoBehaviour
             player.GetComponent<CharacterStats>().AddSpeed(speedUp);
         }
         
+        player.GetComponent<CharacterStats>().poison = hasPoison;
+        
         player.GetComponent<Inventory>().AddItems(this);
+        
     }
 }
