@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Inventory : MonoBehaviour
 {
@@ -43,8 +44,10 @@ public class Inventory : MonoBehaviour
         _objectsRef = FindFirstObjectByType<ObjectsRef>();
         _rotationPoint = GetComponentInChildren<Aiming>();
 
-
-        LoadInventoryData();
+        if (SceneManager.GetActiveScene().name == "GameScene")
+        {
+            LoadInventoryData();
+        }
     }
 
     // Update is called once per frame

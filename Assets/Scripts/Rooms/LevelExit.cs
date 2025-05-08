@@ -6,23 +6,19 @@ public class LevelExit : MonoBehaviour
 {
     [SerializeField] private Sprite open;
     [SerializeField] private Sprite closed;
+
     
     private Game _game;
     private SpriteRenderer _spriteRenderer;
     private Collider2D _collider;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private Canvas _loadingCanvas;
     void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _collider = GetComponent<Collider2D>();
         _game = GetComponentInParent<Game>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _loadingCanvas = GameObject.Find("LoadingCanvas").GetComponent<Canvas>();
+        _loadingCanvas.enabled = false;
     }
 
     public void OpenExit()
@@ -41,6 +37,7 @@ public class LevelExit : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            _loadingCanvas.enabled = true;
             _game.NextLevel();
         }
     }
