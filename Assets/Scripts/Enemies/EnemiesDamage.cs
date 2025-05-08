@@ -9,10 +9,13 @@ public class EnemiesDamage : MonoBehaviour
     
     [SerializeField] private int power = 1;
     [SerializeField] private int health = 3;
-    
     [SerializeField] private int id;
     
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] damagedSound;
+    [SerializeField] private AudioClip deathSound;
     
+    private CapsuleCollider2D _collider;
     private Animator _animator;
     private AIPath _aiPath;
     private Rigidbody2D _rigidbody;
@@ -21,7 +24,6 @@ public class EnemiesDamage : MonoBehaviour
     private float _timerLimit = 0.2f;
     private bool _timerIsRunning = false;
     
-    private CapsuleCollider2D _collider;
     public bool isDead = false;
     
     private bool _damaged = false;
@@ -65,19 +67,15 @@ public class EnemiesDamage : MonoBehaviour
             _damaged = true;
         
             _aiPath.canMove = false;
-        
-            if (_damageCoroutine != null)
-            {
-                StopCoroutine(_damageCoroutine);
-            }
-            _damageCoroutine = StartCoroutine(DamagedCoroutine());
-        
+            
             if (health <= 0)
             {
                 Death();
             }
             else
             {
+                audioSource.PlayOneShot(damagedSound[UnityEngine.Random.Range(0, damagedSound.Length)]);
+                
                 _animator.SetTrigger("Damaged");
                 if (id != 1)
                 {
@@ -85,6 +83,12 @@ public class EnemiesDamage : MonoBehaviour
                     _rigidbody.AddForce(knockBackForce, ForceMode2D.Impulse);
                 
                 }
+                
+                if (_damageCoroutine != null)
+                {
+                    StopCoroutine(_damageCoroutine);
+                }
+                _damageCoroutine = StartCoroutine(DamagedCoroutine());
             }
         }
     }
@@ -95,20 +99,22 @@ public class EnemiesDamage : MonoBehaviour
         {
             health -= damage;
             _damaged = true;
-        
-            if (_damageCoroutine != null)
-            {
-                StopCoroutine(_damageCoroutine);
-            }
-            _damageCoroutine = StartCoroutine(DamagedCoroutine());
-        
+            
             if (health <= 0)
             {
                 Death();
             }
             else
             {
+                audioSource.PlayOneShot(damagedSound[UnityEngine.Random.Range(0, damagedSound.Length)]);
+                
                 _animator.SetTrigger("Damaged");
+                
+                if (_damageCoroutine != null)
+                {
+                    StopCoroutine(_damageCoroutine);
+                }
+                _damageCoroutine = StartCoroutine(DamagedCoroutine());
             }
         }
     }
@@ -118,6 +124,8 @@ public class EnemiesDamage : MonoBehaviour
     {
         isDead = true;
         _collider.enabled = false;
+        audioSource.PlayOneShot(deathSound);
+        _animator.SetTrigger("Death");
     }
     
     private void DestroySelf()

@@ -7,7 +7,6 @@ public class SkeletonAnimAStar : MonoBehaviour
     
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer sr;
-    [SerializeField] private EnemiesDamage enemyDamage;
 
     private AIPath _path;
 
@@ -40,12 +39,6 @@ public class SkeletonAnimAStar : MonoBehaviour
         else if (_path.velocity.normalized.x == 0)
         {
             
-        }
-
-        if (enemyDamage.isDead)
-        {
-            _path.canMove = false;
-            animator.SetTrigger("Death");
         }
     }
 }

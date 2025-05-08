@@ -8,6 +8,10 @@ public class WeaponSpecs : MonoBehaviour
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private GameObject objectPrefab;
     [SerializeField] private float shootDelay = 0.5f;
+    
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] bulletSounds;
+    
     private GameObject _character;
     private CharacterInput _characterInput;
     private CharacterStats _characterStats;
@@ -60,6 +64,8 @@ public class WeaponSpecs : MonoBehaviour
         {
             GameObject bullet = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity, _objectsRef.transform);
             bullet.GetComponent<Bullets>().Damage += _characterStats.damage;
+
+            audioSource.PlayOneShot(bulletSounds[UnityEngine.Random.Range(0, bulletSounds.Length)]);
 
             Quaternion direction;
             if (_character.transform.localScale.x > 0)
