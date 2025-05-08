@@ -16,6 +16,8 @@ public class End : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _collider = GetComponent<Collider2D>();
         _game = GetComponentInParent<Game>();
+       
+        CloseExit();
     }
 
     // Update is called once per frame

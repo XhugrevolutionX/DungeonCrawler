@@ -358,7 +358,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power: 1
-  health: 3
+  health: 30
   id: 3
   isDead: 0
 --- !u!114 &7095069916209124934

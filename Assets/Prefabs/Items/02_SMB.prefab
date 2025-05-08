@@ -173,5 +173,6 @@ MonoBehaviour:
   id: 2
   price: 75
   healthUp: 1
-  damageUp: 1
+  damageUp: 5
   speedUp: 0.2
+  hasPoison: 0

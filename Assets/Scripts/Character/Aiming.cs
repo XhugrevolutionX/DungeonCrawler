@@ -31,6 +31,7 @@ public class Aiming: MonoBehaviour
     
     private void Aim()
     {
+        //Aiming
         if (playerInput.currentControlScheme == "Keyboard&Mouse")
         {
             _mousePos = _mainCam.ScreenToWorldPoint(Input.mousePosition);
@@ -41,6 +42,7 @@ public class Aiming: MonoBehaviour
             rotation = characterInput.gamepadAimInput.normalized;
         }
 
+        //Switch aim side depending on the character scale
         if (playerMovement.transform.localScale.x > 0)
         {
             rotZ = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg;

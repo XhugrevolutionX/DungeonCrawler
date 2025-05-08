@@ -25,7 +25,7 @@ public class PoisonPuddle : MonoBehaviour
     {
         if (other.CompareTag("Enemies"))
         {
-            other.GetComponentInChildren<EnemiesDamage>().Hit(damage, Vector2.zero);
+            other.GetComponentInChildren<EnemiesDamage>().Hit(damage);
         }
     }
 }

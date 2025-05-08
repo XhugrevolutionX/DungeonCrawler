@@ -19,6 +19,8 @@ public class LevelExit : MonoBehaviour
         _game = GetComponentInParent<Game>();
         _loadingCanvas = GameObject.Find("LoadingCanvas").GetComponent<Canvas>();
         _loadingCanvas.enabled = false;
+
+        CloseExit();
     }
 
     public void OpenExit()

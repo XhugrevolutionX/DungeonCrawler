@@ -411,6 +411,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power: 1
-  health: 1
+  health: 10
   id: 2
   isDead: 0

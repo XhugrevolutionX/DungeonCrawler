@@ -57,7 +57,7 @@ public class EnemiesDamage : MonoBehaviour
     }
     
 
-    public void Hit(int damage, Vector2 knockBack)
+    public void Hit(int damage,  Vector2 knockBackForce)
     {
         if (!_damaged)
         {
@@ -82,11 +82,37 @@ public class EnemiesDamage : MonoBehaviour
                 if (id != 1)
                 {
                     _timerIsRunning = true;
-                    _rigidbody.AddForce(knockBack, ForceMode2D.Impulse);
+                    _rigidbody.AddForce(knockBackForce, ForceMode2D.Impulse);
+                
                 }
             }
         }
     }
+    
+    public void Hit(int damage)
+    {
+        if (!_damaged)
+        {
+            health -= damage;
+            _damaged = true;
+        
+            if (_damageCoroutine != null)
+            {
+                StopCoroutine(_damageCoroutine);
+            }
+            _damageCoroutine = StartCoroutine(DamagedCoroutine());
+        
+            if (health <= 0)
+            {
+                Death();
+            }
+            else
+            {
+                _animator.SetTrigger("Damaged");
+            }
+        }
+    }
+    
     
     private void Death()
     {
@@ -124,7 +150,7 @@ public class EnemiesDamage : MonoBehaviour
 
     IEnumerator DamagedCoroutine()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.05f);
         _damaged = false;
     }
 

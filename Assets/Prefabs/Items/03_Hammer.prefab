@@ -86,8 +86,9 @@ MonoBehaviour:
   id: 3
   price: 75
   healthUp: 0
-  damageUp: 2
+  damageUp: 10
   speedUp: 0
+  hasPoison: 0
 --- !u!1 &7385153370278640639
 GameObject:
   m_ObjectHideFlags: 0

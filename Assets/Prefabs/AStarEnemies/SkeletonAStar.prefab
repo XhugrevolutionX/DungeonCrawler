@@ -162,7 +162,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power: 1
-  health: 3
+  health: 30
+  id: 0
   isDead: 0
 --- !u!1 &6466566629658205774
 GameObject:
