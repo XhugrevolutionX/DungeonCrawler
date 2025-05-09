@@ -39,7 +39,7 @@ public class Door : MonoBehaviour
             switchState = false;
         }
     }
-    void OnCollisionStay2D(Collision2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Props"))
         {

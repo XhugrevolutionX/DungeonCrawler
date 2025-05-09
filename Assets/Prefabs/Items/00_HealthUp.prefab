@@ -172,6 +172,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   price: 30
+  itemDescription: An entire chicken, are you gonna eat all that ?
   healthUp: 1
   damageUp: 0
   speedUp: 0
+  hasPoison: 0

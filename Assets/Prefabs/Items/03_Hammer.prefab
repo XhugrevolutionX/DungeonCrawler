@@ -85,6 +85,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   price: 30
+  itemDescription: More damage is always a good idea
   healthUp: 0
   damageUp: 10
   speedUp: 0

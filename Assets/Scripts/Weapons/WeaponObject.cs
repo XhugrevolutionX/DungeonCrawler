@@ -7,6 +7,7 @@ public class WeaponObject : MonoBehaviour
 
     [SerializeField] private GameObject weapon;
 
+    private ItemDescrptions _descriptionCanvas;
     
     private Inventory _playerInventory;
     private Collider2D _collider;
@@ -15,6 +16,7 @@ public class WeaponObject : MonoBehaviour
     {
         _playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
         _collider = GetComponent<Collider2D>();
+        _descriptionCanvas = FindFirstObjectByType<ItemDescrptions>();
         _collider.enabled = false;
     }
     
@@ -28,6 +30,7 @@ public class WeaponObject : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _playerInventory.AddWeapon(weapon);
+            _descriptionCanvas.ShowObjectDescription(weapon, weapon.GetComponent<WeaponSpecs>().Type);
             Destroy(gameObject);
         }
     }

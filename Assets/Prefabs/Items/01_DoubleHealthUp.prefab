@@ -172,6 +172,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   price: 50
+  itemDescription: What a feast !
   healthUp: 2
   damageUp: 0
   speedUp: 0
+  hasPoison: 0

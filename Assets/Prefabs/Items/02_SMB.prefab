@@ -172,6 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   price: 75
+  itemDescription: Do you know SuperMeatBoy ?
   healthUp: 1
   damageUp: 5
   speedUp: 0.2

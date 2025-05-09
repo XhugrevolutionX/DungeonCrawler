@@ -172,6 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 4
   price: 75
+  itemDescription: Are you an alchemist ?
   healthUp: 0
   damageUp: 0
   speedUp: 0

@@ -518,5 +518,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 376f461b8de84e5448066a3282d900fb, type: 3}
   - {fileID: 8300000, guid: f49f82364cddad64ab7cc1d32bf48857, type: 3}
   - {fileID: 8300000, guid: 4dee75655634b7142b40cb117d99bc44, type: 3}
+  weaponDescription: The base Weapon, average damage, knockback and fire rate
   id: 0
   price: 30

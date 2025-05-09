@@ -12,6 +12,8 @@ public class WeaponSpecs : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip[] bulletSounds;
     
+    [SerializeField] private String weaponDescription;
+    
     private GameObject _character;
     private CharacterInput _characterInput;
     private CharacterStats _characterStats;
@@ -23,8 +25,12 @@ public class WeaponSpecs : MonoBehaviour
 
     [SerializeField] private int price;
     public int Price => price;
+
     
-    
+    private int _objectType = 0;
+    public int Type => _objectType;
+    public string WeaponDescription => weaponDescription;
+
     private bool _canShoot;
 
     private Coroutine _shootCoroutine;

@@ -11,6 +11,8 @@ public class ShopStall : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     
     private ShopItemsManager _manager;
+
+    private ItemDescrptions _descriptionCanvas;
     
     private ObjectsRef _objectsRef;
     
@@ -21,7 +23,7 @@ public class ShopStall : MonoBehaviour
     
     private int _objectId;
     private int _objectType;
-
+    
     private int _price;
     
     private bool _bought = false;
@@ -33,7 +35,7 @@ public class ShopStall : MonoBehaviour
 
     private void Start()
     {
-      
+        
     }
 
     public void Init()
@@ -43,6 +45,8 @@ public class ShopStall : MonoBehaviour
         
         _characterInput = FindFirstObjectByType<CharacterInput>();
         _characterInventory = FindFirstObjectByType<Inventory>();
+        
+        _descriptionCanvas = FindFirstObjectByType<ItemDescrptions>();
         
         spriteRenderer.enabled = false;
     }
@@ -101,7 +105,7 @@ public class ShopStall : MonoBehaviour
             _objectId = rnd;
             priceTag.text = _object.GetComponent<WeaponSpecs>().Price + " $";
             _price = _object.GetComponent<WeaponSpecs>().Price;
-            _objectType = 0;
+            _objectType = _object.GetComponent<WeaponSpecs>().Type;
         }
     }
     private void RestockItem()
@@ -138,7 +142,7 @@ public class ShopStall : MonoBehaviour
             _objectId = rnd;
             priceTag.text = _object.GetComponent<Item>().Price + " $";
             _price = _object.GetComponent<Item>().Price;
-            _objectType = 1;
+            _objectType = _object.GetComponent<Item>().Type;
         }
     }
     
@@ -149,16 +153,20 @@ public class ShopStall : MonoBehaviour
         {
             case 0:
                 _characterInventory.AddWeapon(_objectsRef.Weapons[_objectId]);
+                _descriptionCanvas.ShowObjectDescription(_object, _objectType);
                 _manager.ShopItems.Remove(_object);
                 break;
             case 1:
                 _characterInventory.AddItems(_objectsRef.Items[_objectId].GetComponent<Item>());
                 _object.GetComponent<Item>().ApplyItem(player);
+                _descriptionCanvas.ShowObjectDescription(_object, _objectType);
                 _manager.ShopItems.Remove(_object);
                 break;
             default:
                 break;
         }
+        
+        
         _characterInventory.money -= _price;
         _bought = true;
         spriteRenderer.enabled = false;
