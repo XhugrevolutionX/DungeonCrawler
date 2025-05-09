@@ -10,13 +10,10 @@ public class Inventory : MonoBehaviour
     [SerializeField] private CharacterInput characterInput;
     
     private ObjectsRef _objectsRef;
-    
     private List<WeaponSpecs> _weapons = new List<WeaponSpecs>();
-    
     private List<Item> _items = new List<Item>();
     
     private Aiming _rotationPoint;
-    private Transform _itemsTranform;
     
     private int _keys;
     private int _money;
@@ -40,10 +37,9 @@ public class Inventory : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        _itemsTranform = transform.Find("Items");
         _objectsRef = FindFirstObjectByType<ObjectsRef>();
         _rotationPoint = GetComponentInChildren<Aiming>();
-
+        
         if (SceneManager.GetActiveScene().name == "GameScene")
         {
             LoadInventoryData();
@@ -64,6 +60,8 @@ public class Inventory : MonoBehaviour
     private void SwitchWeapons()
     {
         _weapons[_activeWeapon].gameObject.SetActive(false);
+        
+        //Switch weapon with next one if it is the las tone loop back to the first
         if (_activeWeapon < _totalWeapons - 1)
         {
             _activeWeapon++;
@@ -97,13 +95,17 @@ public class Inventory : MonoBehaviour
         _money += amount;
     }
     
+    
     public List<int> GetWeaponsIds()
     {
         List<int> ids = new List<int>();
 
         foreach (var wp in _weapons)
         {
-            ids.Add(wp.id);
+            if (!ids.Contains(wp.id))
+            {
+                ids.Add(wp.id);
+            }
         }
 
         return ids;
@@ -115,7 +117,10 @@ public class Inventory : MonoBehaviour
 
         foreach (var it in _items)
         {
-            ids.Add(it.id);
+            if (!ids.Contains(it.id))
+            {
+                ids.Add(it.id);
+            }
         }
 
         return ids;
@@ -125,9 +130,9 @@ public class Inventory : MonoBehaviour
     {
         foreach (var wp in characterInventoryObject.Weapons)
         {
-            GameObject _wp = Instantiate(wp, _rotationPoint.transform);
+            GameObject w = Instantiate(wp, _rotationPoint.transform);
             
-            _weapons.Add(_wp.GetComponent<WeaponSpecs>());
+            _weapons.Add(w.GetComponent<WeaponSpecs>());
         }
 
         _totalWeapons = _weapons.Count;

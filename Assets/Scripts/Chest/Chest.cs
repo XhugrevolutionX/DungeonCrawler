@@ -4,17 +4,20 @@ using Random = System.Random;
 
 public class Chest : MonoBehaviour
 {
-    private ObjectsRef _objectsRef;
     [SerializeField] private Transform spawnPoint;
     
-    private Animator _animator;
-    private Canvas _canvas;
+    private ObjectsRef _objectsRef;
+    private ShopItemsManager _shopItems;
     
     private CharacterInput _characterInput;
     private Inventory _characterInventory;
-    private ShopItemsManager _shopItems;
+    
+    private Canvas _canvas;
+    
+    private Animator _animator;
 
     private bool _open = false;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,12 +26,6 @@ public class Chest : MonoBehaviour
         _canvas.enabled = false;
         _objectsRef = GetComponentInParent<ObjectsRef>();
         _shopItems = FindFirstObjectByType<ShopItemsManager>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -77,6 +74,21 @@ public class Chest : MonoBehaviour
         _canvas.enabled = false;
     }
 
+    public void ChoseChestReward()
+    {
+        int rnd = UnityEngine.Random.Range(0, 100);
+        
+        //50% chance for a weapons or an item
+        if (rnd < 50)
+        {
+            InstantiateWeapon();
+        }
+        else
+        {
+            InstantiateObject();
+        }
+    }
+
     private void InstantiateWeapon()
     {
         List<int> playerWeaponsIds = _characterInventory.GetWeaponsIds();
@@ -84,9 +96,11 @@ public class Chest : MonoBehaviour
         
         List<int> playerItemsIds = _characterInventory.GetItemsIds();
         List<int> shopItemsIds = _shopItems.GetShopItemsIds();
-
+        
+        //Check if all the weapons have already been spawned
         if (playerWeaponsIds.Count + shopWeaponsIds.Count >= _objectsRef.Weapons.Length)
         {
+            //Check if all the items have already been spawned
             if (playerItemsIds.Count + shopItemsIds.Count >= _objectsRef.Items.Length)
             {
                 Debug.Log("All Items and Weapons have already been spawned");
@@ -99,6 +113,7 @@ public class Chest : MonoBehaviour
         else
         {
             int rnd;
+            //Find a weapon neither the player nor the shop already have
             do
             {
                 rnd = UnityEngine.Random.Range(0, _objectsRef.Weapons.Length);
@@ -118,8 +133,10 @@ public class Chest : MonoBehaviour
         List<int> playerWeaponsIds = _characterInventory.GetWeaponsIds();
         List<int> shopWeaponsIds = _shopItems.GetShopWeaponsIds();
 
+        //Check if all the items have already been spawned
         if (playerItemsIds.Count + shopItemsIds.Count >= _objectsRef.Items.Length)
         {
+            //Check if all the weapons have already been spawned
             if (playerWeaponsIds.Count + shopWeaponsIds.Count >= _objectsRef.Weapons.Length)
             {
                 Debug.Log("All Items and Weapons have already been spawned");
@@ -132,7 +149,7 @@ public class Chest : MonoBehaviour
         else
         {
             int rnd;
-
+            //Find an item neither the player nor the shop already have
             do
             {
                 rnd = UnityEngine.Random.Range(0, _objectsRef.Items.Length);
@@ -143,18 +160,4 @@ public class Chest : MonoBehaviour
         }
     }
     
-
-    public void InstantiateChestReward()
-    {
-        int rnd = UnityEngine.Random.Range(0, 100);
-
-        if (rnd < 50)
-        {
-            InstantiateWeapon();
-        }
-        else
-        {
-            InstantiateObject();
-        }
-    }
 }

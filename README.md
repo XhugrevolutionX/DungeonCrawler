@@ -10,9 +10,12 @@ RoomGenerator (Used for generating room)
 # Controls
                     Mouse & KeyBoard        Controller
     
-    Movement        WASD                    Left Stick
-    Aim             Mouse                   Right Stick
-    Shoot           Left Click             Right Trigger
+    Movement            WASD                Left Stick
+    Aim                 Mouse               Right Stick
+    Shoot            Left Click             Right Trigger
+    Dash             Right Click            Left Trigger
+    Switch Weapon       Shift               North Button
+    Context Button        E                 West Button
 
 
 # Enemies
@@ -41,4 +44,4 @@ Multiple Room Types are used to generate the dungeon following the Graph (StartR
 
 Post Process to apply tags, place the Character in the Starting room and Get a list of all doors
 
-Doors appear open when generating a map, they can be closed from the GameObject itsefl or from the Dungeon GameObject while the game runs
+Doors appear open when generating a map, they can be closed from the GameObject itself or from the Dungeon GameObject while the game runs

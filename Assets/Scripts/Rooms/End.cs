@@ -20,12 +20,6 @@ public class End : MonoBehaviour
         CloseExit();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void OpenExit()
     {
         _spriteRenderer.sprite = open;

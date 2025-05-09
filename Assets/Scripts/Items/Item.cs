@@ -33,7 +33,6 @@ public class Item : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            
             ApplyItem(other.gameObject);
             _descriptionCanvas.ShowObjectDescription(gameObject, _objectType);
             Destroy(gameObject);

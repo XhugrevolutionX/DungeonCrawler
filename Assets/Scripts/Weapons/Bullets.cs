@@ -63,7 +63,7 @@ public class Bullets : MonoBehaviour
                 
             if (_poison)
             {
-                Instantiate(_objectsRef.Effects[0], other.transform.position, Quaternion.identity, _objectsRef.transform);
+                Instantiate(_objectsRef.Effects[0], transform.position, Quaternion.identity, _objectsRef.transform);
             }
             Destroy(gameObject);
         }

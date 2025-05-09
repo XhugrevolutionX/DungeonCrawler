@@ -37,12 +37,10 @@ public class ShopItemsManager : MonoBehaviour
             switch (stall.ObjectType)
             {
                 case 0:
-                    if (stall.Object != null)
+                    if (stall.Object != null && !ids.Contains(stall.ObjectId))
                     {
                         ids.Add(stall.ObjectId);
                     }
-                    break;
-                case 1:
                     break;
                 default:
                     break;

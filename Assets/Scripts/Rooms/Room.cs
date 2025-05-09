@@ -118,6 +118,7 @@ public class Room : MonoBehaviour
             _exit.OpenExit();
             _end.OpenExit();
         }
+        //Spawn a reward at the end of rooms
         else
         {
             //50% chance for a coin 20% chance for a key 30% chance for food
@@ -141,10 +142,12 @@ public class Room : MonoBehaviour
             }
             else if (rnd < 70)
             {
+                //A key
                 Instantiate(_objectsRef.Key, rewardSpawnPoint.position, Quaternion.identity);
             }
             else
             {
+                //Random food
                 rnd = UnityEngine.Random.Range(0, _objectsRef.Foods.Length-1);
                 Instantiate(_objectsRef.Foods[rnd], rewardSpawnPoint.position, Quaternion.identity);
             }

@@ -29,7 +29,6 @@ public class CharacterStats : MonoBehaviour
         }
         healthBar.UpdateHealthBar(health, maxHealth);
     }
-
     public void AddDamage(int damageBoost)
     {
         damage += damageBoost;

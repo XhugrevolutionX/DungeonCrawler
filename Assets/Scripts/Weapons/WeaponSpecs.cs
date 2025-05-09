@@ -47,6 +47,8 @@ public class WeaponSpecs : MonoBehaviour
         _objectsRef = GetComponentInParent<ObjectsRef>();
     }
 
+    
+    //Add delay to the weapon after being switched if it was between two shot, so that you cannot fire at infinite speed by switching between weapons
     void OnEnable()
     {
         if (_delayAfterSwitch)
@@ -68,33 +70,41 @@ public class WeaponSpecs : MonoBehaviour
     {
         if (_characterInput.inputShoot && _canShoot)
         {
-            GameObject bullet = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity, _objectsRef.transform);
-            bullet.GetComponent<Bullets>().Damage += _characterStats.damage;
-
-            audioSource.PlayOneShot(bulletSounds[UnityEngine.Random.Range(0, bulletSounds.Length)]);
-
-            Quaternion direction;
-            if (_character.transform.localScale.x > 0)
-            {
-                direction = Quaternion.Euler(0, 0, _aiming.rotZ);
-            }
-            else
-            {
-                direction = Quaternion.Euler(0, 0, _aiming.rotZ - 180);
-            }
-            bullet.GetComponentInChildren<SpriteRenderer>().transform.rotation = direction;
-            
-            _canShoot = false;
-
-            if (_shootCoroutine != null)
-            {
-                StopCoroutine(_shootCoroutine);
-            }
-
-            _shootCoroutine = StartCoroutine("ShootDelay");
+            Fire();
         }
     }
-    
+
+    private void Fire()
+    {
+        GameObject bullet = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity, _objectsRef.transform);
+            
+        audioSource.PlayOneShot(bulletSounds[UnityEngine.Random.Range(0, bulletSounds.Length)]);
+
+        //Add the damage boosts the player have to the base damage of the bullet
+        bullet.GetComponent<Bullets>().Damage += _characterStats.damage;
+            
+        //Get the direction of the bullet depending on the player aim and scale
+        Quaternion direction;
+        if (_character.transform.localScale.x > 0)
+        {
+            direction = Quaternion.Euler(0, 0, _aiming.rotZ);
+        }
+        else
+        {
+            direction = Quaternion.Euler(0, 0, _aiming.rotZ - 180);
+        }
+        //Rotate the bullet sprite
+        bullet.GetComponentInChildren<SpriteRenderer>().transform.rotation = direction;
+            
+        _canShoot = false;
+
+        if (_shootCoroutine != null)
+        {
+            StopCoroutine(_shootCoroutine);
+        }
+        _shootCoroutine = StartCoroutine("ShootDelay");
+    }
+
     private IEnumerator ShootDelay()
     {
         yield return new WaitForSeconds(shootDelay);

@@ -36,6 +36,7 @@ public class CharacterMovement : MonoBehaviour
 
     void Update()
     {
+        //Turn the player sprite to where he is aiming
         if (_aim.rotZ < 90 && _aim.rotZ > -90)
         {
         }
@@ -44,6 +45,7 @@ public class CharacterMovement : MonoBehaviour
             gameObject.transform.localScale = new Vector3(gameObject.transform.localScale.x * -1, 1, 1);
         }
 
+        //Start the animation if the player is moving
         if (_rb.linearVelocity.magnitude > Mathf.Epsilon)
         {
             _animator.SetBool("IsRunning", true);
@@ -58,6 +60,7 @@ public class CharacterMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        //Move the player if he is not dodging
         if (!_characterInput.inputDodge && !_isDodging)
         {
             _rb.linearVelocity = _characterInput.inputMovement * _characterStats.speed;
@@ -72,6 +75,7 @@ public class CharacterMovement : MonoBehaviour
             Dodge();
         }
         
+        //Make the camera follow the player
         _camera.transform.position = new Vector3(_rb.position.x, _rb.position.y, _camera.transform.position.z);
     }
 

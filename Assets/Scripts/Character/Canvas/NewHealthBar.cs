@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class NewHealthBar : MonoBehaviour
 {
-    private int _maxHealth;
-    private int _health;
     
     private SpriteRenderer[] _spriteRenderers;
 
@@ -29,13 +27,11 @@ public class NewHealthBar : MonoBehaviour
 
     public void UpdateHealthBar(int health, int maxHealth)
     {
-        _health = health;
-        _maxHealth = maxHealth;
         for (int i = 0; i < _spriteRenderers.Length; i++)
         {
-            if (_maxHealth % 2 == 0)
+            if (maxHealth % 2 == 0)
             {
-                if (i <= Mathf.FloorToInt(_maxHealth / 2) - 1)
+                if (i <= Mathf.FloorToInt(maxHealth / 2) - 1)
                 {
                     _spriteRenderers[i].enabled = true;
                 }
@@ -47,7 +43,7 @@ public class NewHealthBar : MonoBehaviour
             }
             else
             {
-                if (i <= Mathf.FloorToInt(_maxHealth / 2))
+                if (i <= Mathf.FloorToInt(maxHealth / 2))
                 {
                     _spriteRenderers[i].enabled = true;
                 }

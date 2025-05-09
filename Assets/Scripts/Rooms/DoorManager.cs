@@ -27,22 +27,6 @@ public class DoorManager : MonoBehaviour
         }
     }
 
-    private void CloseDoors()
-    {
-        foreach (var door in doors)
-        {
-            door.GetComponent<Door>().Close();
-        }
-    }
-
-    private void OpenDoors()
-    {
-        foreach (var door in doors)
-        {
-            door.GetComponent<Door>().Open();
-        }
-    }
-
     public void SetDoors(List<GameObject> _doors)
     {
         doors = _doors;

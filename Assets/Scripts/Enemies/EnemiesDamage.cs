@@ -45,6 +45,7 @@ public class EnemiesDamage : MonoBehaviour
 
     void Update()
     {
+        //Knock back delay
         if (_timerIsRunning)
         {
             _timer += Time.deltaTime;
@@ -74,9 +75,11 @@ public class EnemiesDamage : MonoBehaviour
             }
             else
             {
-                audioSource.PlayOneShot(damagedSound[UnityEngine.Random.Range(0, damagedSound.Length)]);
+                audioSource.PlayOneShot(damagedSound[UnityEngine.Random.Range(0, damagedSound.Length)], 0.15f);
                 
                 _animator.SetTrigger("Damaged");
+                
+                //Apply Knock back unless it's a mage
                 if (id != 1)
                 {
                     _timerIsRunning = true;
@@ -92,7 +95,7 @@ public class EnemiesDamage : MonoBehaviour
             }
         }
     }
-    
+    //Hit function without knock back for effects like poison
     public void Hit(int damage)
     {
         if (!_damaged)
@@ -106,7 +109,7 @@ public class EnemiesDamage : MonoBehaviour
             }
             else
             {
-                audioSource.PlayOneShot(damagedSound[UnityEngine.Random.Range(0, damagedSound.Length)]);
+                audioSource.PlayOneShot(damagedSound[UnityEngine.Random.Range(0, damagedSound.Length)], 0.15f);
                 
                 _animator.SetTrigger("Damaged");
                 
@@ -124,12 +127,13 @@ public class EnemiesDamage : MonoBehaviour
     {
         isDead = true;
         _collider.enabled = false;
-        audioSource.PlayOneShot(deathSound);
+        audioSource.PlayOneShot(deathSound, 0.25f);
         _animator.SetTrigger("Death");
     }
     
     private void DestroySelf()
     {
+        //Spawn a coins unless it's a kamikaze
         if (id != 2)
         {
             //40% chance to spawn a coins 

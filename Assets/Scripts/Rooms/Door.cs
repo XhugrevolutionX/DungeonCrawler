@@ -26,6 +26,7 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //For editor tests
         if (switchState)
         {
             if (_state)
@@ -43,10 +44,10 @@ public class Door : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Props"))
         {
-            Destructible prop = other.gameObject.GetComponent<Destructible>();
-
+            //Destroy props if the door is closed on top of them
             if (_state)
             {
+                other.gameObject.TryGetComponent<>(out Destructible prop);
                 prop.DestroyAnimation();
             }
         }

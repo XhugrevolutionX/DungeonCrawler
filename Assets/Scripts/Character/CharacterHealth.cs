@@ -6,17 +6,16 @@ public class CharacterHealth : MonoBehaviour
 {
     [SerializeField] private float deathDelay = 2;
     [SerializeField] private float iFramesDelay = 1;
+    
     [SerializeField] private NewHealthBar healthBar;
     
     [SerializeField] private bool heal;
     [SerializeField] private bool damage;
     
     private CharacterStats _characterStats;
-    
     private Game _game;
     
     private Animator _animator;
-    
     private Coroutine _iFramesCoroutine;
 
     private bool _canBeHit;
