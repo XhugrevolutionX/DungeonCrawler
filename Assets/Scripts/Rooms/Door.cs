@@ -47,7 +47,7 @@ public class Door : MonoBehaviour
             //Destroy props if the door is closed on top of them
             if (_state)
             {
-                other.gameObject.TryGetComponent<>(out Destructible prop);
+                Destructible prop = other.gameObject.GetComponent<Destructible>();
                 prop.DestroyAnimation();
             }
         }

@@ -508,16 +508,7 @@ MonoBehaviour:
   shootDelay: 0.5
   audioSource: {fileID: 6556864483694495435}
   bulletSounds:
-  - {fileID: 8300000, guid: bd3abe22754f19d4bb54e73793caa930, type: 3}
-  - {fileID: 8300000, guid: b2ba1221492801b4b8ea80282430b721, type: 3}
-  - {fileID: 8300000, guid: ad59cb908b88f9941bba1c0f89b61e71, type: 3}
-  - {fileID: 8300000, guid: 0da3cae27e0382f469c56e1e6565a991, type: 3}
-  - {fileID: 8300000, guid: 3274fed356ab7004881f6f3a6d3540f1, type: 3}
-  - {fileID: 8300000, guid: 55ab0504f4743ad4dba56ca41c6bec18, type: 3}
-  - {fileID: 8300000, guid: f3487764974cd7046ad3f124046597a1, type: 3}
-  - {fileID: 8300000, guid: 376f461b8de84e5448066a3282d900fb, type: 3}
-  - {fileID: 8300000, guid: f49f82364cddad64ab7cc1d32bf48857, type: 3}
-  - {fileID: 8300000, guid: 4dee75655634b7142b40cb117d99bc44, type: 3}
+  - {fileID: 8300000, guid: fc45e5316edd719439199dd862e2e5e4, type: 3}
   weaponDescription: The base Weapon, average damage, knockback and fire rate
   id: 0
   price: 30
